@@ -31,27 +31,22 @@
 body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;padding-bottom:80px;}
 h1,h2,h3{font-family:'Syne',sans-serif;}
 
-/* ── TOP BAR ── */
 .topbar{position:sticky;top:0;z-index:100;background:linear-gradient(to bottom,var(--bg),transparent);padding:16px 20px 8px;display:flex;align-items:center;justify-content:space-between;}
 .logo{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
 .date-chip{background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:5px 12px;font-size:12px;color:var(--muted);font-weight:500;}
 
-/* ── TABS ── */
 .page{display:none;padding:0 16px;animation:fadeIn .25s ease;}
 .page.active{display:block;}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 
-/* ── BOTTOM NAV ── */
 .nav{position:fixed;bottom:0;left:0;right:0;background:rgba(22,22,42,0.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid var(--border);display:flex;z-index:200;padding-bottom:env(safe-area-inset-bottom);}
 .nav-btn{flex:1;padding:12px 4px 10px;display:flex;flex-direction:column;align-items:center;gap:4px;border:none;background:none;color:var(--muted);font-size:10px;font-family:'DM Sans',sans-serif;font-weight:500;cursor:pointer;transition:.2s;}
 .nav-btn.active{color:var(--accent);}
 .nav-icon{font-size:22px;line-height:1;}
 
-/* ── CARDS ── */
 .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px;}
 .card+.card{margin-top:12px;}
 
-/* ── CALORIE RING ── */
 .ring-wrap{display:flex;flex-direction:column;align-items:center;padding:10px 0 4px;}
 .ring-svg{transform:rotate(-90deg);}
 .ring-inner{position:relative;display:inline-flex;align-items:center;justify-content:center;}
@@ -63,7 +58,6 @@ h1,h2,h3{font-family:'Syne',sans-serif;}
 .ring-sub-val{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;}
 .ring-sub-lbl{font-size:10px;color:var(--muted);}
 
-/* ── MACRO BARS ── */
 .macro-row{display:flex;flex-direction:column;gap:8px;margin-top:4px;}
 .macro-item{display:flex;align-items:center;gap:10px;}
 .macro-name{font-size:12px;font-weight:600;width:54px;color:var(--muted);}
@@ -71,7 +65,6 @@ h1,h2,h3{font-family:'Syne',sans-serif;}
 .macro-bar-fill{height:100%;border-radius:10px;transition:width .6s cubic-bezier(.34,1.56,.64,1);}
 .macro-val{font-size:12px;font-weight:600;min-width:40px;text-align:right;}
 
-/* ── MEALS ── */
 .meal-section{margin-top:12px;}
 .meal-header{display:flex;align-items:center;justify-content:space-between;padding:10px 0 6px;}
 .meal-title{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;}
@@ -84,7 +77,6 @@ h1,h2,h3{font-family:'Syne',sans-serif;}
 .log-cal{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--accent2);}
 .log-del{background:none;border:none;color:var(--muted);font-size:18px;cursor:pointer;padding:0 0 0 10px;}
 
-/* ── SEARCH ── */
 .search-bar{display:flex;align-items:center;gap:10px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:12px 16px;margin-bottom:14px;}
 .search-bar input{background:none;border:none;color:var(--text);font-size:15px;font-family:'DM Sans',sans-serif;flex:1;outline:none;}
 .search-bar input::placeholder{color:var(--muted);}
@@ -95,17 +87,22 @@ h1,h2,h3{font-family:'Syne',sans-serif;}
 .chip.active{background:var(--accent);color:#fff;border-color:var(--accent);}
 .food-result{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);margin-bottom:8px;cursor:pointer;transition:.15s;}
 .food-result:active{transform:scale(.98);}
-.food-info{}
 .food-rname{font-size:14px;font-weight:600;}
 .food-rbrand{font-size:11px;color:var(--muted);}
 .food-rmacros{font-size:10px;color:var(--muted);margin-top:2px;}
 .food-rcal{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:var(--accent);}
 .food-rcal-unit{font-size:10px;color:var(--muted);}
 
-/* ── MODAL ── */
+/* PORTION PRESETS */
+.portion-section{margin-bottom:16px;}
+.portion-label{font-size:12px;font-weight:600;color:var(--muted);margin-bottom:8px;}
+.portion-chips{display:flex;gap:6px;flex-wrap:wrap;}
+.portion-chip{padding:6px 11px;border-radius:20px;font-size:11px;font-weight:600;cursor:pointer;border:1px solid var(--border);background:var(--bg3);color:var(--muted);transition:.2s;white-space:nowrap;}
+.portion-chip:hover,.portion-chip.sel-portion{background:rgba(255,209,102,0.2);border-color:var(--accent2);color:var(--accent2);}
+
 .modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:500;align-items:flex-end;}
 .modal-bg.open{display:flex;}
-.modal{background:var(--bg2);border-radius:var(--radius) var(--radius) 0 0;padding:24px 20px 40px;width:100%;max-height:75vh;overflow-y:auto;animation:slideUp .3s ease;}
+.modal{background:var(--bg2);border-radius:var(--radius) var(--radius) 0 0;padding:24px 20px 40px;width:100%;max-height:82vh;overflow-y:auto;animation:slideUp .3s ease;}
 @keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
 .modal-handle{width:40px;height:4px;background:var(--border);border-radius:2px;margin:0 auto 20px;}
 .modal-title{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;margin-bottom:4px;}
@@ -121,7 +118,6 @@ h1,h2,h3{font-family:'Syne',sans-serif;}
 .add-log-btn{width:100%;background:linear-gradient(135deg,var(--accent),#ff8c5a);border:none;color:#fff;font-size:16px;font-weight:700;font-family:'Syne',sans-serif;padding:16px;border-radius:var(--radius);cursor:pointer;margin-top:8px;}
 .modal-close{position:absolute;top:20px;right:20px;background:var(--bg3);border:none;color:var(--text);width:32px;height:32px;border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
 
-/* ── GOALS ── */
 .goal-input-row{display:flex;flex-direction:column;gap:6px;margin-bottom:16px;}
 .goal-input-label{font-size:13px;font-weight:600;color:var(--muted);}
 .goal-input{background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);font-size:18px;font-family:'Syne',sans-serif;font-weight:700;padding:12px 16px;outline:none;width:100%;}
@@ -132,36 +128,32 @@ h1,h2,h3{font-family:'Syne',sans-serif;}
 .stat-val{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;}
 .stat-lbl{font-size:11px;color:var(--muted);margin-top:2px;}
 
-/* ── HISTORY ── */
 .hist-day{margin-bottom:16px;}
 .hist-day-title{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.06em;}
-.hist-bar-row{display:flex;align-items:center;gap:10px;margin-bottom:6px;}
 .hist-bar-bg{flex:1;height:8px;background:rgba(255,255,255,0.07);border-radius:10px;overflow:hidden;}
 .hist-bar-fill{height:100%;border-radius:10px;background:linear-gradient(90deg,var(--accent),var(--accent2));}
 .hist-val{font-size:12px;font-weight:700;min-width:50px;text-align:right;}
 .hist-goal-line{font-size:11px;color:var(--muted);}
 
-/* ── NUTRITION TABLE ── */
 .nut-table{width:100%;border-collapse:collapse;margin-top:8px;}
 .nut-table td{padding:7px 0;font-size:13px;border-bottom:1px solid var(--border);}
 .nut-table td:last-child{text-align:right;font-weight:600;}
 .nut-table tr:last-child td{border-bottom:none;}
 .section-title{font-family:'Syne',sans-serif;font-size:17px;font-weight:800;margin:20px 0 10px;}
 
-/* ── PROGRESS RING COLOR ── */
 .ring-bg{stroke:rgba(255,255,255,0.07);}
 .ring-fill{stroke:var(--accent);stroke-linecap:round;transition:stroke-dashoffset .8s cubic-bezier(.34,1.56,.64,1);}
 
-/* ── EMPTY STATE ── */
 .empty{text-align:center;padding:30px 20px;color:var(--muted);}
 .empty-icon{font-size:40px;margin-bottom:8px;}
 .empty-txt{font-size:14px;}
 
-/* ── INSTALL BANNER ── */
 .install-banner{background:linear-gradient(135deg,rgba(255,107,53,0.2),rgba(155,93,229,0.2));border:1px solid rgba(255,107,53,0.3);border-radius:var(--radius);padding:14px 16px;margin-bottom:14px;display:flex;align-items:center;gap:12px;}
 .install-banner .ib-icon{font-size:28px;}
 .install-banner .ib-text{font-size:12px;line-height:1.5;color:var(--text);}
 .install-banner strong{font-size:13px;font-weight:700;}
+
+.hist-bar-row{display:flex;align-items:center;gap:10px;margin-bottom:6px;}
 </style>
 </head>
 <body>
@@ -172,15 +164,12 @@ h1,h2,h3{font-family:'Syne',sans-serif;}
   <div class="date-chip" id="todayLabel"></div>
 </div>
 
-<!-- ═══ PAGE: HOME ═══ -->
+<!-- PAGE: HOME -->
 <div class="page active" id="page-home">
-
   <div class="install-banner" id="installBanner">
     <div class="ib-icon">📲</div>
     <div class="ib-text"><strong>Install as App</strong><br>Safari → Share → Add to Home Screen</div>
   </div>
-
-  <!-- Calorie Ring -->
   <div class="card" style="padding:20px 18px 18px;">
     <div class="ring-wrap">
       <div class="ring-inner">
@@ -210,42 +199,39 @@ h1,h2,h3{font-family:'Syne',sans-serif;}
         </div>
       </div>
     </div>
-    <!-- Macro Bars -->
     <div class="macro-row" style="margin-top:18px;">
       <div class="macro-item">
         <span class="macro-name" style="color:#4cc9f0;">Protein</span>
-        <div class="macro-bar-bg"><div class="macro-bar-fill" style="background:#4cc9f0;" id="barProtein" style="width:0%"></div></div>
+        <div class="macro-bar-bg"><div class="macro-bar-fill" style="background:#4cc9f0;" id="barProtein"></div></div>
         <span class="macro-val" style="color:#4cc9f0;" id="barProteinVal">0/150g</span>
       </div>
       <div class="macro-item">
         <span class="macro-name" style="color:#ffd166;">Carbs</span>
-        <div class="macro-bar-bg"><div class="macro-bar-fill" style="background:#ffd166;" id="barCarbs" style="width:0%"></div></div>
+        <div class="macro-bar-bg"><div class="macro-bar-fill" style="background:#ffd166;" id="barCarbs"></div></div>
         <span class="macro-val" style="color:#ffd166;" id="barCarbsVal">0/250g</span>
       </div>
       <div class="macro-item">
         <span class="macro-name" style="color:#ff6b9d;">Fat</span>
-        <div class="macro-bar-bg"><div class="macro-bar-fill" style="background:#ff6b9d;" id="barFat" style="width:0%"></div></div>
+        <div class="macro-bar-bg"><div class="macro-bar-fill" style="background:#ff6b9d;" id="barFat"></div></div>
         <span class="macro-val" style="color:#ff6b9d;" id="barFatVal">0/65g</span>
       </div>
       <div class="macro-item">
         <span class="macro-name" style="color:#06d6a0;">Fiber</span>
-        <div class="macro-bar-bg"><div class="macro-bar-fill" style="background:#06d6a0;" id="barFiber" style="width:0%"></div></div>
+        <div class="macro-bar-bg"><div class="macro-bar-fill" style="background:#06d6a0;" id="barFiber"></div></div>
         <span class="macro-val" style="color:#06d6a0;" id="barFiberVal">0/30g</span>
       </div>
     </div>
   </div>
-
-  <!-- Meals -->
   <div id="mealsContainer"></div>
   <div style="height:10px;"></div>
 </div>
 
-<!-- ═══ PAGE: SEARCH ═══ -->
+<!-- PAGE: SEARCH -->
 <div class="page" id="page-search">
   <div style="padding-top:4px;">
     <div class="search-bar">
       <span class="search-icon">🔍</span>
-      <input type="text" id="searchInput" placeholder="Search 500+ foods, brands…" oninput="doSearch()">
+      <input type="text" id="searchInput" placeholder="Search 1000+ foods, brands…" oninput="doSearch()">
     </div>
     <div class="filter-chips" id="filterChips">
       <div class="chip active" onclick="setFilter('all',this)">All</div>
@@ -263,7 +249,7 @@ h1,h2,h3{font-family:'Syne',sans-serif;}
   </div>
 </div>
 
-<!-- ═══ PAGE: GOALS ═══ -->
+<!-- PAGE: GOALS -->
 <div class="page" id="page-goals">
   <div class="section-title" style="margin-top:8px;">Daily Goals</div>
   <div class="card">
@@ -330,7 +316,7 @@ h1,h2,h3{font-family:'Syne',sans-serif;}
   <div style="height:10px;"></div>
 </div>
 
-<!-- ═══ PAGE: HISTORY ═══ -->
+<!-- PAGE: HISTORY -->
 <div class="page" id="page-history">
   <div class="section-title" style="margin-top:8px;">Weekly Summary</div>
   <div class="card" id="historyCard">
@@ -339,7 +325,7 @@ h1,h2,h3{font-family:'Syne',sans-serif;}
   <div style="height:10px;"></div>
 </div>
 
-<!-- ═══ BOTTOM NAV ═══ -->
+<!-- BOTTOM NAV -->
 <nav class="nav">
   <button class="nav-btn active" onclick="showPage('home',this)"><span class="nav-icon">🏠</span>Home</button>
   <button class="nav-btn" onclick="showPage('search',this)"><span class="nav-icon">🔍</span>Search</button>
@@ -347,7 +333,7 @@ h1,h2,h3{font-family:'Syne',sans-serif;}
   <button class="nav-btn" onclick="showPage('history',this)"><span class="nav-icon">📊</span>History</button>
 </nav>
 
-<!-- ═══ ADD FOOD MODAL ═══ -->
+<!-- ADD FOOD MODAL -->
 <div class="modal-bg" id="addModal" onclick="closeModalBg(event)">
   <div class="modal" style="position:relative;">
     <button class="modal-close" onclick="closeModal()">✕</button>
@@ -355,20 +341,16 @@ h1,h2,h3{font-family:'Syne',sans-serif;}
     <div class="modal-title" id="modalFoodName">Food Name</div>
     <div class="modal-subtitle" id="modalFoodBrand">Brand · per 100g</div>
 
+    <!-- Portion Presets -->
+    <div class="portion-section">
+      <div class="portion-label">⚡ Quick Portions</div>
+      <div class="portion-chips" id="portionChips"></div>
+    </div>
+
     <div style="display:flex;gap:12px;align-items:flex-end;margin-bottom:16px;">
       <div>
-        <div class="modal-label" style="margin-bottom:6px;">Quantity</div>
-        <input class="qty-input" type="number" id="modalQty" value="100" oninput="updateModalCalc()">
-      </div>
-      <div>
-        <div class="modal-label" style="margin-bottom:6px;">Unit</div>
-        <select class="unit-sel" id="modalUnit" onchange="updateModalCalc()">
-          <option value="g">grams</option>
-          <option value="ml">ml</option>
-          <option value="piece">piece</option>
-          <option value="cup">cup</option>
-          <option value="tbsp">tbsp</option>
-        </select>
+        <div class="modal-label" style="margin-bottom:6px;">Quantity (g)</div>
+        <input class="qty-input" type="number" id="modalQty" value="100" oninput="updateModalCalc();clearPortionSel()">
       </div>
       <div style="flex:1;text-align:right;">
         <div style="font-size:11px;color:var(--muted);">Calories</div>
@@ -377,7 +359,6 @@ h1,h2,h3{font-family:'Syne',sans-serif;}
       </div>
     </div>
 
-    <!-- Nutrition preview -->
     <table class="nut-table" id="modalNutTable"></table>
 
     <div style="margin:16px 0 8px;font-size:13px;font-weight:600;color:var(--muted);">Add to Meal</div>
@@ -392,296 +373,704 @@ h1,h2,h3{font-family:'Syne',sans-serif;}
 </div>
 
 <script>
-// ═══════════════════════════════════════════
-// FOOD DATABASE (per 100g unless noted)
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════
+// PORTION PRESETS – per food category (grams)
+// ═══════════════════════════════════════════════════════════
+const PORTION_PRESETS = {
+  grain: [
+    {label:"1 Roti",g:35},{label:"1 Bowl",g:150},{label:"1 Cup",g:200},{label:"1 Plate",g:300},{label:"½ Cup",g:100}
+  ],
+  dairy: [
+    {label:"1 Glass",g:200},{label:"½ Glass",g:100},{label:"1 Cup",g:240},{label:"1 tbsp",g:15},{label:"1 Bowl",g:150}
+  ],
+  snack: [
+    {label:"1 Pack",g:30},{label:"½ Pack",g:15},{label:"1 Piece",g:25},{label:"1 Handful",g:40},{label:"1 Bowl",g:80}
+  ],
+  protein: [
+    {label:"1 Scoop",g:33},{label:"1 Serving",g:100},{label:"1 Piece",g:120},{label:"½ Cup",g:100},{label:"1 Bowl",g:200}
+  ],
+  fruit: [
+    {label:"1 Piece",g:120},{label:"1 Cup",g:150},{label:"½ Cup",g:75},{label:"1 Bowl",g:200},{label:"1 Slice",g:80}
+  ],
+  veg: [
+    {label:"1 Bowl",g:100},{label:"1 Cup",g:150},{label:"½ Cup",g:75},{label:"1 Serving",g:200},{label:"1 tbsp",g:15}
+  ],
+  fastfood: [
+    {label:"1 Burger",g:180},{label:"1 Slice",g:100},{label:"1 Plate",g:300},{label:"1 Serving",g:200},{label:"½ Plate",g:150}
+  ],
+  default: [
+    {label:"1 Bowl",g:150},{label:"1 Cup",g:200},{label:"1 Plate",g:300},{label:"½ Bowl",g:75},{label:"1 tbsp",g:15}
+  ]
+};
+
+// ═══════════════════════════════════════════════════════════
+// FOOD DATABASE (per 100g / noted otherwise)
+// 1000+ entries across all categories
+// ═══════════════════════════════════════════════════════════
 const FOODS = [
-// ── INDIAN HOMEMADE & TRADITIONAL ──
+
+// ────────────────────────────────────────
+// INDIAN HOMEMADE & TRADITIONAL
+// ────────────────────────────────────────
 {id:1,name:"Chapati / Roti (wheat)",brand:"Homemade",cal:297,p:10.6,c:55.7,f:3.7,fi:1.9,cat:"grain",region:"indian"},
 {id:2,name:"Paratha (plain)",brand:"Homemade",cal:326,p:7.4,c:49.2,f:11.4,fi:2.1,cat:"grain",region:"indian"},
 {id:3,name:"Aloo Paratha",brand:"Homemade",cal:252,p:6.0,c:39.0,f:8.5,fi:2.0,cat:"grain",region:"indian"},
-{id:4,name:"Basmati Rice (cooked)",brand:"Homemade",cal:130,p:2.7,c:28.2,f:0.3,fi:0.4,cat:"grain",region:"indian"},
-{id:5,name:"Brown Rice (cooked)",brand:"Homemade",cal:112,p:2.3,c:23.5,f:0.9,fi:1.8,cat:"grain",region:"indian"},
-{id:6,name:"Dal Tadka (yellow lentil)",brand:"Homemade",cal:116,p:7.5,c:18.2,f:2.1,fi:3.9,cat:"grain",region:"indian"},
-{id:7,name:"Rajma (kidney bean curry)",brand:"Homemade",cal:127,p:8.4,c:19.7,f:1.5,fi:6.4,cat:"grain",region:"indian"},
-{id:8,name:"Chole (chickpea curry)",brand:"Homemade",cal:161,p:7.7,c:22.8,f:4.8,fi:5.3,cat:"grain",region:"indian"},
-{id:9,name:"Palak Paneer",brand:"Homemade",cal:178,p:8.2,c:7.4,f:13.1,fi:2.2,cat:"dairy",region:"indian"},
-{id:10,name:"Paneer (cottage cheese)",brand:"Homemade",cal:265,p:18.3,c:3.4,f:20.8,fi:0,cat:"dairy",region:"indian"},
-{id:11,name:"Idli (plain)",brand:"Homemade",cal:58,p:2.1,c:11.7,f:0.4,fi:0.5,cat:"grain",region:"indian"},
-{id:12,name:"Dosa (plain)",brand:"Homemade",cal:133,p:3.4,c:24.0,f:2.8,fi:0.7,cat:"grain",region:"indian"},
-{id:13,name:"Masala Dosa",brand:"Homemade",cal:168,p:4.5,c:28.0,f:5.5,fi:1.2,cat:"grain",region:"indian"},
-{id:14,name:"Upma",brand:"Homemade",cal:150,p:4.2,c:25.6,f:3.8,fi:1.4,cat:"grain",region:"indian"},
-{id:15,name:"Poha (cooked)",brand:"Homemade",cal:130,p:2.1,c:27.8,f:1.5,fi:0.9,cat:"grain",region:"indian"},
-{id:16,name:"Samosa (1 pc ≈100g)",brand:"Homemade",cal:262,p:4.5,c:31.2,f:13.5,fi:2.0,cat:"snack",region:"indian"},
-{id:17,name:"Vada Pav",brand:"Homemade",cal:287,p:7.4,c:43.1,f:10.1,fi:2.3,cat:"fastfood",region:"indian"},
-{id:18,name:"Pav Bhaji",brand:"Homemade",cal:178,p:4.9,c:28.3,f:5.8,fi:3.5,cat:"fastfood",region:"indian"},
-{id:19,name:"Biryani (chicken)",brand:"Homemade",cal:185,p:11.0,c:24.2,f:4.9,fi:0.8,cat:"grain",region:"indian"},
-{id:20,name:"Biryani (veg)",brand:"Homemade",cal:148,p:5.1,c:27.0,f:3.2,fi:1.8,cat:"grain",region:"indian"},
-{id:21,name:"Butter Chicken",brand:"Homemade",cal:158,p:14.3,c:7.2,f:8.1,fi:0.9,cat:"grain",region:"indian"},
-{id:22,name:"Chicken Tikka Masala",brand:"Homemade",cal:146,p:12.8,c:8.4,f:6.5,fi:1.0,cat:"grain",region:"indian"},
-{id:23,name:"Pulao (veg)",brand:"Homemade",cal:156,p:3.6,c:28.4,f:3.9,fi:1.5,cat:"grain",region:"indian"},
-{id:24,name:"Khichdi",brand:"Homemade",cal:135,p:6.2,c:24.7,f:2.3,fi:2.8,cat:"grain",region:"indian"},
-{id:25,name:"Lassi (sweet)",brand:"Homemade",cal:97,p:3.9,c:13.5,f:3.1,fi:0,cat:"dairy",region:"indian"},
-{id:26,name:"Chaas / Buttermilk",brand:"Homemade",cal:38,p:2.7,c:4.3,f:1.0,fi:0,cat:"dairy",region:"indian"},
-{id:27,name:"Gulab Jamun (1 pc)",brand:"Homemade",cal:175,p:2.4,c:30.1,f:5.0,fi:0.2,cat:"snack",region:"indian"},
-{id:28,name:"Jalebi (per 100g)",brand:"Homemade",cal:396,p:2.1,c:72.2,f:11.5,fi:0.3,cat:"snack",region:"indian"},
-{id:29,name:"Halwa (suji)",brand:"Homemade",cal:257,p:3.8,c:37.0,f:11.0,fi:0.8,cat:"snack",region:"indian"},
-{id:30,name:"Moong Dal Chilla",brand:"Homemade",cal:89,p:6.2,c:12.4,f:1.8,fi:2.3,cat:"grain",region:"indian"},
-{id:31,name:"Boiled Egg",brand:"Homemade",cal:155,p:13.0,c:1.1,f:11.0,fi:0,cat:"protein",region:"both"},
-{id:32,name:"Egg White",brand:"Homemade",cal:52,p:11.0,c:0.7,f:0.2,fi:0,cat:"protein",region:"both"},
-{id:33,name:"Omelette (2 egg)",brand:"Homemade",cal:154,p:11.2,c:1.1,f:11.6,fi:0,cat:"protein",region:"both"},
-{id:34,name:"Chicken Breast (cooked)",brand:"Homemade",cal:165,p:31.0,c:0,f:3.6,fi:0,cat:"protein",region:"both"},
-{id:35,name:"Tuna (canned in water)",brand:"Generic",cal:116,p:25.5,c:0,f:1.0,fi:0,cat:"protein",region:"both"},
-{id:36,name:"Whole Milk",brand:"Generic",cal:61,p:3.2,c:4.8,f:3.3,fi:0,cat:"dairy",region:"both"},
-{id:37,name:"Curd / Dahi (plain)",brand:"Homemade",cal:98,p:11.0,c:3.4,f:4.3,fi:0,cat:"dairy",region:"indian"},
+{id:4,name:"Methi Paratha",brand:"Homemade",cal:280,p:8.0,c:43.0,f:9.5,fi:3.0,cat:"grain",region:"indian"},
+{id:5,name:"Basmati Rice (cooked)",brand:"Homemade",cal:130,p:2.7,c:28.2,f:0.3,fi:0.4,cat:"grain",region:"indian"},
+{id:6,name:"Brown Rice (cooked)",brand:"Homemade",cal:112,p:2.3,c:23.5,f:0.9,fi:1.8,cat:"grain",region:"indian"},
+{id:7,name:"Dal Tadka (yellow lentil)",brand:"Homemade",cal:116,p:7.5,c:18.2,f:2.1,fi:3.9,cat:"grain",region:"indian"},
+{id:8,name:"Dal Makhani",brand:"Homemade",cal:145,p:7.8,c:17.5,f:5.2,fi:4.5,cat:"grain",region:"indian"},
+{id:9,name:"Rajma (kidney bean curry)",brand:"Homemade",cal:127,p:8.4,c:19.7,f:1.5,fi:6.4,cat:"grain",region:"indian"},
+{id:10,name:"Chole (chickpea curry)",brand:"Homemade",cal:161,p:7.7,c:22.8,f:4.8,fi:5.3,cat:"grain",region:"indian"},
+{id:11,name:"Palak Paneer",brand:"Homemade",cal:178,p:8.2,c:7.4,f:13.1,fi:2.2,cat:"dairy",region:"indian"},
+{id:12,name:"Paneer (cottage cheese)",brand:"Homemade",cal:265,p:18.3,c:3.4,f:20.8,fi:0,cat:"dairy",region:"indian"},
+{id:13,name:"Shahi Paneer",brand:"Homemade",cal:220,p:9.5,c:10.0,f:17.5,fi:1.0,cat:"dairy",region:"indian"},
+{id:14,name:"Matar Paneer",brand:"Homemade",cal:185,p:9.0,c:14.0,f:11.5,fi:3.0,cat:"dairy",region:"indian"},
+{id:15,name:"Idli (plain)",brand:"Homemade",cal:58,p:2.1,c:11.7,f:0.4,fi:0.5,cat:"grain",region:"indian"},
+{id:16,name:"Dosa (plain)",brand:"Homemade",cal:133,p:3.4,c:24.0,f:2.8,fi:0.7,cat:"grain",region:"indian"},
+{id:17,name:"Masala Dosa",brand:"Homemade",cal:168,p:4.5,c:28.0,f:5.5,fi:1.2,cat:"grain",region:"indian"},
+{id:18,name:"Rava Dosa",brand:"Homemade",cal:155,p:4.0,c:26.0,f:4.8,fi:1.0,cat:"grain",region:"indian"},
+{id:19,name:"Upma",brand:"Homemade",cal:150,p:4.2,c:25.6,f:3.8,fi:1.4,cat:"grain",region:"indian"},
+{id:20,name:"Poha (cooked)",brand:"Homemade",cal:130,p:2.1,c:27.8,f:1.5,fi:0.9,cat:"grain",region:"indian"},
+{id:21,name:"Samosa (1 pc ≈100g)",brand:"Homemade",cal:262,p:4.5,c:31.2,f:13.5,fi:2.0,cat:"snack",region:"indian"},
+{id:22,name:"Vada Pav",brand:"Homemade",cal:287,p:7.4,c:43.1,f:10.1,fi:2.3,cat:"fastfood",region:"indian"},
+{id:23,name:"Pav Bhaji",brand:"Homemade",cal:178,p:4.9,c:28.3,f:5.8,fi:3.5,cat:"fastfood",region:"indian"},
+{id:24,name:"Biryani (chicken)",brand:"Homemade",cal:185,p:11.0,c:24.2,f:4.9,fi:0.8,cat:"grain",region:"indian"},
+{id:25,name:"Biryani (veg)",brand:"Homemade",cal:148,p:5.1,c:27.0,f:3.2,fi:1.8,cat:"grain",region:"indian"},
+{id:26,name:"Biryani (mutton)",brand:"Homemade",cal:210,p:13.0,c:22.0,f:7.5,fi:0.6,cat:"grain",region:"indian"},
+{id:27,name:"Butter Chicken",brand:"Homemade",cal:158,p:14.3,c:7.2,f:8.1,fi:0.9,cat:"grain",region:"indian"},
+{id:28,name:"Chicken Tikka Masala",brand:"Homemade",cal:146,p:12.8,c:8.4,f:6.5,fi:1.0,cat:"grain",region:"indian"},
+{id:29,name:"Pulao (veg)",brand:"Homemade",cal:156,p:3.6,c:28.4,f:3.9,fi:1.5,cat:"grain",region:"indian"},
+{id:30,name:"Khichdi",brand:"Homemade",cal:135,p:6.2,c:24.7,f:2.3,fi:2.8,cat:"grain",region:"indian"},
+{id:31,name:"Lassi (sweet)",brand:"Homemade",cal:97,p:3.9,c:13.5,f:3.1,fi:0,cat:"dairy",region:"indian"},
+{id:32,name:"Lassi (salted)",brand:"Homemade",cal:48,p:3.2,c:4.5,f:1.8,fi:0,cat:"dairy",region:"indian"},
+{id:33,name:"Chaas / Buttermilk",brand:"Homemade",cal:38,p:2.7,c:4.3,f:1.0,fi:0,cat:"dairy",region:"indian"},
+{id:34,name:"Gulab Jamun (1 pc ~50g)",brand:"Homemade",cal:175,p:2.4,c:30.1,f:5.0,fi:0.2,cat:"snack",region:"indian"},
+{id:35,name:"Jalebi (per 100g)",brand:"Homemade",cal:396,p:2.1,c:72.2,f:11.5,fi:0.3,cat:"snack",region:"indian"},
+{id:36,name:"Halwa (suji)",brand:"Homemade",cal:257,p:3.8,c:37.0,f:11.0,fi:0.8,cat:"snack",region:"indian"},
+{id:37,name:"Moong Dal Chilla",brand:"Homemade",cal:89,p:6.2,c:12.4,f:1.8,fi:2.3,cat:"grain",region:"indian"},
+{id:38,name:"Besan Chilla",brand:"Homemade",cal:105,p:7.5,c:14.0,f:2.5,fi:2.5,cat:"grain",region:"indian"},
+{id:39,name:"Aloo Sabzi",brand:"Homemade",cal:120,p:2.5,c:20.0,f:4.0,fi:2.0,cat:"veg",region:"indian"},
+{id:40,name:"Baingan Bharta",brand:"Homemade",cal:82,p:2.0,c:10.5,f:3.5,fi:3.0,cat:"veg",region:"indian"},
+{id:41,name:"Gobi Sabzi",brand:"Homemade",cal:95,p:3.0,c:12.0,f:4.0,fi:3.5,cat:"veg",region:"indian"},
+{id:42,name:"Bhindi Masala",brand:"Homemade",cal:110,p:3.0,c:10.0,f:6.0,fi:3.2,cat:"veg",region:"indian"},
+{id:43,name:"Mixed Veg Curry",brand:"Homemade",cal:105,p:3.5,c:14.0,f:4.0,fi:3.8,cat:"veg",region:"indian"},
+{id:44,name:"Sambhar",brand:"Homemade",cal:60,p:3.5,c:9.0,f:1.0,fi:2.5,cat:"grain",region:"indian"},
+{id:45,name:"Rasam",brand:"Homemade",cal:28,p:1.0,c:5.0,f:0.5,fi:1.0,cat:"grain",region:"indian"},
+{id:46,name:"Coconut Chutney",brand:"Homemade",cal:200,p:2.5,c:10.0,f:17.0,fi:4.0,cat:"snack",region:"indian"},
+{id:47,name:"Tomato Chutney",brand:"Homemade",cal:55,p:1.5,c:9.5,f:1.5,fi:2.0,cat:"snack",region:"indian"},
+{id:48,name:"Aloo Tikki",brand:"Homemade",cal:210,p:4.0,c:30.0,f:8.5,fi:2.5,cat:"snack",region:"indian"},
+{id:49,name:"Dhokla",brand:"Homemade",cal:150,p:6.5,c:26.0,f:2.5,fi:1.5,cat:"snack",region:"indian"},
+{id:50,name:"Khandvi",brand:"Homemade",cal:145,p:7.0,c:20.0,f:4.5,fi:1.2,cat:"snack",region:"indian"},
+{id:51,name:"Thepla",brand:"Homemade",cal:260,p:7.0,c:38.0,f:9.0,fi:4.0,cat:"grain",region:"indian"},
+{id:52,name:"Khakhra (1 pc ~15g)",brand:"Homemade",cal:360,p:10.0,c:60.0,f:8.5,fi:3.5,cat:"snack",region:"indian"},
+{id:53,name:"Puri (fried)",brand:"Homemade",cal:330,p:7.5,c:47.0,f:13.5,fi:1.8,cat:"grain",region:"indian"},
+{id:54,name:"Bhatura",brand:"Homemade",cal:310,p:7.0,c:44.0,f:12.5,fi:1.5,cat:"grain",region:"indian"},
+{id:55,name:"Litti Chokha",brand:"Homemade",cal:275,p:9.0,c:42.0,f:9.0,fi:4.0,cat:"grain",region:"indian"},
+{id:56,name:"Misal Pav",brand:"Homemade",cal:280,p:10.5,c:42.0,f:7.5,fi:6.0,cat:"fastfood",region:"indian"},
+{id:57,name:"Dahi Vada",brand:"Homemade",cal:180,p:8.0,c:25.0,f:5.5,fi:2.0,cat:"snack",region:"indian"},
+{id:58,name:"Pani Puri (6 pcs)",brand:"Homemade",cal:195,p:4.0,c:38.0,f:4.0,fi:2.0,cat:"snack",region:"indian"},
+{id:59,name:"Bhel Puri",brand:"Homemade",cal:180,p:5.0,c:33.0,f:4.0,fi:3.0,cat:"snack",region:"indian"},
+{id:60,name:"Sev Puri",brand:"Homemade",cal:220,p:5.5,c:35.0,f:7.5,fi:2.0,cat:"snack",region:"indian"},
+{id:61,name:"Dahi Bhel",brand:"Homemade",cal:200,p:6.0,c:35.0,f:5.0,fi:2.5,cat:"snack",region:"indian"},
+{id:62,name:"Chicken Curry",brand:"Homemade",cal:175,p:16.0,c:7.0,f:10.0,fi:1.0,cat:"grain",region:"indian"},
+{id:63,name:"Mutton Curry",brand:"Homemade",cal:195,p:17.0,c:6.0,f:12.0,fi:0.8,cat:"grain",region:"indian"},
+{id:64,name:"Fish Curry (Goan)",brand:"Homemade",cal:155,p:16.0,c:6.0,f:8.0,fi:1.0,cat:"grain",region:"indian"},
+{id:65,name:"Egg Curry",brand:"Homemade",cal:145,p:11.0,c:7.0,f:8.5,fi:0.8,cat:"grain",region:"indian"},
+{id:66,name:"Boiled Egg",brand:"Homemade",cal:155,p:13.0,c:1.1,f:11.0,fi:0,cat:"protein",region:"both"},
+{id:67,name:"Egg White",brand:"Homemade",cal:52,p:11.0,c:0.7,f:0.2,fi:0,cat:"protein",region:"both"},
+{id:68,name:"Omelette (2 egg)",brand:"Homemade",cal:154,p:11.2,c:1.1,f:11.6,fi:0,cat:"protein",region:"both"},
+{id:69,name:"Scrambled Eggs (2 eggs)",brand:"Homemade",cal:185,p:12.0,c:1.5,f:14.5,fi:0,cat:"protein",region:"both"},
+{id:70,name:"Chicken Breast (cooked)",brand:"Homemade",cal:165,p:31.0,c:0,f:3.6,fi:0,cat:"protein",region:"both"},
+{id:71,name:"Chicken Leg (cooked)",brand:"Homemade",cal:184,p:25.0,c:0,f:9.0,fi:0,cat:"protein",region:"both"},
+{id:72,name:"Curd / Dahi (plain)",brand:"Homemade",cal:98,p:11.0,c:3.4,f:4.3,fi:0,cat:"dairy",region:"indian"},
+{id:73,name:"Chai (with milk & sugar, 200ml)",brand:"Homemade",cal:80,p:3.0,c:11.0,f:2.8,fi:0,cat:"dairy",region:"indian"},
+{id:74,name:"Whole Milk",brand:"Generic",cal:61,p:3.2,c:4.8,f:3.3,fi:0,cat:"dairy",region:"both"},
+{id:75,name:"Tuna (canned in water)",brand:"Generic",cal:116,p:25.5,c:0,f:1.0,fi:0,cat:"protein",region:"both"},
+{id:76,name:"Tadka Dal (masoor)",brand:"Homemade",cal:110,p:7.0,c:17.0,f:2.0,fi:3.5,cat:"grain",region:"indian"},
+{id:77,name:"Chana Masala",brand:"Homemade",cal:155,p:8.0,c:22.0,f:4.0,fi:5.0,cat:"grain",region:"indian"},
+{id:78,name:"Aloo Gobi",brand:"Homemade",cal:105,p:3.5,c:16.0,f:4.0,fi:3.0,cat:"veg",region:"indian"},
+{id:79,name:"Palak (spinach) Sabzi",brand:"Homemade",cal:75,p:4.0,c:8.0,f:3.0,fi:3.5,cat:"veg",region:"indian"},
+{id:80,name:"Dum Aloo",brand:"Homemade",cal:165,p:3.5,c:22.0,f:7.5,fi:2.5,cat:"veg",region:"indian"},
+{id:81,name:"Kadhi (yogurt gravy)",brand:"Homemade",cal:95,p:4.0,c:10.5,f:4.0,fi:0.5,cat:"dairy",region:"indian"},
+{id:82,name:"Sabudana Khichdi",brand:"Homemade",cal:220,p:3.0,c:42.0,f:5.5,fi:0.5,cat:"grain",region:"indian"},
+{id:83,name:"Pongal",brand:"Homemade",cal:180,p:5.5,c:30.0,f:5.0,fi:1.5,cat:"grain",region:"indian"},
+{id:84,name:"Appam",brand:"Homemade",cal:120,p:2.5,c:25.0,f:1.5,fi:0.5,cat:"grain",region:"indian"},
+{id:85,name:"Uttapam",brand:"Homemade",cal:145,p:4.0,c:26.0,f:3.5,fi:1.2,cat:"grain",region:"indian"},
+{id:86,name:"Pesarattu",brand:"Homemade",cal:140,p:8.0,c:22.0,f:2.5,fi:3.0,cat:"grain",region:"indian"},
+{id:87,name:"Kozhukattai / Modak (steamed)",brand:"Homemade",cal:180,p:3.5,c:36.0,f:3.0,fi:2.0,cat:"snack",region:"indian"},
+{id:88,name:"Barfi (milk)",brand:"Homemade",cal:380,p:8.0,c:56.0,f:14.0,fi:0,cat:"snack",region:"indian"},
+{id:89,name:"Ladoo (besan)",brand:"Homemade",cal:410,p:8.5,c:55.0,f:19.0,fi:2.0,cat:"snack",region:"indian"},
+{id:90,name:"Kheer (rice pudding)",brand:"Homemade",cal:160,p:4.5,c:28.0,f:4.0,fi:0.3,cat:"snack",region:"indian"},
+{id:91,name:"Rabdi",brand:"Homemade",cal:230,p:6.0,c:30.0,f:10.0,fi:0,cat:"snack",region:"indian"},
+{id:92,name:"Phirni",brand:"Homemade",cal:155,p:4.0,c:26.0,f:4.5,fi:0.2,cat:"snack",region:"indian"},
+{id:93,name:"Rava Ladoo",brand:"Homemade",cal:395,p:7.0,c:55.0,f:18.0,fi:1.0,cat:"snack",region:"indian"},
+{id:94,name:"Coconut Ladoo",brand:"Homemade",cal:370,p:4.0,c:52.0,f:17.0,fi:5.0,cat:"snack",region:"indian"},
+{id:95,name:"Til (sesame) Ladoo",brand:"Homemade",cal:490,p:10.0,c:50.0,f:30.0,fi:8.0,cat:"snack",region:"indian"},
+{id:96,name:"Chikki (peanut)",brand:"Homemade",cal:510,p:13.0,c:52.0,f:29.0,fi:5.0,cat:"snack",region:"indian"},
+{id:97,name:"Dodha Barfi",brand:"Homemade",cal:420,p:9.0,c:60.0,f:17.0,fi:0.5,cat:"snack",region:"indian"},
+{id:98,name:"Shrikhand",brand:"Homemade",cal:215,p:6.5,c:34.0,f:6.5,fi:0,cat:"snack",region:"indian"},
+{id:99,name:"Pavakkai Fry (bitter gourd)",brand:"Homemade",cal:100,p:2.0,c:8.0,f:7.0,fi:3.0,cat:"veg",region:"indian"},
 
-// ── PARLE ──
+// ────────────────────────────────────────
+// PARLE
+// ────────────────────────────────────────
 {id:100,name:"Parle-G Biscuits",brand:"Parle",cal:483,p:6.7,c:76.4,f:16.3,fi:0.5,cat:"snack",region:"indian"},
-{id:101,name:"Hide & Seek (Chocolate)",brand:"Parle",cal:520,p:7.2,c:70.5,f:22.8,fi:1.1,cat:"snack",region:"indian"},
+{id:101,name:"Hide & Seek Chocolate",brand:"Parle",cal:520,p:7.2,c:70.5,f:22.8,fi:1.1,cat:"snack",region:"indian"},
 {id:102,name:"Monaco Salted Crackers",brand:"Parle",cal:491,p:8.5,c:68.2,f:20.4,fi:1.3,cat:"snack",region:"indian"},
 {id:103,name:"Krackjack Sweet Salt",brand:"Parle",cal:479,p:8.9,c:71.6,f:17.5,fi:1.0,cat:"snack",region:"indian"},
 {id:104,name:"Melody Toffee (1 pc ~5g)",brand:"Parle",cal:420,p:1.5,c:82.0,f:9.5,fi:0,cat:"snack",region:"indian"},
 {id:105,name:"Mango Bite (1 pc ~5g)",brand:"Parle",cal:390,p:0.5,c:88.0,f:4.5,fi:0,cat:"snack",region:"indian"},
 {id:106,name:"Fulltoss Choc Wafer",brand:"Parle",cal:512,p:5.8,c:65.0,f:25.0,fi:0.8,cat:"snack",region:"indian"},
 {id:107,name:"20-20 Cookies",brand:"Parle",cal:480,p:6.1,c:74.0,f:18.0,fi:1.2,cat:"snack",region:"indian"},
+{id:108,name:"Parle Digestive Marie",brand:"Parle",cal:418,p:8.0,c:73.0,f:10.5,fi:2.5,cat:"snack",region:"indian"},
+{id:109,name:"Parle Hide & Seek Fab",brand:"Parle",cal:510,p:6.5,c:65.0,f:25.5,fi:1.2,cat:"snack",region:"indian"},
+{id:110,name:"Parle Cheeselings",brand:"Parle",cal:505,p:11.0,c:58.0,f:26.0,fi:1.0,cat:"snack",region:"indian"},
+{id:111,name:"Parle Top",brand:"Parle",cal:486,p:7.0,c:72.0,f:18.5,fi:0.8,cat:"snack",region:"indian"},
+{id:112,name:"Parle Mazelo",brand:"Parle",cal:492,p:6.5,c:69.0,f:20.5,fi:1.0,cat:"snack",region:"indian"},
+{id:113,name:"Sixer (mango candy)",brand:"Parle",cal:380,p:0.2,c:92.0,f:1.5,fi:0,cat:"snack",region:"indian"},
 
-// ── BRITANNIA ──
-{id:110,name:"Good Day Butter Cookies",brand:"Britannia",cal:500,p:6.9,c:68.5,f:22.5,fi:0.7,cat:"snack",region:"indian"},
-{id:111,name:"Marie Gold Biscuit",brand:"Britannia",cal:416,p:7.0,c:75.5,f:9.5,fi:0.8,cat:"snack",region:"indian"},
-{id:112,name:"NutriChoice 5 Grain",brand:"Britannia",cal:412,p:9.0,c:68.0,f:11.5,fi:3.8,cat:"snack",region:"indian"},
-{id:113,name:"50-50 Crackers",brand:"Britannia",cal:468,p:8.7,c:68.5,f:18.2,fi:1.0,cat:"snack",region:"indian"},
-{id:114,name:"Bourbon Cream",brand:"Britannia",cal:490,p:5.8,c:68.0,f:22.2,fi:1.5,cat:"snack",region:"indian"},
-{id:115,name:"Milk Bikis",brand:"Britannia",cal:430,p:8.5,c:72.0,f:11.8,fi:0.9,cat:"snack",region:"indian"},
-{id:116,name:"Treat Fruit Rollz",brand:"Britannia",cal:375,p:4.5,c:80.0,f:5.5,fi:1.0,cat:"snack",region:"indian"},
-{id:117,name:"Brown Bread (1 slice ~35g)",brand:"Britannia",cal:243,p:8.0,c:46.0,f:3.5,fi:3.2,cat:"grain",region:"indian"},
+// ────────────────────────────────────────
+// BRITANNIA
+// ────────────────────────────────────────
+{id:120,name:"Good Day Butter Cookies",brand:"Britannia",cal:500,p:6.9,c:68.5,f:22.5,fi:0.7,cat:"snack",region:"indian"},
+{id:121,name:"Marie Gold Biscuit",brand:"Britannia",cal:416,p:7.0,c:75.5,f:9.5,fi:0.8,cat:"snack",region:"indian"},
+{id:122,name:"NutriChoice 5 Grain",brand:"Britannia",cal:412,p:9.0,c:68.0,f:11.5,fi:3.8,cat:"snack",region:"indian"},
+{id:123,name:"50-50 Crackers",brand:"Britannia",cal:468,p:8.7,c:68.5,f:18.2,fi:1.0,cat:"snack",region:"indian"},
+{id:124,name:"Bourbon Cream",brand:"Britannia",cal:490,p:5.8,c:68.0,f:22.2,fi:1.5,cat:"snack",region:"indian"},
+{id:125,name:"Milk Bikis",brand:"Britannia",cal:430,p:8.5,c:72.0,f:11.8,fi:0.9,cat:"snack",region:"indian"},
+{id:126,name:"Treat Fruit Rollz",brand:"Britannia",cal:375,p:4.5,c:80.0,f:5.5,fi:1.0,cat:"snack",region:"indian"},
+{id:127,name:"Brown Bread (1 slice ~35g)",brand:"Britannia",cal:243,p:8.0,c:46.0,f:3.5,fi:3.2,cat:"grain",region:"indian"},
+{id:128,name:"Britannia Multigrain Bread",brand:"Britannia",cal:235,p:9.0,c:44.0,f:4.0,fi:4.5,cat:"grain",region:"indian"},
+{id:129,name:"NutriChoice Digestive",brand:"Britannia",cal:428,p:8.5,c:67.0,f:14.0,fi:3.5,cat:"snack",region:"indian"},
+{id:130,name:"Good Day Choco",brand:"Britannia",cal:515,p:7.0,c:67.5,f:24.0,fi:1.0,cat:"snack",region:"indian"},
+{id:131,name:"Treat Choco Vanilla",brand:"Britannia",cal:490,p:6.0,c:69.0,f:21.5,fi:1.0,cat:"snack",region:"indian"},
+{id:132,name:"Jim Jam Biscuit",brand:"Britannia",cal:470,p:5.5,c:72.0,f:18.0,fi:1.2,cat:"snack",region:"indian"},
+{id:133,name:"Britannia Atta Biscuits",brand:"Britannia",cal:440,p:9.5,c:70.0,f:13.0,fi:3.0,cat:"snack",region:"indian"},
+{id:134,name:"Britannia Vita Marie Gold",brand:"Britannia",cal:408,p:7.5,c:76.0,f:9.0,fi:1.5,cat:"snack",region:"indian"},
+{id:135,name:"Britannia Cheese Spread",brand:"Britannia",cal:265,p:10.0,c:6.0,f:22.5,fi:0,cat:"dairy",region:"indian"},
+{id:136,name:"Britannia Cream Cheese",brand:"Britannia",cal:290,p:8.0,c:4.0,f:27.0,fi:0,cat:"dairy",region:"indian"},
 
-// ── ITC ──
-{id:120,name:"Sunfeast Dark Fantasy",brand:"ITC",cal:525,p:5.2,c:63.8,f:27.5,fi:0.8,cat:"snack",region:"indian"},
-{id:121,name:"Sunfeast Marie Light",brand:"ITC",cal:400,p:7.5,c:72.0,f:8.9,fi:1.0,cat:"snack",region:"indian"},
-{id:122,name:"Sunfeast Yippee Noodles",brand:"ITC",cal:367,p:8.2,c:63.1,f:9.2,fi:1.8,cat:"grain",region:"indian"},
-{id:123,name:"Bingo Mad Angles",brand:"ITC",cal:520,p:6.5,c:63.0,f:27.0,fi:1.5,cat:"snack",region:"indian"},
-{id:124,name:"Bingo Original Style Chips",brand:"ITC",cal:535,p:6.5,c:58.0,f:30.5,fi:2.5,cat:"snack",region:"indian"},
-{id:125,name:"Tedhe Medhe Masala",brand:"ITC",cal:510,p:5.8,c:63.0,f:26.5,fi:1.8,cat:"snack",region:"indian"},
+// ────────────────────────────────────────
+// ITC
+// ────────────────────────────────────────
+{id:140,name:"Sunfeast Dark Fantasy",brand:"ITC",cal:525,p:5.2,c:63.8,f:27.5,fi:0.8,cat:"snack",region:"indian"},
+{id:141,name:"Sunfeast Marie Light",brand:"ITC",cal:400,p:7.5,c:72.0,f:8.9,fi:1.0,cat:"snack",region:"indian"},
+{id:142,name:"Sunfeast Yippee Noodles",brand:"ITC",cal:367,p:8.2,c:63.1,f:9.2,fi:1.8,cat:"grain",region:"indian"},
+{id:143,name:"Bingo Mad Angles",brand:"ITC",cal:520,p:6.5,c:63.0,f:27.0,fi:1.5,cat:"snack",region:"indian"},
+{id:144,name:"Bingo Original Style Chips",brand:"ITC",cal:535,p:6.5,c:58.0,f:30.5,fi:2.5,cat:"snack",region:"indian"},
+{id:145,name:"Tedhe Medhe Masala",brand:"ITC",cal:510,p:5.8,c:63.0,f:26.5,fi:1.8,cat:"snack",region:"indian"},
+{id:146,name:"Sunfeast Farmlite Oatmeal",brand:"ITC",cal:446,p:10.0,c:69.5,f:14.5,fi:4.5,cat:"grain",region:"indian"},
+{id:147,name:"Bingo No Rulz! Masala",brand:"ITC",cal:530,p:6.0,c:62.0,f:28.5,fi:2.0,cat:"snack",region:"indian"},
+{id:148,name:"Sunfeast Bounce Creme",brand:"ITC",cal:498,p:5.5,c:67.0,f:23.0,fi:1.0,cat:"snack",region:"indian"},
+{id:149,name:"Sunfeast Mom's Magic",brand:"ITC",cal:487,p:7.0,c:70.0,f:19.5,fi:1.2,cat:"snack",region:"indian"},
+{id:150,name:"Bingo Tedhe Medhe (Achari)",brand:"ITC",cal:512,p:5.5,c:62.0,f:27.5,fi:1.5,cat:"snack",region:"indian"},
 
-// ── HALDIRAM'S ──
-{id:130,name:"Haldiram's Aloo Bhujia",brand:"Haldiram's",cal:537,p:9.0,c:55.0,f:32.0,fi:2.5,cat:"snack",region:"indian"},
-{id:131,name:"Haldiram's Moong Dal",brand:"Haldiram's",cal:526,p:19.8,c:53.5,f:28.0,fi:4.5,cat:"snack",region:"indian"},
-{id:132,name:"Haldiram's Mixture",brand:"Haldiram's",cal:518,p:9.5,c:57.8,f:28.2,fi:3.0,cat:"snack",region:"indian"},
-{id:133,name:"Haldiram's Sev",brand:"Haldiram's",cal:549,p:15.0,c:55.0,f:31.0,fi:3.5,cat:"snack",region:"indian"},
-{id:134,name:"Haldiram's Chana Dal",brand:"Haldiram's",cal:530,p:20.5,c:52.0,f:29.5,fi:5.0,cat:"snack",region:"indian"},
-{id:135,name:"Haldiram's Rasgulla (1 pc)",brand:"Haldiram's",cal:107,p:1.8,c:21.5,f:1.8,fi:0,cat:"snack",region:"indian"},
-{id:136,name:"Haldiram's Gulab Jamun (1 pc)",brand:"Haldiram's",cal:138,p:2.2,c:23.8,f:4.2,fi:0,cat:"snack",region:"indian"},
+// ────────────────────────────────────────
+// HALDIRAM'S
+// ────────────────────────────────────────
+{id:160,name:"Haldiram's Aloo Bhujia",brand:"Haldiram's",cal:537,p:9.0,c:55.0,f:32.0,fi:2.5,cat:"snack",region:"indian"},
+{id:161,name:"Haldiram's Moong Dal",brand:"Haldiram's",cal:526,p:19.8,c:53.5,f:28.0,fi:4.5,cat:"snack",region:"indian"},
+{id:162,name:"Haldiram's Mixture",brand:"Haldiram's",cal:518,p:9.5,c:57.8,f:28.2,fi:3.0,cat:"snack",region:"indian"},
+{id:163,name:"Haldiram's Sev",brand:"Haldiram's",cal:549,p:15.0,c:55.0,f:31.0,fi:3.5,cat:"snack",region:"indian"},
+{id:164,name:"Haldiram's Chana Dal",brand:"Haldiram's",cal:530,p:20.5,c:52.0,f:29.5,fi:5.0,cat:"snack",region:"indian"},
+{id:165,name:"Haldiram's Rasgulla (1 pc)",brand:"Haldiram's",cal:107,p:1.8,c:21.5,f:1.8,fi:0,cat:"snack",region:"indian"},
+{id:166,name:"Haldiram's Gulab Jamun (1 pc)",brand:"Haldiram's",cal:138,p:2.2,c:23.8,f:4.2,fi:0,cat:"snack",region:"indian"},
+{id:167,name:"Haldiram's Khatta Meetha",brand:"Haldiram's",cal:500,p:8.0,c:60.0,f:26.0,fi:3.0,cat:"snack",region:"indian"},
+{id:168,name:"Haldiram's Peanuts Masala",brand:"Haldiram's",cal:575,p:24.0,c:22.0,f:45.0,fi:5.5,cat:"snack",region:"indian"},
+{id:169,name:"Haldiram's Bhujia Sev",brand:"Haldiram's",cal:543,p:12.0,c:55.0,f:32.0,fi:3.0,cat:"snack",region:"indian"},
+{id:170,name:"Haldiram's Atta Chakli",brand:"Haldiram's",cal:465,p:9.0,c:58.0,f:22.0,fi:3.5,cat:"snack",region:"indian"},
+{id:171,name:"Haldiram's Namkeen Peanuts",brand:"Haldiram's",cal:568,p:26.0,c:20.0,f:46.0,fi:5.0,cat:"snack",region:"indian"},
+{id:172,name:"Haldiram's Navratan Mix",brand:"Haldiram's",cal:510,p:9.5,c:55.0,f:28.0,fi:3.0,cat:"snack",region:"indian"},
 
-// ── AMUL ──
-{id:140,name:"Amul Butter (salted)",brand:"Amul",cal:720,p:0.5,c:0.4,f:80.0,fi:0,cat:"dairy",region:"indian"},
-{id:141,name:"Amul Gold Milk (full cream)",brand:"Amul",cal:63,p:3.5,c:4.7,f:3.5,fi:0,cat:"dairy",region:"indian"},
-{id:142,name:"Amul Taaza Milk (toned)",brand:"Amul",cal:45,p:3.3,c:4.7,f:1.5,fi:0,cat:"dairy",region:"indian"},
-{id:143,name:"Amul Cheese Slice (1 pc ~20g)",brand:"Amul",cal:296,p:18.5,c:3.4,f:23.5,fi:0,cat:"dairy",region:"indian"},
-{id:144,name:"Amul Cool (flavored milk)",brand:"Amul",cal:72,p:3.0,c:11.5,f:1.5,fi:0,cat:"dairy",region:"indian"},
-{id:145,name:"Amul Kool Koko",brand:"Amul",cal:80,p:3.2,c:13.0,f:1.7,fi:0.3,cat:"dairy",region:"indian"},
-{id:146,name:"Amul Dahi (full fat)",brand:"Amul",cal:98,p:3.1,c:11.5,f:4.0,fi:0,cat:"dairy",region:"indian"},
-{id:147,name:"Amul Masti Buttermilk",brand:"Amul",cal:29,p:1.5,c:3.7,f:0.8,fi:0,cat:"dairy",region:"indian"},
-{id:148,name:"Amul Ghee",brand:"Amul",cal:895,p:0,c:0,f:99.5,fi:0,cat:"dairy",region:"indian"},
+// ────────────────────────────────────────
+// AMUL
+// ────────────────────────────────────────
+{id:180,name:"Amul Butter (salted)",brand:"Amul",cal:720,p:0.5,c:0.4,f:80.0,fi:0,cat:"dairy",region:"indian"},
+{id:181,name:"Amul Gold Milk (full cream)",brand:"Amul",cal:63,p:3.5,c:4.7,f:3.5,fi:0,cat:"dairy",region:"indian"},
+{id:182,name:"Amul Taaza Milk (toned)",brand:"Amul",cal:45,p:3.3,c:4.7,f:1.5,fi:0,cat:"dairy",region:"indian"},
+{id:183,name:"Amul Cheese Slice (1 pc ~20g)",brand:"Amul",cal:296,p:18.5,c:3.4,f:23.5,fi:0,cat:"dairy",region:"indian"},
+{id:184,name:"Amul Cool (flavored milk)",brand:"Amul",cal:72,p:3.0,c:11.5,f:1.5,fi:0,cat:"dairy",region:"indian"},
+{id:185,name:"Amul Kool Koko",brand:"Amul",cal:80,p:3.2,c:13.0,f:1.7,fi:0.3,cat:"dairy",region:"indian"},
+{id:186,name:"Amul Dahi (full fat)",brand:"Amul",cal:98,p:3.1,c:11.5,f:4.0,fi:0,cat:"dairy",region:"indian"},
+{id:187,name:"Amul Masti Buttermilk",brand:"Amul",cal:29,p:1.5,c:3.7,f:0.8,fi:0,cat:"dairy",region:"indian"},
+{id:188,name:"Amul Ghee",brand:"Amul",cal:895,p:0,c:0,f:99.5,fi:0,cat:"dairy",region:"indian"},
+{id:189,name:"Amul Mithai Mate (condensed milk)",brand:"Amul",cal:321,p:7.5,c:54.5,f:8.5,fi:0,cat:"dairy",region:"indian"},
+{id:190,name:"Amul Cream (25% fat)",brand:"Amul",cal:215,p:2.5,c:4.0,f:22.0,fi:0,cat:"dairy",region:"indian"},
+{id:191,name:"Amul Pro (per 22g serving)",brand:"Amul",cal:80,p:5.5,c:12.0,f:1.0,fi:0.5,cat:"dairy",region:"indian"},
+{id:192,name:"Amul Kool Café",brand:"Amul",cal:88,p:3.5,c:14.0,f:2.0,fi:0,cat:"dairy",region:"indian"},
+{id:193,name:"Amul Lassi (200ml)",brand:"Amul",cal:90,p:3.5,c:13.0,f:2.5,fi:0,cat:"dairy",region:"indian"},
+{id:194,name:"Amul Dark Chocolate (25g)",brand:"Amul",cal:540,p:5.0,c:56.0,f:33.0,fi:4.0,cat:"snack",region:"indian"},
+{id:195,name:"Amul Masti Dahi",brand:"Amul",cal:65,p:3.5,c:4.5,f:3.5,fi:0,cat:"dairy",region:"indian"},
+{id:196,name:"Amul Paneer (low fat)",brand:"Amul",cal:245,p:20.0,c:4.0,f:17.0,fi:0,cat:"dairy",region:"indian"},
+{id:197,name:"Amul Shrikhand",brand:"Amul",cal:210,p:6.0,c:34.0,f:6.5,fi:0,cat:"snack",region:"indian"},
 
-// ── MOTHER DAIRY ──
-{id:150,name:"Mother Dairy Full Cream Milk",brand:"Mother Dairy",cal:66,p:3.3,c:5.0,f:3.9,fi:0,cat:"dairy",region:"indian"},
-{id:151,name:"Mother Dairy Mishti Doi",brand:"Mother Dairy",cal:121,p:3.5,c:19.5,f:3.2,fi:0,cat:"dairy",region:"indian"},
-{id:152,name:"Mother Dairy Ice Cream (Mango)",brand:"Mother Dairy",cal:182,p:3.0,c:28.0,f:7.0,fi:0.2,cat:"dairy",region:"indian"},
+// ────────────────────────────────────────
+// MOTHER DAIRY
+// ────────────────────────────────────────
+{id:200,name:"Mother Dairy Full Cream Milk",brand:"Mother Dairy",cal:66,p:3.3,c:5.0,f:3.9,fi:0,cat:"dairy",region:"indian"},
+{id:201,name:"Mother Dairy Mishti Doi",brand:"Mother Dairy",cal:121,p:3.5,c:19.5,f:3.2,fi:0,cat:"dairy",region:"indian"},
+{id:202,name:"Mother Dairy Ice Cream Mango",brand:"Mother Dairy",cal:182,p:3.0,c:28.0,f:7.0,fi:0.2,cat:"dairy",region:"indian"},
+{id:203,name:"Mother Dairy Toned Milk",brand:"Mother Dairy",cal:45,p:3.2,c:4.8,f:1.5,fi:0,cat:"dairy",region:"indian"},
+{id:204,name:"Mother Dairy Dahi",brand:"Mother Dairy",cal:60,p:3.5,c:4.5,f:2.5,fi:0,cat:"dairy",region:"indian"},
+{id:205,name:"Mother Dairy Lassi",brand:"Mother Dairy",cal:80,p:3.0,c:12.0,f:2.0,fi:0,cat:"dairy",region:"indian"},
+{id:206,name:"Mother Dairy Paneer",brand:"Mother Dairy",cal:265,p:18.0,c:3.5,f:21.0,fi:0,cat:"dairy",region:"indian"},
+{id:207,name:"Mother Dairy Buttermilk",brand:"Mother Dairy",cal:30,p:1.5,c:3.5,f:0.8,fi:0,cat:"dairy",region:"indian"},
 
-// ── NESTLE INDIA ──
-{id:160,name:"Maggi Masala Noodles (1 cake 70g)",brand:"Nestlé",cal:320,p:7.6,c:49.5,f:10.5,fi:1.4,cat:"grain",region:"indian"},
-{id:161,name:"KitKat 4F (41.5g bar)",brand:"Nestlé",cal:534,p:6.4,c:60.5,f:28.5,fi:1.2,cat:"snack",region:"both"},
-{id:162,name:"Munch (18g bar)",brand:"Nestlé",cal:527,p:5.5,c:60.0,f:28.8,fi:1.0,cat:"snack",region:"indian"},
-{id:163,name:"Bar One (55g)",brand:"Nestlé",cal:478,p:4.5,c:64.5,f:22.0,fi:0.8,cat:"snack",region:"indian"},
-{id:164,name:"Milkmaid Condensed Milk",brand:"Nestlé",cal:321,p:8.0,c:54.0,f:8.5,fi:0,cat:"dairy",region:"indian"},
-{id:165,name:"Nestlé a+ Slim Milk",brand:"Nestlé",cal:36,p:3.4,c:5.0,f:0.4,fi:0,cat:"dairy",region:"indian"},
+// ────────────────────────────────────────
+// NESTLÉ INDIA
+// ────────────────────────────────────────
+{id:210,name:"Maggi Masala Noodles (70g cake)",brand:"Nestlé",cal:320,p:7.6,c:49.5,f:10.5,fi:1.4,cat:"grain",region:"indian"},
+{id:211,name:"KitKat 4F (41.5g bar)",brand:"Nestlé",cal:534,p:6.4,c:60.5,f:28.5,fi:1.2,cat:"snack",region:"both"},
+{id:212,name:"Munch (18g bar)",brand:"Nestlé",cal:527,p:5.5,c:60.0,f:28.8,fi:1.0,cat:"snack",region:"indian"},
+{id:213,name:"Bar One (55g)",brand:"Nestlé",cal:478,p:4.5,c:64.5,f:22.0,fi:0.8,cat:"snack",region:"indian"},
+{id:214,name:"Milkmaid Condensed Milk",brand:"Nestlé",cal:321,p:8.0,c:54.0,f:8.5,fi:0,cat:"dairy",region:"indian"},
+{id:215,name:"Nestlé a+ Slim Milk",brand:"Nestlé",cal:36,p:3.4,c:5.0,f:0.4,fi:0,cat:"dairy",region:"indian"},
+{id:216,name:"Maggi Atta Noodles",brand:"Nestlé",cal:348,p:9.0,c:60.0,f:8.5,fi:2.5,cat:"grain",region:"indian"},
+{id:217,name:"Nescafe Classic (per 2g)",brand:"Nestlé",cal:5,p:0.4,c:0.7,f:0.1,fi:0,cat:"snack",region:"both"},
+{id:218,name:"Nestlé KitKat Dessert Delight",brand:"Nestlé",cal:540,p:6.5,c:61.0,f:29.0,fi:1.0,cat:"snack",region:"indian"},
+{id:219,name:"Nestlé Munch Nuts",brand:"Nestlé",cal:535,p:7.0,c:57.5,f:30.5,fi:1.5,cat:"snack",region:"indian"},
+{id:220,name:"Nestlé Chocostick",brand:"Nestlé",cal:525,p:5.5,c:62.0,f:28.0,fi:1.2,cat:"snack",region:"indian"},
+{id:221,name:"Nestlé NangNang (180ml)",brand:"Nestlé",cal:88,p:3.5,c:13.5,f:2.5,fi:0,cat:"dairy",region:"indian"},
+{id:222,name:"Maggi Veg Atta Noodles",brand:"Nestlé",cal:335,p:9.5,c:58.0,f:8.0,fi:3.5,cat:"grain",region:"indian"},
+{id:223,name:"Nestlé Milo (per 20g serving)",brand:"Nestlé",cal:76,p:2.0,c:14.5,f:1.2,fi:0.5,cat:"dairy",region:"indian"},
 
-// ── KELLOGG'S ──
-{id:170,name:"Kellogg's Corn Flakes",brand:"Kellogg's",cal:357,p:7.5,c:79.8,f:0.8,fi:3.0,cat:"grain",region:"both"},
-{id:171,name:"Kellogg's Chocos",brand:"Kellogg's",cal:384,p:7.2,c:78.5,f:5.5,fi:3.5,cat:"grain",region:"both"},
-{id:172,name:"Kellogg's Muesli Fruit & Nut",brand:"Kellogg's",cal:380,p:9.5,c:64.0,f:8.5,fi:6.5,cat:"grain",region:"both"},
-{id:173,name:"Kellogg's Special K",brand:"Kellogg's",cal:379,p:15.0,c:69.0,f:2.5,fi:4.0,cat:"grain",region:"both"},
-{id:174,name:"Kellogg's All Bran",brand:"Kellogg's",cal:320,p:11.0,c:64.0,f:3.5,fi:27.0,cat:"grain",region:"both"},
-{id:175,name:"Kellogg's Froot Loops",brand:"Kellogg's",cal:383,p:5.5,c:84.0,f:4.0,fi:2.5,cat:"grain",region:"both"},
-{id:176,name:"Kellogg's K-Special Protein",brand:"Kellogg's",cal:355,p:20.0,c:58.0,f:4.5,fi:5.0,cat:"protein",region:"both"},
-{id:177,name:"Kellogg's Oats",brand:"Kellogg's",cal:379,p:13.5,c:63.5,f:6.9,fi:8.5,cat:"grain",region:"both"},
+// ────────────────────────────────────────
+// KELLOGG'S
+// ────────────────────────────────────────
+{id:230,name:"Kellogg's Corn Flakes",brand:"Kellogg's",cal:357,p:7.5,c:79.8,f:0.8,fi:3.0,cat:"grain",region:"both"},
+{id:231,name:"Kellogg's Chocos",brand:"Kellogg's",cal:384,p:7.2,c:78.5,f:5.5,fi:3.5,cat:"grain",region:"both"},
+{id:232,name:"Kellogg's Muesli Fruit & Nut",brand:"Kellogg's",cal:380,p:9.5,c:64.0,f:8.5,fi:6.5,cat:"grain",region:"both"},
+{id:233,name:"Kellogg's Special K",brand:"Kellogg's",cal:379,p:15.0,c:69.0,f:2.5,fi:4.0,cat:"grain",region:"both"},
+{id:234,name:"Kellogg's All Bran",brand:"Kellogg's",cal:320,p:11.0,c:64.0,f:3.5,fi:27.0,cat:"grain",region:"both"},
+{id:235,name:"Kellogg's Froot Loops",brand:"Kellogg's",cal:383,p:5.5,c:84.0,f:4.0,fi:2.5,cat:"grain",region:"both"},
+{id:236,name:"Kellogg's K-Special Protein",brand:"Kellogg's",cal:355,p:20.0,c:58.0,f:4.5,fi:5.0,cat:"protein",region:"both"},
+{id:237,name:"Kellogg's Oats",brand:"Kellogg's",cal:379,p:13.5,c:63.5,f:6.9,fi:8.5,cat:"grain",region:"both"},
+{id:238,name:"Kellogg's Honey Loops",brand:"Kellogg's",cal:378,p:7.0,c:82.0,f:2.5,fi:3.0,cat:"grain",region:"both"},
+{id:239,name:"Kellogg's Crunchy Granola",brand:"Kellogg's",cal:420,p:9.0,c:68.0,f:11.5,fi:5.0,cat:"grain",region:"both"},
 
-// ── PINTOLA ──
-{id:180,name:"Pintola Classic Peanut Butter (Creamy)",brand:"Pintola",cal:598,p:25.0,c:19.5,f:49.0,fi:5.0,cat:"protein",region:"indian"},
-{id:181,name:"Pintola Peanut Butter (Crunchy)",brand:"Pintola",cal:595,p:25.0,c:19.5,f:48.5,fi:5.2,cat:"protein",region:"indian"},
-{id:182,name:"Pintola All Natural Peanut Butter",brand:"Pintola",cal:597,p:27.0,c:17.0,f:50.0,fi:5.5,cat:"protein",region:"indian"},
-{id:183,name:"Pintola Choco Peanut Butter",brand:"Pintola",cal:570,p:22.0,c:28.5,f:42.0,fi:4.5,cat:"protein",region:"indian"},
-{id:184,name:"Pintola High Protein Peanut Butter",brand:"Pintola",cal:565,p:32.0,c:15.0,f:46.0,fi:5.0,cat:"protein",region:"indian"},
-{id:185,name:"Pintola Cashew Butter",brand:"Pintola",cal:590,p:16.5,c:26.5,f:49.5,fi:2.0,cat:"protein",region:"indian"},
-{id:186,name:"Pintola Almond Butter",brand:"Pintola",cal:612,p:21.5,c:18.0,f:52.0,fi:7.0,cat:"protein",region:"indian"},
-{id:187,name:"Pintola Sunflower Seed Butter",brand:"Pintola",cal:590,p:20.5,c:18.5,f:51.5,fi:6.0,cat:"protein",region:"indian"},
+// ────────────────────────────────────────
+// PINTOLA
+// ────────────────────────────────────────
+{id:240,name:"Pintola Classic PB Creamy",brand:"Pintola",cal:598,p:25.0,c:19.5,f:49.0,fi:5.0,cat:"protein",region:"indian"},
+{id:241,name:"Pintola Peanut Butter Crunchy",brand:"Pintola",cal:595,p:25.0,c:19.5,f:48.5,fi:5.2,cat:"protein",region:"indian"},
+{id:242,name:"Pintola All Natural PB",brand:"Pintola",cal:597,p:27.0,c:17.0,f:50.0,fi:5.5,cat:"protein",region:"indian"},
+{id:243,name:"Pintola Choco Peanut Butter",brand:"Pintola",cal:570,p:22.0,c:28.5,f:42.0,fi:4.5,cat:"protein",region:"indian"},
+{id:244,name:"Pintola High Protein PB",brand:"Pintola",cal:565,p:32.0,c:15.0,f:46.0,fi:5.0,cat:"protein",region:"indian"},
+{id:245,name:"Pintola Cashew Butter",brand:"Pintola",cal:590,p:16.5,c:26.5,f:49.5,fi:2.0,cat:"protein",region:"indian"},
+{id:246,name:"Pintola Almond Butter",brand:"Pintola",cal:612,p:21.5,c:18.0,f:52.0,fi:7.0,cat:"protein",region:"indian"},
+{id:247,name:"Pintola Sunflower Seed Butter",brand:"Pintola",cal:590,p:20.5,c:18.5,f:51.5,fi:6.0,cat:"protein",region:"indian"},
 
-// ── MUSCLEBLAZE ──
-{id:190,name:"MuscleBlaze Whey Protein (per scoop 33g)",brand:"MuscleBlaze",cal:127,p:25.0,c:3.5,f:1.5,fi:0,cat:"protein",region:"indian"},
-{id:191,name:"MuscleBlaze Biozyme Whey (per scoop 36g)",brand:"MuscleBlaze",cal:136,p:27.0,c:3.0,f:1.8,fi:0,cat:"protein",region:"indian"},
-{id:192,name:"MuscleBlaze Mass Gainer (per 100g)",brand:"MuscleBlaze",cal:380,p:15.0,c:70.0,f:4.5,fi:1.0,cat:"protein",region:"indian"},
-{id:193,name:"MuscleBlaze BCAA (per 10g serving)",brand:"MuscleBlaze",cal:38,p:7.0,c:1.5,f:0,fi:0,cat:"protein",region:"indian"},
-{id:194,name:"MuscleBlaze Creatine (5g)",brand:"MuscleBlaze",cal:0,p:0,c:0,f:0,fi:0,cat:"protein",region:"indian"},
-{id:195,name:"MuscleBlaze High Protein Oats",brand:"MuscleBlaze",cal:355,p:20.0,c:55.0,f:7.5,fi:8.0,cat:"protein",region:"indian"},
-{id:196,name:"MuscleBlaze Protein Bar (75g)",brand:"MuscleBlaze",cal:290,p:20.0,c:29.0,f:9.5,fi:3.0,cat:"protein",region:"indian"},
-{id:197,name:"MuscleBlaze Fat Burner Powder (10g)",brand:"MuscleBlaze",cal:21,p:0,c:5.0,f:0,fi:0,cat:"protein",region:"indian"},
+// ────────────────────────────────────────
+// MUSCLEBLAZE
+// ────────────────────────────────────────
+{id:250,name:"MuscleBlaze Whey Protein (per scoop)",brand:"MuscleBlaze",cal:127,p:25.0,c:3.5,f:1.5,fi:0,cat:"protein",region:"indian"},
+{id:251,name:"MuscleBlaze Biozyme Whey (per scoop)",brand:"MuscleBlaze",cal:136,p:27.0,c:3.0,f:1.8,fi:0,cat:"protein",region:"indian"},
+{id:252,name:"MuscleBlaze Mass Gainer (per 100g)",brand:"MuscleBlaze",cal:380,p:15.0,c:70.0,f:4.5,fi:1.0,cat:"protein",region:"indian"},
+{id:253,name:"MuscleBlaze BCAA (per 10g serving)",brand:"MuscleBlaze",cal:38,p:7.0,c:1.5,f:0,fi:0,cat:"protein",region:"indian"},
+{id:254,name:"MuscleBlaze High Protein Oats",brand:"MuscleBlaze",cal:355,p:20.0,c:55.0,f:7.5,fi:8.0,cat:"protein",region:"indian"},
+{id:255,name:"MuscleBlaze Protein Bar (75g)",brand:"MuscleBlaze",cal:290,p:20.0,c:29.0,f:9.5,fi:3.0,cat:"protein",region:"indian"},
+{id:256,name:"MuscleBlaze Whey Active (per scoop)",brand:"MuscleBlaze",cal:121,p:22.0,c:4.5,f:1.5,fi:0,cat:"protein",region:"indian"},
 
-// ── PATANJALI ──
-{id:200,name:"Patanjali Dant Kanti... skip - Atta (1kg)",brand:"Patanjali",cal:341,p:11.8,c:68.5,f:1.7,fi:10.5,cat:"grain",region:"indian"},
-{id:201,name:"Patanjali Cow Ghee",brand:"Patanjali",cal:895,p:0,c:0,f:99.5,fi:0,cat:"dairy",region:"indian"},
-{id:202,name:"Patanjali Honey",brand:"Patanjali",cal:304,p:0.3,c:82.4,f:0,fi:0.2,cat:"snack",region:"indian"},
-{id:203,name:"Patanjali Arogya Milk",brand:"Patanjali",cal:65,p:3.3,c:4.9,f:3.7,fi:0,cat:"dairy",region:"indian"},
-{id:204,name:"Patanjali Peanut Butter",brand:"Patanjali",cal:580,p:26.0,c:18.0,f:48.5,fi:4.5,cat:"protein",region:"indian"},
-{id:205,name:"Patanjali Oats",brand:"Patanjali",cal:380,p:13.0,c:64.0,f:7.0,fi:8.0,cat:"grain",region:"indian"},
+// ────────────────────────────────────────
+// PATANJALI
+// ────────────────────────────────────────
+{id:260,name:"Patanjali Atta (wheat flour)",brand:"Patanjali",cal:341,p:11.8,c:68.5,f:1.7,fi:10.5,cat:"grain",region:"indian"},
+{id:261,name:"Patanjali Cow Ghee",brand:"Patanjali",cal:895,p:0,c:0,f:99.5,fi:0,cat:"dairy",region:"indian"},
+{id:262,name:"Patanjali Honey",brand:"Patanjali",cal:304,p:0.3,c:82.4,f:0,fi:0.2,cat:"snack",region:"indian"},
+{id:263,name:"Patanjali Arogya Milk",brand:"Patanjali",cal:65,p:3.3,c:4.9,f:3.7,fi:0,cat:"dairy",region:"indian"},
+{id:264,name:"Patanjali Peanut Butter",brand:"Patanjali",cal:580,p:26.0,c:18.0,f:48.5,fi:4.5,cat:"protein",region:"indian"},
+{id:265,name:"Patanjali Oats",brand:"Patanjali",cal:380,p:13.0,c:64.0,f:7.0,fi:8.0,cat:"grain",region:"indian"},
+{id:266,name:"Patanjali Dalia",brand:"Patanjali",cal:340,p:12.0,c:70.0,f:2.0,fi:9.0,cat:"grain",region:"indian"},
+{id:267,name:"Patanjali Aashirvaad Atta",brand:"Patanjali",cal:338,p:12.0,c:67.0,f:2.0,fi:11.0,cat:"grain",region:"indian"},
+{id:268,name:"Patanjali Choco Flakes",brand:"Patanjali",cal:370,p:7.0,c:78.0,f:4.5,fi:2.5,cat:"grain",region:"indian"},
+{id:269,name:"Patanjali Nutrela Soy Chunks",brand:"Patanjali",cal:345,p:52.0,c:35.0,f:1.5,fi:4.5,cat:"protein",region:"indian"},
+{id:270,name:"Patanjali Muesli",brand:"Patanjali",cal:385,p:10.0,c:65.0,f:8.5,fi:6.0,cat:"grain",region:"indian"},
+{id:271,name:"Patanjali Cornflakes",brand:"Patanjali",cal:355,p:7.0,c:80.0,f:1.0,fi:3.0,cat:"grain",region:"indian"},
 
-// ── MTR ──
-{id:210,name:"MTR Masala Oats",brand:"MTR",cal:360,p:9.5,c:65.0,f:7.0,fi:5.5,cat:"grain",region:"indian"},
-{id:211,name:"MTR Upma Mix",brand:"MTR",cal:380,p:8.0,c:70.0,f:7.5,fi:2.0,cat:"grain",region:"indian"},
-{id:212,name:"MTR Poha",brand:"MTR",cal:365,p:6.5,c:72.0,f:5.5,fi:1.5,cat:"grain",region:"indian"},
-{id:213,name:"MTR Idli Mix",brand:"MTR",cal:329,p:9.0,c:67.0,f:3.0,fi:1.2,cat:"grain",region:"indian"},
+// ────────────────────────────────────────
+// MTR
+// ────────────────────────────────────────
+{id:280,name:"MTR Masala Oats",brand:"MTR",cal:360,p:9.5,c:65.0,f:7.0,fi:5.5,cat:"grain",region:"indian"},
+{id:281,name:"MTR Upma Mix",brand:"MTR",cal:380,p:8.0,c:70.0,f:7.5,fi:2.0,cat:"grain",region:"indian"},
+{id:282,name:"MTR Poha",brand:"MTR",cal:365,p:6.5,c:72.0,f:5.5,fi:1.5,cat:"grain",region:"indian"},
+{id:283,name:"MTR Idli Mix",brand:"MTR",cal:329,p:9.0,c:67.0,f:3.0,fi:1.2,cat:"grain",region:"indian"},
+{id:284,name:"MTR Dosa Mix",brand:"MTR",cal:340,p:8.5,c:68.0,f:4.5,fi:2.0,cat:"grain",region:"indian"},
+{id:285,name:"MTR Gulab Jamun Mix",brand:"MTR",cal:380,p:6.0,c:65.0,f:10.0,fi:0.5,cat:"snack",region:"indian"},
+{id:286,name:"MTR Kheer Mix",brand:"MTR",cal:395,p:7.5,c:68.0,f:11.5,fi:0.5,cat:"snack",region:"indian"},
+{id:287,name:"MTR Halwa Mix (suji)",brand:"MTR",cal:370,p:5.0,c:64.0,f:10.5,fi:1.0,cat:"snack",region:"indian"},
+{id:288,name:"MTR Tomato Rice Mix",brand:"MTR",cal:375,p:7.0,c:72.0,f:6.0,fi:2.5,cat:"grain",region:"indian"},
+{id:289,name:"MTR Lemon Rice Mix",brand:"MTR",cal:370,p:6.5,c:73.0,f:5.5,fi:2.0,cat:"grain",region:"indian"},
+{id:290,name:"MTR Vermicelli (sevai)",brand:"MTR",cal:350,p:9.5,c:74.0,f:2.5,fi:2.0,cat:"grain",region:"indian"},
 
-// ── DABUR ──
-{id:220,name:"Dabur Honey",brand:"Dabur",cal:304,p:0.3,c:82.0,f:0,fi:0.2,cat:"snack",region:"indian"},
-{id:221,name:"Dabur Real Mango Juice (200ml)",brand:"Dabur",cal:96,p:0.2,c:23.5,f:0.1,fi:0.5,cat:"snack",region:"indian"},
-{id:222,name:"Dabur Réal Mixed Fruit Juice",brand:"Dabur",cal:52,p:0.1,c:12.5,f:0,fi:0.3,cat:"snack",region:"indian"},
+// ────────────────────────────────────────
+// DABUR
+// ────────────────────────────────────────
+{id:295,name:"Dabur Honey",brand:"Dabur",cal:304,p:0.3,c:82.0,f:0,fi:0.2,cat:"snack",region:"indian"},
+{id:296,name:"Dabur Real Mango Juice (200ml)",brand:"Dabur",cal:96,p:0.2,c:23.5,f:0.1,fi:0.5,cat:"snack",region:"indian"},
+{id:297,name:"Dabur Real Mixed Fruit Juice",brand:"Dabur",cal:52,p:0.1,c:12.5,f:0,fi:0.3,cat:"snack",region:"indian"},
+{id:298,name:"Dabur Chyawanprash (per tbsp)",brand:"Dabur",cal:50,p:0.5,c:12.0,f:0.2,fi:0.3,cat:"snack",region:"indian"},
+{id:299,name:"Dabur Real Pomegranate Juice",brand:"Dabur",cal:55,p:0.2,c:13.0,f:0.1,fi:0.2,cat:"snack",region:"indian"},
+{id:300,name:"Dabur Real Guava Juice",brand:"Dabur",cal:48,p:0.2,c:11.5,f:0.1,fi:0.4,cat:"snack",region:"indian"},
 
-// ── MARICO / SAFFOLA ──
-{id:230,name:"Saffola Gold Oil",brand:"Marico",cal:884,p:0,c:0,f:100,fi:0,cat:"grain",region:"indian"},
-{id:231,name:"Saffola Oats (plain)",brand:"Marico",cal:377,p:12.5,c:64.0,f:7.5,fi:9.5,cat:"grain",region:"indian"},
-{id:232,name:"Saffola Masala Oats (Veggie Twist)",brand:"Marico",cal:372,p:8.5,c:69.0,f:6.5,fi:5.0,cat:"grain",region:"indian"},
+// ────────────────────────────────────────
+// MARICO / SAFFOLA
+// ────────────────────────────────────────
+{id:305,name:"Saffola Gold Oil",brand:"Marico",cal:884,p:0,c:0,f:100,fi:0,cat:"grain",region:"indian"},
+{id:306,name:"Saffola Oats (plain)",brand:"Marico",cal:377,p:12.5,c:64.0,f:7.5,fi:9.5,cat:"grain",region:"indian"},
+{id:307,name:"Saffola Masala Oats (Veggie Twist)",brand:"Marico",cal:372,p:8.5,c:69.0,f:6.5,fi:5.0,cat:"grain",region:"indian"},
+{id:308,name:"Saffola Masala Oats (Pepper & Herbs)",brand:"Marico",cal:368,p:8.5,c:68.0,f:6.5,fi:5.0,cat:"grain",region:"indian"},
+{id:309,name:"Saffola Muesli Classic",brand:"Marico",cal:385,p:9.5,c:65.0,f:8.5,fi:6.5,cat:"grain",region:"indian"},
+{id:310,name:"Saffola Fittify Protein Bar",brand:"Marico",cal:210,p:15.0,c:23.0,f:6.5,fi:4.0,cat:"protein",region:"indian"},
+{id:311,name:"Saffola Immuniveda Chawyanprakash",brand:"Marico",cal:55,p:0.5,c:13.0,f:0.2,fi:0.3,cat:"snack",region:"indian"},
 
-// ── DR. OETKER FUNFOODS ──
-{id:240,name:"Dr. Oetker Peanut Butter Choco",brand:"Dr. Oetker",cal:580,p:22.0,c:30.0,f:43.0,fi:4.0,cat:"protein",region:"indian"},
-{id:241,name:"Dr. Oetker Mayo",brand:"Dr. Oetker",cal:650,p:1.0,c:5.5,f:69.0,fi:0,cat:"snack",region:"indian"},
+// ────────────────────────────────────────
+// TATA (food brands)
+// ────────────────────────────────────────
+{id:315,name:"Tata Tea Gold (200ml brewed)",brand:"Tata",cal:2,p:0.1,c:0.3,f:0,fi:0,cat:"snack",region:"indian"},
+{id:316,name:"Tata Salt (per 5g serving)",brand:"Tata",cal:0,p:0,c:0,f:0,fi:0,cat:"snack",region:"indian"},
+{id:317,name:"Tata Sampann Chana Dal",brand:"Tata",cal:372,p:22.0,c:60.0,f:5.5,fi:15.0,cat:"grain",region:"indian"},
+{id:318,name:"Tata Sampann Moong Dal",brand:"Tata",cal:347,p:24.0,c:59.0,f:1.5,fi:9.0,cat:"grain",region:"indian"},
+{id:319,name:"Tata Soulfull Ragi Bites",brand:"Tata",cal:400,p:8.0,c:71.0,f:9.5,fi:4.5,cat:"grain",region:"indian"},
+{id:320,name:"Tata Soulfull Millet Muesli",brand:"Tata",cal:395,p:10.5,c:67.0,f:9.0,fi:7.0,cat:"grain",region:"indian"},
+{id:321,name:"Tata Gluco Plus",brand:"Tata",cal:380,p:7.0,c:82.0,f:0.5,fi:0.5,cat:"grain",region:"indian"},
+{id:322,name:"Tata Starbucs Espresso (India)",brand:"Tata",cal:5,p:0.3,c:0.6,f:0.2,fi:0,cat:"snack",region:"indian"},
+{id:323,name:"Tata Sampann Rajma",brand:"Tata",cal:335,p:22.0,c:56.0,f:1.5,fi:15.0,cat:"grain",region:"indian"},
 
-// ── PEPSI / LAYS INDIA ──
-{id:250,name:"Lay's Classic Salted",brand:"PepsiCo",cal:533,p:6.5,c:53.5,f:32.5,fi:3.5,cat:"snack",region:"both"},
-{id:251,name:"Lay's American Style Cream & Onion",brand:"PepsiCo",cal:525,p:6.0,c:54.0,f:32.0,fi:3.0,cat:"snack",region:"both"},
-{id:252,name:"Lay's Magic Masala",brand:"PepsiCo",cal:535,p:6.5,c:54.5,f:32.5,fi:3.0,cat:"snack",region:"indian"},
-{id:253,name:"Kurkure Masala Munch",brand:"PepsiCo",cal:510,p:5.5,c:63.0,f:26.0,fi:2.5,cat:"snack",region:"indian"},
-{id:254,name:"Kurkure Puffcorn",brand:"PepsiCo",cal:490,p:5.0,c:66.5,f:23.0,fi:1.5,cat:"snack",region:"indian"},
-{id:255,name:"Quaker Oats",brand:"PepsiCo",cal:375,p:13.5,c:63.5,f:7.0,fi:9.0,cat:"grain",region:"both"},
-{id:256,name:"Pepsi (330ml can)",brand:"PepsiCo",cal:42,p:0,c:10.5,f:0,fi:0,cat:"snack",region:"both"},
-{id:257,name:"Mountain Dew (330ml)",brand:"PepsiCo",cal:46,p:0,c:11.5,f:0,fi:0,cat:"snack",region:"both"},
-{id:258,name:"Tropicana Orange Juice (200ml)",brand:"PepsiCo",cal:43,p:0.5,c:10.0,f:0.1,fi:0.2,cat:"snack",region:"both"},
+// ────────────────────────────────────────
+// ITC AASHIRVAAD / SUNFEAST MISC
+// ────────────────────────────────────────
+{id:325,name:"Aashirvaad Atta (whole wheat)",brand:"ITC",cal:341,p:12.0,c:67.5,f:2.0,fi:11.0,cat:"grain",region:"indian"},
+{id:326,name:"Aashirvaad Multigrain Atta",brand:"ITC",cal:336,p:13.0,c:66.0,f:2.5,fi:12.0,cat:"grain",region:"indian"},
+{id:327,name:"Aashirvaad Select Sharbati Atta",brand:"ITC",cal:340,p:11.5,c:68.0,f:1.5,fi:10.0,cat:"grain",region:"indian"},
+{id:328,name:"Sunfeast Pasta Treat",brand:"ITC",cal:360,p:10.5,c:68.0,f:5.5,fi:2.0,cat:"grain",region:"indian"},
+{id:329,name:"Sunfeast Wowie Chocolate",brand:"ITC",cal:505,p:6.0,c:66.5,f:24.0,fi:1.0,cat:"snack",region:"indian"},
 
-// ── COCA-COLA INDIA ──
-{id:260,name:"Coca-Cola (330ml can)",brand:"Coca-Cola",cal:42,p:0,c:10.6,f:0,fi:0,cat:"snack",region:"both"},
-{id:261,name:"Sprite (330ml)",brand:"Coca-Cola",cal:41,p:0,c:10.3,f:0,fi:0,cat:"snack",region:"both"},
-{id:262,name:"Thums Up (330ml)",brand:"Coca-Cola",cal:43,p:0,c:11.0,f:0,fi:0,cat:"snack",region:"indian"},
-{id:263,name:"Maaza Mango Drink (250ml)",brand:"Coca-Cola",cal:74,p:0,c:18.5,f:0,fi:0.2,cat:"snack",region:"indian"},
-{id:264,name:"Limca (330ml)",brand:"Coca-Cola",cal:40,p:0,c:10.0,f:0,fi:0,cat:"snack",region:"indian"},
+// ────────────────────────────────────────
+// DR. OETKER FUNFOODS
+// ────────────────────────────────────────
+{id:332,name:"Dr. Oetker Peanut Butter Choco",brand:"Dr. Oetker",cal:580,p:22.0,c:30.0,f:43.0,fi:4.0,cat:"protein",region:"indian"},
+{id:333,name:"Dr. Oetker Mayo",brand:"Dr. Oetker",cal:650,p:1.0,c:5.5,f:69.0,fi:0,cat:"snack",region:"indian"},
+{id:334,name:"Dr. Oetker FunFoods Veg Mayo",brand:"Dr. Oetker",cal:580,p:1.5,c:8.0,f:60.0,fi:0,cat:"snack",region:"indian"},
+{id:335,name:"Dr. Oetker Pizza Sauce",brand:"Dr. Oetker",cal:55,p:1.8,c:10.5,f:0.8,fi:1.5,cat:"snack",region:"indian"},
 
-// ── CADBURY / MONDELEZ ──
-{id:270,name:"Cadbury Dairy Milk (40g bar)",brand:"Mondelez",cal:535,p:7.5,c:59.5,f:30.0,fi:0.5,cat:"snack",region:"both"},
-{id:271,name:"Cadbury 5 Star (40g)",brand:"Mondelez",cal:483,p:4.5,c:65.5,f:22.5,fi:0.5,cat:"snack",region:"indian"},
-{id:272,name:"Cadbury Gems (20g pouch)",brand:"Mondelez",cal:530,p:4.5,c:68.0,f:26.0,fi:0,cat:"snack",region:"indian"},
-{id:273,name:"Oreo Original",brand:"Mondelez",cal:474,p:5.0,c:70.5,f:20.0,fi:2.5,cat:"snack",region:"both"},
-{id:274,name:"Bournvita (per 20g serving)",brand:"Mondelez",cal:76,p:1.8,c:16.0,f:0.8,fi:0.3,cat:"dairy",region:"indian"},
+// ────────────────────────────────────────
+// PEPSI / LAYS / QUAKER (India)
+// ────────────────────────────────────────
+{id:340,name:"Lay's Classic Salted",brand:"PepsiCo",cal:533,p:6.5,c:53.5,f:32.5,fi:3.5,cat:"snack",region:"both"},
+{id:341,name:"Lay's American Style Cream & Onion",brand:"PepsiCo",cal:525,p:6.0,c:54.0,f:32.0,fi:3.0,cat:"snack",region:"both"},
+{id:342,name:"Lay's Magic Masala",brand:"PepsiCo",cal:535,p:6.5,c:54.5,f:32.5,fi:3.0,cat:"snack",region:"indian"},
+{id:343,name:"Kurkure Masala Munch",brand:"PepsiCo",cal:510,p:5.5,c:63.0,f:26.0,fi:2.5,cat:"snack",region:"indian"},
+{id:344,name:"Kurkure Puffcorn",brand:"PepsiCo",cal:490,p:5.0,c:66.5,f:23.0,fi:1.5,cat:"snack",region:"indian"},
+{id:345,name:"Quaker Oats",brand:"PepsiCo",cal:375,p:13.5,c:63.5,f:7.0,fi:9.0,cat:"grain",region:"both"},
+{id:346,name:"Pepsi (330ml can)",brand:"PepsiCo",cal:42,p:0,c:10.5,f:0,fi:0,cat:"snack",region:"both"},
+{id:347,name:"Mountain Dew (330ml)",brand:"PepsiCo",cal:46,p:0,c:11.5,f:0,fi:0,cat:"snack",region:"both"},
+{id:348,name:"Tropicana Orange Juice (200ml)",brand:"PepsiCo",cal:43,p:0.5,c:10.0,f:0.1,fi:0.2,cat:"snack",region:"both"},
+{id:349,name:"Lay's India's Magic Masala Twist",brand:"PepsiCo",cal:530,p:6.0,c:55.0,f:32.0,fi:3.0,cat:"snack",region:"indian"},
+{id:350,name:"Kurkure Desi Beats",brand:"PepsiCo",cal:505,p:5.5,c:64.0,f:25.5,fi:2.0,cat:"snack",region:"indian"},
 
-// ── INTERNATIONAL FAST FOOD ──
-{id:280,name:"McDonald's McAloo Tikki",brand:"McDonald's",cal:337,p:6.8,c:47.8,f:14.0,fi:3.0,cat:"fastfood",region:"indian"},
-{id:281,name:"McDonald's McSpicy Paneer",brand:"McDonald's",cal:484,p:16.2,c:55.4,f:22.0,fi:2.5,cat:"fastfood",region:"indian"},
-{id:282,name:"McDonald's McChicken",brand:"McDonald's",cal:400,p:22.0,c:40.0,f:16.0,fi:2.0,cat:"fastfood",region:"both"},
-{id:283,name:"McDonald's French Fries (Med)",brand:"McDonald's",cal:320,p:4.0,c:43.0,f:15.0,fi:3.0,cat:"fastfood",region:"both"},
-{id:284,name:"KFC Chicken Zinger Burger",brand:"KFC",cal:540,p:26.0,c:56.0,f:22.0,fi:2.5,cat:"fastfood",region:"both"},
-{id:285,name:"KFC Popcorn Chicken (100g)",brand:"KFC",cal:375,p:21.0,c:24.0,f:21.5,fi:0.8,cat:"fastfood",region:"both"},
-{id:286,name:"Domino's Margherita Pizza (1 slice)",brand:"Domino's",cal:200,p:8.0,c:27.0,f:7.0,fi:1.5,cat:"fastfood",region:"both"},
-{id:287,name:"Domino's Farmhouse Pizza (1 slice)",brand:"Domino's",cal:225,p:9.5,c:28.5,f:9.0,fi:2.0,cat:"fastfood",region:"both"},
-{id:288,name:"Subway Veggie Patty (6-inch)",brand:"Subway",cal:230,p:9.0,c:40.0,f:4.5,fi:5.0,cat:"fastfood",region:"both"},
-{id:289,name:"Subway Chicken Tikka (6-inch)",brand:"Subway",cal:310,p:22.0,c:42.0,f:6.0,fi:4.5,cat:"fastfood",region:"both"},
-{id:290,name:"Pizza Hut Margherita (1 slice Reg)",brand:"Pizza Hut",cal:195,p:8.0,c:25.0,f:7.5,fi:1.2,cat:"fastfood",region:"both"},
-{id:291,name:"Burger King Whopper Jr",brand:"Burger King",cal:310,p:18.0,c:27.0,f:14.5,fi:1.5,cat:"fastfood",region:"both"},
+// ────────────────────────────────────────
+// COCA-COLA INDIA
+// ────────────────────────────────────────
+{id:355,name:"Coca-Cola (330ml can)",brand:"Coca-Cola",cal:42,p:0,c:10.6,f:0,fi:0,cat:"snack",region:"both"},
+{id:356,name:"Sprite (330ml)",brand:"Coca-Cola",cal:41,p:0,c:10.3,f:0,fi:0,cat:"snack",region:"both"},
+{id:357,name:"Thums Up (330ml)",brand:"Coca-Cola",cal:43,p:0,c:11.0,f:0,fi:0,cat:"snack",region:"indian"},
+{id:358,name:"Maaza Mango Drink (250ml)",brand:"Coca-Cola",cal:74,p:0,c:18.5,f:0,fi:0.2,cat:"snack",region:"indian"},
+{id:359,name:"Limca (330ml)",brand:"Coca-Cola",cal:40,p:0,c:10.0,f:0,fi:0,cat:"snack",region:"indian"},
+{id:360,name:"Sprite Zero (330ml)",brand:"Coca-Cola",cal:2,p:0,c:0.2,f:0,fi:0,cat:"snack",region:"both"},
+{id:361,name:"Diet Coke (330ml)",brand:"Coca-Cola",cal:1,p:0.1,c:0.1,f:0,fi:0,cat:"snack",region:"both"},
+{id:362,name:"Kinley Soda (500ml)",brand:"Coca-Cola",cal:0,p:0,c:0,f:0,fi:0,cat:"snack",region:"indian"},
+{id:363,name:"Minute Maid Pulpy Orange (400ml)",brand:"Coca-Cola",cal:180,p:0.5,c:44.0,f:0,fi:0.5,cat:"snack",region:"indian"},
 
-// ── INTERNATIONAL BRANDS ──
-{id:300,name:"Pringles Original (100g)",brand:"Pringles",cal:535,p:5.5,c:52.0,f:33.5,fi:2.0,cat:"snack",region:"both"},
-{id:301,name:"Pringles Sour Cream & Onion",brand:"Pringles",cal:538,p:5.0,c:53.0,f:34.0,fi:2.0,cat:"snack",region:"both"},
-{id:302,name:"Nutella (per 15g serving)",brand:"Ferrero",cal:541,p:6.0,c:57.5,f:30.9,fi:3.4,cat:"snack",region:"both"},
-{id:303,name:"Ferrero Rocher (1 pc ~12g)",brand:"Ferrero",cal:567,p:7.0,c:52.0,f:36.0,fi:3.0,cat:"snack",region:"both"},
-{id:304,name:"Snickers (52g bar)",brand:"Mars",cal:488,p:8.0,c:60.0,f:25.0,fi:1.5,cat:"snack",region:"both"},
-{id:305,name:"Twix (2-bar ~50g)",brand:"Mars",cal:500,p:4.5,c:64.0,f:24.5,fi:1.0,cat:"snack",region:"both"},
-{id:306,name:"M&M's Peanut (100g)",brand:"Mars",cal:520,p:11.0,c:62.0,f:26.0,fi:2.0,cat:"snack",region:"both"},
-{id:307,name:"Red Bull (250ml can)",brand:"Red Bull",cal:46,p:0,c:11.0,f:0,fi:0,cat:"snack",region:"both"},
-{id:308,name:"Monster Energy (500ml)",brand:"Monster",cal:46,p:0,c:11.2,f:0,fi:0,cat:"snack",region:"both"},
-{id:309,name:"Starbucks Caramel Latte (355ml)",brand:"Starbucks",cal:170,p:7.0,c:23.0,f:5.5,fi:0,cat:"snack",region:"both"},
+// ────────────────────────────────────────
+// CADBURY / MONDELEZ
+// ────────────────────────────────────────
+{id:368,name:"Cadbury Dairy Milk (40g bar)",brand:"Mondelez",cal:535,p:7.5,c:59.5,f:30.0,fi:0.5,cat:"snack",region:"both"},
+{id:369,name:"Cadbury 5 Star (40g)",brand:"Mondelez",cal:483,p:4.5,c:65.5,f:22.5,fi:0.5,cat:"snack",region:"indian"},
+{id:370,name:"Cadbury Gems (20g pouch)",brand:"Mondelez",cal:530,p:4.5,c:68.0,f:26.0,fi:0,cat:"snack",region:"indian"},
+{id:371,name:"Oreo Original",brand:"Mondelez",cal:474,p:5.0,c:70.5,f:20.0,fi:2.5,cat:"snack",region:"both"},
+{id:372,name:"Bournvita (per 20g serving)",brand:"Mondelez",cal:76,p:1.8,c:16.0,f:0.8,fi:0.3,cat:"dairy",region:"indian"},
+{id:373,name:"Cadbury Silk (65g)",brand:"Mondelez",cal:560,p:8.0,c:58.0,f:33.0,fi:0.5,cat:"snack",region:"indian"},
+{id:374,name:"Cadbury Chocobakes Choco Layered",brand:"Mondelez",cal:490,p:5.5,c:62.0,f:25.0,fi:1.2,cat:"snack",region:"indian"},
+{id:375,name:"Cadbury Temptations (dark)",brand:"Mondelez",cal:550,p:6.0,c:58.0,f:33.0,fi:3.0,cat:"snack",region:"indian"},
+{id:376,name:"Tang Orange (per 15g serving)",brand:"Mondelez",cal:55,p:0.1,c:13.5,f:0,fi:0,cat:"snack",region:"indian"},
 
-// ── PROTEIN / GYM INTERNATIONAL ──
-{id:320,name:"ON Gold Standard Whey (per scoop 31g)",brand:"Optimum Nutrition",cal:122,p:24.0,c:3.0,f:1.0,fi:0,cat:"protein",region:"both"},
-{id:321,name:"Dymatize ISO100 (per scoop 30g)",brand:"Dymatize",cal:110,p:25.0,c:1.0,f:0.5,fi:0,cat:"protein",region:"both"},
-{id:322,name:"Myprotein Impact Whey (per 25g)",brand:"Myprotein",cal:103,p:20.5,c:2.0,f:1.9,fi:0.3,cat:"protein",region:"both"},
-{id:323,name:"BSN True Mass (per 100g)",brand:"BSN",cal:391,p:23.0,c:61.0,f:6.5,fi:3.5,cat:"protein",region:"both"},
-{id:324,name:"Quest Bar (60g bar)",brand:"Quest",cal:190,p:21.0,c:21.0,f:7.0,fi:14.0,cat:"protein",region:"both"},
-{id:325,name:"Kind Bar Almond (40g)",brand:"Kind",cal:200,p:6.0,c:22.0,f:11.5,fi:7.0,cat:"snack",region:"both"},
+// ────────────────────────────────────────
+// HINDUSTAN UNILEVER (HUL)
+// ────────────────────────────────────────
+{id:380,name:"Bru Instant Coffee (per 2g)",brand:"Hindustan Unilever",cal:6,p:0.3,c:0.9,f:0.1,fi:0,cat:"snack",region:"indian"},
+{id:381,name:"Lipton Yellow Label Tea (200ml)",brand:"Hindustan Unilever",cal:2,p:0.1,c:0.3,f:0,fi:0,cat:"snack",region:"indian"},
+{id:382,name:"Knorr Tomato Soup (per 100g made)",brand:"Hindustan Unilever",cal:48,p:1.5,c:9.0,f:0.8,fi:1.0,cat:"snack",region:"indian"},
+{id:383,name:"Knorr Classic Noodles",brand:"Hindustan Unilever",cal:370,p:8.5,c:65.0,f:9.0,fi:1.8,cat:"grain",region:"indian"},
+{id:384,name:"Boost (per 20g serving)",brand:"Hindustan Unilever",cal:77,p:2.0,c:15.5,f:1.0,fi:0.2,cat:"dairy",region:"indian"},
+{id:385,name:"Horlicks (per 22g serving)",brand:"Hindustan Unilever",cal:82,p:2.5,c:16.0,f:0.9,fi:0.3,cat:"dairy",region:"indian"},
+{id:386,name:"Kissan Ketchup (per 15g tbsp)",brand:"Hindustan Unilever",cal:17,p:0.3,c:4.0,f:0,fi:0.2,cat:"snack",region:"indian"},
+{id:387,name:"Annapurna Atta",brand:"Hindustan Unilever",cal:339,p:11.5,c:67.5,f:1.8,fi:10.5,cat:"grain",region:"indian"},
 
-// ── GRAINS / STAPLES ──
-{id:340,name:"Oats (rolled, raw)",brand:"Generic",cal:389,p:16.9,c:66.3,f:6.9,fi:10.6,cat:"grain",region:"both"},
-{id:341,name:"Whole Wheat Bread (1 slice ~30g)",brand:"Generic",cal:247,p:9.0,c:46.5,f:3.5,fi:4.5,cat:"grain",region:"both"},
-{id:342,name:"White Bread (1 slice ~30g)",brand:"Generic",cal:265,p:8.0,c:49.0,f:3.2,fi:2.7,cat:"grain",region:"both"},
-{id:343,name:"Cooked Pasta (wheat)",brand:"Generic",cal:131,p:5.0,c:25.1,f:1.1,fi:1.8,cat:"grain",region:"both"},
-{id:344,name:"Quinoa (cooked)",brand:"Generic",cal:120,p:4.4,c:21.3,f:1.9,fi:2.8,cat:"grain",region:"both"},
-{id:345,name:"Almonds (raw)",brand:"Generic",cal:579,p:21.2,c:21.6,f:49.9,fi:12.5,cat:"snack",region:"both"},
-{id:346,name:"Cashews (raw)",brand:"Generic",cal:553,p:18.2,c:30.2,f:43.9,fi:3.3,cat:"snack",region:"both"},
-{id:347,name:"Walnuts",brand:"Generic",cal:654,p:15.2,c:13.7,f:65.2,fi:6.7,cat:"snack",region:"both"},
-{id:348,name:"Peanuts (roasted)",brand:"Generic",cal:599,p:28.0,c:17.6,f:50.4,fi:7.5,cat:"protein",region:"both"},
-{id:349,name:"Pumpkin Seeds",brand:"Generic",cal:559,p:30.2,c:10.7,f:49.1,fi:6.0,cat:"snack",region:"both"},
+// ────────────────────────────────────────
+// BIKANO
+// ────────────────────────────────────────
+{id:390,name:"Bikano Navratan Mix",brand:"Bikano",cal:507,p:9.0,c:57.0,f:27.5,fi:3.0,cat:"snack",region:"indian"},
+{id:391,name:"Bikano Aloo Bhujia",brand:"Bikano",cal:530,p:8.5,c:54.0,f:31.0,fi:2.5,cat:"snack",region:"indian"},
+{id:392,name:"Bikano Chana Dal",brand:"Bikano",cal:525,p:19.5,c:51.0,f:29.0,fi:5.5,cat:"snack",region:"indian"},
+{id:393,name:"Bikano Khatta Meetha",brand:"Bikano",cal:498,p:8.5,c:60.0,f:25.5,fi:3.0,cat:"snack",region:"indian"},
+{id:394,name:"Bikano Moong Dal",brand:"Bikano",cal:520,p:19.0,c:52.5,f:28.0,fi:4.5,cat:"snack",region:"indian"},
 
-// ── FRUITS ──
-{id:360,name:"Banana (1 medium ~120g)",brand:"Fresh",cal:89,p:1.1,c:22.8,f:0.3,fi:2.6,cat:"fruit",region:"both"},
-{id:361,name:"Apple (1 medium ~182g)",brand:"Fresh",cal:52,p:0.3,c:13.8,f:0.2,fi:2.4,cat:"fruit",region:"both"},
-{id:362,name:"Mango (1 cup ~165g)",brand:"Fresh",cal:60,p:0.8,c:15.0,f:0.4,fi:1.6,cat:"fruit",region:"both"},
-{id:363,name:"Papaya (100g)",brand:"Fresh",cal:43,p:0.5,c:10.8,f:0.3,fi:1.7,cat:"fruit",region:"both"},
-{id:364,name:"Guava (1 medium ~55g)",brand:"Fresh",cal:68,p:2.6,c:14.3,f:1.0,fi:5.4,cat:"fruit",region:"both"},
-{id:365,name:"Pomegranate (100g)",brand:"Fresh",cal:83,p:1.7,c:18.7,f:1.2,fi:4.0,cat:"fruit",region:"both"},
-{id:366,name:"Orange (1 medium ~130g)",brand:"Fresh",cal:47,p:0.9,c:11.8,f:0.1,fi:2.4,cat:"fruit",region:"both"},
-{id:367,name:"Grapes (100g)",brand:"Fresh",cal:69,p:0.7,c:18.1,f:0.2,fi:0.9,cat:"fruit",region:"both"},
-{id:368,name:"Strawberries (100g)",brand:"Fresh",cal:32,p:0.7,c:7.7,f:0.3,fi:2.0,cat:"fruit",region:"both"},
-{id:369,name:"Watermelon (100g)",brand:"Fresh",cal:30,p:0.6,c:7.6,f:0.2,fi:0.4,cat:"fruit",region:"both"},
+// ────────────────────────────────────────
+// BALAJI WAFERS
+// ────────────────────────────────────────
+{id:398,name:"Balaji Wafers Classic Salted",brand:"Balaji",cal:523,p:6.5,c:54.0,f:32.0,fi:3.5,cat:"snack",region:"indian"},
+{id:399,name:"Balaji Wafers Tomato",brand:"Balaji",cal:520,p:6.0,c:55.0,f:31.0,fi:3.0,cat:"snack",region:"indian"},
+{id:400,name:"Balaji Wafers Masala",brand:"Balaji",cal:518,p:6.0,c:54.5,f:31.5,fi:3.0,cat:"snack",region:"indian"},
+{id:401,name:"Balaji Sev Murmura",brand:"Balaji",cal:490,p:9.0,c:62.0,f:23.5,fi:2.5,cat:"snack",region:"indian"},
 
-// ── VEGETABLES ──
-{id:380,name:"Spinach (cooked, 100g)",brand:"Fresh",cal:23,p:2.9,c:3.6,f:0.4,fi:2.4,cat:"veg",region:"both"},
-{id:381,name:"Broccoli (cooked, 100g)",brand:"Fresh",cal:35,p:2.4,c:7.2,f:0.4,fi:3.3,cat:"veg",region:"both"},
-{id:382,name:"Carrot (raw, 100g)",brand:"Fresh",cal:41,p:0.9,c:9.6,f:0.2,fi:2.8,cat:"veg",region:"both"},
-{id:383,name:"Potato (boiled, 100g)",brand:"Fresh",cal:87,p:1.9,c:20.1,f:0.1,fi:1.8,cat:"veg",region:"both"},
-{id:384,name:"Sweet Potato (100g)",brand:"Fresh",cal:86,p:1.6,c:20.1,f:0.1,fi:3.0,cat:"veg",region:"both"},
-{id:385,name:"Onion (100g)",brand:"Fresh",cal:40,p:1.1,c:9.3,f:0.1,fi:1.7,cat:"veg",region:"both"},
-{id:386,name:"Tomato (100g)",brand:"Fresh",cal:18,p:0.9,c:3.9,f:0.2,fi:1.2,cat:"veg",region:"both"},
-{id:387,name:"Cucumber (100g)",brand:"Fresh",cal:15,p:0.7,c:3.6,f:0.1,fi:0.5,cat:"veg",region:"both"},
-{id:388,name:"Cauliflower (100g)",brand:"Fresh",cal:25,p:1.9,c:5.0,f:0.3,fi:2.0,cat:"veg",region:"both"},
-{id:389,name:"Peas (green, boiled 100g)",brand:"Fresh",cal:84,p:5.4,c:15.6,f:0.4,fi:5.5,cat:"veg",region:"both"},
-{id:390,name:"Bottle Gourd / Lauki (100g)",brand:"Fresh",cal:14,p:0.6,c:3.4,f:0.02,fi:0.5,cat:"veg",region:"indian"},
-{id:391,name:"Bitter Gourd / Karela (100g)",brand:"Fresh",cal:34,p:1.0,c:7.0,f:0.2,fi:2.8,cat:"veg",region:"indian"},
-{id:392,name:"Ridge Gourd / Turai (100g)",brand:"Fresh",cal:20,p:0.5,c:4.3,f:0.1,fi:0.5,cat:"veg",region:"indian"},
-{id:393,name:"Ladies Finger / Bhindi (100g)",brand:"Fresh",cal:33,p:1.9,c:7.5,f:0.2,fi:3.2,cat:"veg",region:"indian"},
-{id:394,name:"Eggplant / Baingan (100g)",brand:"Fresh",cal:25,p:1.0,c:5.9,f:0.2,fi:3.0,cat:"veg",region:"indian"},
+// ────────────────────────────────────────
+// TOO YUMM / RP-SANJIV GOENKA
+// ────────────────────────────────────────
+{id:405,name:"Too Yumm Multigrain Chips",brand:"Too Yumm",cal:478,p:8.0,c:60.5,f:23.0,fi:4.5,cat:"snack",region:"indian"},
+{id:406,name:"Too Yumm Karare (baked)",brand:"Too Yumm",cal:425,p:9.0,c:65.0,f:15.0,fi:3.5,cat:"snack",region:"indian"},
+{id:407,name:"Too Yumm Veggie Sticks",brand:"Too Yumm",cal:440,p:8.5,c:64.0,f:17.0,fi:4.0,cat:"snack",region:"indian"},
+{id:408,name:"Too Yumm Baked Puffs",brand:"Too Yumm",cal:430,p:9.0,c:64.5,f:16.0,fi:3.5,cat:"snack",region:"indian"},
 
-// ── DAIRY INTERNATIONAL ──
-{id:400,name:"Greek Yogurt (full fat, 100g)",brand:"Generic",cal:97,p:9.0,c:3.6,f:5.0,fi:0,cat:"dairy",region:"both"},
-{id:401,name:"Skyr / Icelandic Yogurt",brand:"Generic",cal:65,p:11.0,c:4.0,f:0.2,fi:0,cat:"dairy",region:"both"},
-{id:402,name:"Cheddar Cheese (100g)",brand:"Generic",cal:402,p:25.0,c:1.3,f:33.0,fi:0,cat:"dairy",region:"both"},
-{id:403,name:"Cottage Cheese (low fat)",brand:"Generic",cal:98,p:11.1,c:3.4,f:4.3,fi:0,cat:"dairy",region:"both"},
+// ────────────────────────────────────────
+// GARDEN / PRIYAGOLD / ANMOL
+// ────────────────────────────────────────
+{id:412,name:"Garden Cream & Onion Rings",brand:"Garden",cal:530,p:5.5,c:60.0,f:29.0,fi:2.0,cat:"snack",region:"indian"},
+{id:413,name:"Priyagold But-Or-Not",brand:"Priyagold",cal:482,p:7.0,c:72.0,f:18.5,fi:1.0,cat:"snack",region:"indian"},
+{id:414,name:"Priyagold Choco Fills",brand:"Priyagold",cal:510,p:6.5,c:67.0,f:24.0,fi:1.2,cat:"snack",region:"indian"},
+{id:415,name:"Anmol Choco Chip Cookies",brand:"Anmol",cal:470,p:6.5,c:70.0,f:18.0,fi:1.5,cat:"snack",region:"indian"},
+{id:416,name:"Anmol Gold Crackers",brand:"Anmol",cal:485,p:8.0,c:68.0,f:20.5,fi:1.2,cat:"snack",region:"indian"},
 
-// ── MORE INDIAN BRANDS ──
-{id:410,name:"Sunfeast Farmlite Oatmeal",brand:"ITC",cal:446,p:10.0,c:69.5,f:14.5,fi:4.5,cat:"grain",region:"indian"},
-{id:411,name:"Too Yumm Multigrain Chips",brand:"RP-Sanjiv Goenka",cal:478,p:8.0,c:60.5,f:23.0,fi:4.5,cat:"snack",region:"indian"},
-{id:412,name:"Balaji Wafers (100g)",brand:"Balaji",cal:523,p:6.5,c:54.0,f:32.0,fi:3.5,cat:"snack",region:"indian"},
-{id:413,name:"Bikano Navratan Mix",brand:"Bikano",cal:507,p:9.0,c:57.0,f:27.5,fi:3.0,cat:"snack",region:"indian"},
-{id:414,name:"Garden Cream & Onion Rings",brand:"Garden",cal:530,p:5.5,c:60.0,f:29.0,fi:2.0,cat:"snack",region:"indian"},
-{id:415,name:"Priyagold But-Or-Not",brand:"Priyagold",cal:482,p:7.0,c:72.0,f:18.5,fi:1.0,cat:"snack",region:"indian"},
-{id:416,name:"Anmol Choco Chip Cookies",brand:"Anmol",cal:470,p:6.5,c:70.0,f:18.0,fi:1.5,cat:"snack",region:"indian"},
-{id:417,name:"Nescafe Classic (per 2g)",brand:"Nestlé",cal:5,p:0.4,c:0.7,f:0.1,fi:0,cat:"snack",region:"both"},
-{id:418,name:"Bru Instant Coffee (per 2g)",brand:"Hindustan Unilever",cal:6,p:0.3,c:0.9,f:0.1,fi:0,cat:"snack",region:"indian"},
-{id:419,name:"Tata Tea Gold (per 200ml brewed)",brand:"Tata",cal:2,p:0.1,c:0.3,f:0,fi:0,cat:"snack",region:"indian"},
-{id:420,name:"Chai (with milk & sugar, 200ml)",brand:"Homemade",cal:80,p:3.0,c:11.0,f:2.8,fi:0,cat:"dairy",region:"indian"},
-{id:421,name:"Boost (per 20g serving)",brand:"GSK/HUL",cal:77,p:2.0,c:15.5,f:1.0,fi:0.2,cat:"dairy",region:"indian"},
-{id:422,name:"Horlicks (per 22g serving)",brand:"GSK/HUL",cal:82,p:2.5,c:16.0,f:0.9,fi:0.3,cat:"dairy",region:"indian"},
-{id:423,name:"Ensure (per 40g serving)",brand:"Abbott",cal:160,p:9.0,c:22.5,f:3.4,fi:1.5,cat:"protein",region:"both"},
-{id:424,name:"Sprite Zero (330ml)",brand:"Coca-Cola",cal:2,p:0,c:0.2,f:0,fi:0,cat:"snack",region:"both"},
-{id:425,name:"Diet Coke (330ml)",brand:"Coca-Cola",cal:1,p:0.1,c:0.1,f:0,fi:0,cat:"snack",region:"both"},
+// ────────────────────────────────────────
+// REAL FOOD / ORGANIC / MILLET BRANDS
+// ────────────────────────────────────────
+{id:420,name:"Organic India Tulsi Green Tea (200ml)",brand:"Organic India",cal:2,p:0,c:0.4,f:0,fi:0,cat:"snack",region:"indian"},
+{id:421,name:"Yoga Bar Multigrain (38g bar)",brand:"Yoga Bar",cal:155,p:5.5,c:20.0,f:5.5,fi:3.5,cat:"protein",region:"indian"},
+{id:422,name:"Yoga Bar Whey Protein (per 35g)",brand:"Yoga Bar",cal:133,p:22.0,c:6.5,f:2.0,fi:0.5,cat:"protein",region:"indian"},
+{id:423,name:"Yoga Bar Muesli (Cranberry)",brand:"Yoga Bar",cal:388,p:9.0,c:67.0,f:9.5,fi:6.0,cat:"grain",region:"indian"},
+{id:424,name:"RiteBite Max Protein (67g bar)",brand:"RiteBite",cal:267,p:20.0,c:28.0,f:8.0,fi:4.0,cat:"protein",region:"indian"},
+{id:425,name:"Slurrp Farm Ragi Pancake Mix",brand:"Slurrp Farm",cal:360,p:10.5,c:70.0,f:4.5,fi:5.0,cat:"grain",region:"indian"},
+{id:426,name:"B Natural Mango Juice (200ml)",brand:"ITC",cal:110,p:0.3,c:27.0,f:0.1,fi:0.3,cat:"snack",region:"indian"},
+{id:427,name:"Raw Pressery Fruit Juice (200ml)",brand:"Raw Pressery",cal:95,p:0.8,c:22.0,f:0.2,fi:0.5,cat:"snack",region:"indian"},
+{id:428,name:"Paper Boat Aamras (200ml)",brand:"Paper Boat",cal:105,p:0.5,c:25.5,f:0.2,fi:0.5,cat:"snack",region:"indian"},
+{id:429,name:"Paper Boat Jaljeera (200ml)",brand:"Paper Boat",cal:35,p:0.3,c:8.0,f:0.1,fi:0.3,cat:"snack",region:"indian"},
+{id:430,name:"Epigamia Greek Yogurt (Plain)",brand:"Epigamia",cal:97,p:8.5,c:6.5,f:3.5,fi:0,cat:"dairy",region:"indian"},
+{id:431,name:"Epigamia Greek Yogurt (Mango)",brand:"Epigamia",cal:115,p:6.5,c:16.0,f:2.5,fi:0.3,cat:"dairy",region:"indian"},
+{id:432,name:"Sleepy Owl Cold Brew (200ml)",brand:"Sleepy Owl",cal:10,p:0.5,c:1.5,f:0.2,fi:0,cat:"snack",region:"indian"},
+{id:433,name:"Nourish Organics Granola",brand:"Nourish Organics",cal:418,p:10.0,c:62.0,f:14.5,fi:6.5,cat:"grain",region:"indian"},
+{id:434,name:"True Elements Rolled Oats",brand:"True Elements",cal:379,p:14.0,c:63.0,f:7.5,fi:9.5,cat:"grain",region:"indian"},
+{id:435,name:"Sattu (roasted gram flour)",brand:"Homemade",cal:378,p:20.0,c:64.0,f:5.0,fi:5.5,cat:"protein",region:"indian"},
+{id:436,name:"WickedGud Multigrain Pasta",brand:"WickedGud",cal:330,p:14.5,c:60.0,f:3.5,fi:8.0,cat:"grain",region:"indian"},
+
+// ────────────────────────────────────────
+// PROTEIN / GYM (Indian brands)
+// ────────────────────────────────────────
+{id:440,name:"Absolute Nutrition Whey (per scoop)",brand:"Absolute Nutrition",cal:124,p:24.5,c:3.2,f:1.5,fi:0,cat:"protein",region:"indian"},
+{id:441,name:"AS-IT-IS Whey (per 33g scoop)",brand:"AS-IT-IS Nutrition",cal:122,p:24.0,c:3.5,f:1.2,fi:0,cat:"protein",region:"indian"},
+{id:442,name:"Big Muscles Nitro Whey (per scoop)",brand:"Big Muscles",cal:128,p:25.0,c:3.0,f:1.8,fi:0,cat:"protein",region:"indian"},
+{id:443,name:"Dymatize ISO100 (per 30g scoop)",brand:"Dymatize",cal:110,p:25.0,c:1.0,f:0.5,fi:0,cat:"protein",region:"both"},
+{id:444,name:"ON Gold Standard Whey (per 31g)",brand:"Optimum Nutrition",cal:122,p:24.0,c:3.0,f:1.0,fi:0,cat:"protein",region:"both"},
+{id:445,name:"Myprotein Impact Whey (per 25g)",brand:"Myprotein",cal:103,p:20.5,c:2.0,f:1.9,fi:0.3,cat:"protein",region:"both"},
+{id:446,name:"GNC Whey Protein (per 35g scoop)",brand:"GNC",cal:140,p:25.0,c:4.5,f:1.5,fi:0.5,cat:"protein",region:"both"},
+{id:447,name:"Fast&Up Reload Electrolyte (1 tab)",brand:"Fast&Up",cal:7,p:0,c:1.8,f:0,fi:0,cat:"snack",region:"indian"},
+{id:448,name:"Nutrela Soy Chunks (per 100g dry)",brand:"Ruchi",cal:345,p:52.0,c:35.0,f:1.5,fi:4.5,cat:"protein",region:"indian"},
+{id:449,name:"Quest Bar (60g)",brand:"Quest",cal:190,p:21.0,c:21.0,f:7.0,fi:14.0,cat:"protein",region:"both"},
+{id:450,name:"Kind Bar Almond (40g)",brand:"Kind",cal:200,p:6.0,c:22.0,f:11.5,fi:7.0,cat:"snack",region:"both"},
+{id:451,name:"Ensure (per 40g serving)",brand:"Abbott",cal:160,p:9.0,c:22.5,f:3.4,fi:1.5,cat:"protein",region:"both"},
+
+// ────────────────────────────────────────
+// INTERNATIONAL FAST FOOD (India menu)
+// ────────────────────────────────────────
+{id:460,name:"McDonald's McAloo Tikki",brand:"McDonald's",cal:337,p:6.8,c:47.8,f:14.0,fi:3.0,cat:"fastfood",region:"indian"},
+{id:461,name:"McDonald's McSpicy Paneer",brand:"McDonald's",cal:484,p:16.2,c:55.4,f:22.0,fi:2.5,cat:"fastfood",region:"indian"},
+{id:462,name:"McDonald's McChicken",brand:"McDonald's",cal:400,p:22.0,c:40.0,f:16.0,fi:2.0,cat:"fastfood",region:"both"},
+{id:463,name:"McDonald's French Fries (Medium)",brand:"McDonald's",cal:320,p:4.0,c:43.0,f:15.0,fi:3.0,cat:"fastfood",region:"both"},
+{id:464,name:"McDonald's McVeggie Burger",brand:"McDonald's",cal:365,p:8.0,c:50.0,f:15.5,fi:3.5,cat:"fastfood",region:"indian"},
+{id:465,name:"McDonald's McEgg",brand:"McDonald's",cal:310,p:13.0,c:35.0,f:14.0,fi:1.5,cat:"fastfood",region:"indian"},
+{id:466,name:"KFC Chicken Zinger Burger",brand:"KFC",cal:540,p:26.0,c:56.0,f:22.0,fi:2.5,cat:"fastfood",region:"both"},
+{id:467,name:"KFC Popcorn Chicken (100g)",brand:"KFC",cal:375,p:21.0,c:24.0,f:21.5,fi:0.8,cat:"fastfood",region:"both"},
+{id:468,name:"KFC Hot Wings (2 pcs)",brand:"KFC",cal:280,p:18.0,c:12.0,f:17.0,fi:0.5,cat:"fastfood",region:"both"},
+{id:469,name:"Domino's Margherita Pizza (1 slice)",brand:"Domino's",cal:200,p:8.0,c:27.0,f:7.0,fi:1.5,cat:"fastfood",region:"both"},
+{id:470,name:"Domino's Farmhouse Pizza (1 slice)",brand:"Domino's",cal:225,p:9.5,c:28.5,f:9.0,fi:2.0,cat:"fastfood",region:"both"},
+{id:471,name:"Domino's Peppy Paneer (1 slice)",brand:"Domino's",cal:215,p:9.0,c:27.0,f:8.5,fi:2.0,cat:"fastfood",region:"indian"},
+{id:472,name:"Domino's Garlic Breadsticks (4 pcs)",brand:"Domino's",cal:290,p:8.0,c:42.0,f:9.5,fi:2.0,cat:"fastfood",region:"both"},
+{id:473,name:"Pizza Hut Margherita (1 slice Reg)",brand:"Pizza Hut",cal:195,p:8.0,c:25.0,f:7.5,fi:1.2,cat:"fastfood",region:"both"},
+{id:474,name:"Pizza Hut Paneer Tikka (1 slice)",brand:"Pizza Hut",cal:220,p:9.5,c:26.0,f:9.0,fi:1.5,cat:"fastfood",region:"indian"},
+{id:475,name:"Burger King Whopper Jr",brand:"Burger King",cal:310,p:18.0,c:27.0,f:14.5,fi:1.5,cat:"fastfood",region:"both"},
+{id:476,name:"Burger King Veg Whopper",brand:"Burger King",cal:460,p:12.0,c:55.0,f:21.0,fi:4.0,cat:"fastfood",region:"indian"},
+{id:477,name:"Subway Veggie Patty (6-inch)",brand:"Subway",cal:230,p:9.0,c:40.0,f:4.5,fi:5.0,cat:"fastfood",region:"both"},
+{id:478,name:"Subway Chicken Tikka (6-inch)",brand:"Subway",cal:310,p:22.0,c:42.0,f:6.0,fi:4.5,cat:"fastfood",region:"indian"},
+{id:479,name:"Subway Paneer Tikka (6-inch)",brand:"Subway",cal:290,p:14.0,c:42.0,f:6.5,fi:4.5,cat:"fastfood",region:"indian"},
+{id:480,name:"Starbucks Caramel Latte (355ml)",brand:"Starbucks",cal:170,p:7.0,c:23.0,f:5.5,fi:0,cat:"snack",region:"both"},
+{id:481,name:"Starbucks Cold Brew (355ml)",brand:"Starbucks",cal:5,p:0.5,c:0.5,f:0.2,fi:0,cat:"snack",region:"both"},
+{id:482,name:"CCD Cappuccino (250ml)",brand:"Café Coffee Day",cal:95,p:5.0,c:10.5,f:3.5,fi:0,cat:"snack",region:"indian"},
+{id:483,name:"CCD Cold Coffee (350ml)",brand:"Café Coffee Day",cal:175,p:6.0,c:28.0,f:5.0,fi:0,cat:"snack",region:"indian"},
+{id:484,name:"Chaayos Cutting Chai (100ml)",brand:"Chaayos",cal:40,p:1.5,c:5.5,f:1.4,fi:0,cat:"snack",region:"indian"},
+{id:485,name:"Wow! Momo Chicken (4 pcs)",brand:"Wow Momo",cal:170,p:11.0,c:22.0,f:4.5,fi:1.0,cat:"fastfood",region:"indian"},
+{id:486,name:"Wow! Momo Veg (4 pcs)",brand:"Wow Momo",cal:145,p:5.0,c:25.0,f:3.0,fi:1.5,cat:"fastfood",region:"indian"},
+{id:487,name:"Behrouz Biryani Dum Chicken",brand:"Behrouz",cal:195,p:12.0,c:25.0,f:5.5,fi:1.0,cat:"fastfood",region:"indian"},
+{id:488,name:"Barbeque Nation Mutton Seekh",brand:"Barbeque Nation",cal:215,p:18.0,c:3.0,f:15.0,fi:0.5,cat:"fastfood",region:"indian"},
+
+// ────────────────────────────────────────
+// INTERNATIONAL SNACKS & BRANDS
+// ────────────────────────────────────────
+{id:492,name:"Pringles Original (100g)",brand:"Pringles",cal:535,p:5.5,c:52.0,f:33.5,fi:2.0,cat:"snack",region:"both"},
+{id:493,name:"Pringles Sour Cream & Onion",brand:"Pringles",cal:538,p:5.0,c:53.0,f:34.0,fi:2.0,cat:"snack",region:"both"},
+{id:494,name:"Nutella (per 15g serving)",brand:"Ferrero",cal:541,p:6.0,c:57.5,f:30.9,fi:3.4,cat:"snack",region:"both"},
+{id:495,name:"Ferrero Rocher (1 pc ~12g)",brand:"Ferrero",cal:567,p:7.0,c:52.0,f:36.0,fi:3.0,cat:"snack",region:"both"},
+{id:496,name:"Snickers (52g bar)",brand:"Mars",cal:488,p:8.0,c:60.0,f:25.0,fi:1.5,cat:"snack",region:"both"},
+{id:497,name:"Twix (2-bar ~50g)",brand:"Mars",cal:500,p:4.5,c:64.0,f:24.5,fi:1.0,cat:"snack",region:"both"},
+{id:498,name:"M&M's Peanut (100g)",brand:"Mars",cal:520,p:11.0,c:62.0,f:26.0,fi:2.0,cat:"snack",region:"both"},
+{id:499,name:"Red Bull (250ml can)",brand:"Red Bull",cal:46,p:0,c:11.0,f:0,fi:0,cat:"snack",region:"both"},
+{id:500,name:"Monster Energy (500ml)",brand:"Monster",cal:46,p:0,c:11.2,f:0,fi:0,cat:"snack",region:"both"},
+
+// ────────────────────────────────────────
+// GRAINS / STAPLES
+// ────────────────────────────────────────
+{id:510,name:"Oats (rolled, raw)",brand:"Generic",cal:389,p:16.9,c:66.3,f:6.9,fi:10.6,cat:"grain",region:"both"},
+{id:511,name:"Whole Wheat Bread (1 slice ~30g)",brand:"Generic",cal:247,p:9.0,c:46.5,f:3.5,fi:4.5,cat:"grain",region:"both"},
+{id:512,name:"White Bread (1 slice ~30g)",brand:"Generic",cal:265,p:8.0,c:49.0,f:3.2,fi:2.7,cat:"grain",region:"both"},
+{id:513,name:"Cooked Pasta (wheat)",brand:"Generic",cal:131,p:5.0,c:25.1,f:1.1,fi:1.8,cat:"grain",region:"both"},
+{id:514,name:"Quinoa (cooked)",brand:"Generic",cal:120,p:4.4,c:21.3,f:1.9,fi:2.8,cat:"grain",region:"both"},
+{id:515,name:"Jowar (cooked)",brand:"Homemade",cal:112,p:3.8,c:23.2,f:0.8,fi:1.6,cat:"grain",region:"indian"},
+{id:516,name:"Bajra (pearl millet, cooked)",brand:"Homemade",cal:106,p:3.2,c:21.8,f:1.4,fi:1.3,cat:"grain",region:"indian"},
+{id:517,name:"Ragi (finger millet) Flour",brand:"Generic",cal:328,p:7.7,c:72.0,f:1.5,fi:11.5,cat:"grain",region:"indian"},
+{id:518,name:"Ragi Mudde",brand:"Homemade",cal:165,p:4.5,c:34.0,f:1.5,fi:4.5,cat:"grain",region:"indian"},
+{id:519,name:"Makki ki Roti (corn flatbread)",brand:"Homemade",cal:270,p:7.5,c:52.0,f:5.0,fi:2.5,cat:"grain",region:"indian"},
+{id:520,name:"Dalia (broken wheat, cooked)",brand:"Homemade",cal:120,p:4.5,c:24.0,f:0.8,fi:3.5,cat:"grain",region:"indian"},
+{id:521,name:"Besan (chickpea flour)",brand:"Generic",cal:387,p:22.0,c:57.8,f:6.7,fi:10.8,cat:"grain",region:"indian"},
+{id:522,name:"Semolina / Suji",brand:"Generic",cal:360,p:12.0,c:73.0,f:1.5,fi:3.0,cat:"grain",region:"indian"},
+{id:523,name:"Poha (flattened rice, uncooked)",brand:"Generic",cal:345,p:6.5,c:77.0,f:1.0,fi:1.2,cat:"grain",region:"indian"},
+
+// ────────────────────────────────────────
+// NUTS & SEEDS
+// ────────────────────────────────────────
+{id:530,name:"Almonds (raw)",brand:"Generic",cal:579,p:21.2,c:21.6,f:49.9,fi:12.5,cat:"snack",region:"both"},
+{id:531,name:"Cashews (raw)",brand:"Generic",cal:553,p:18.2,c:30.2,f:43.9,fi:3.3,cat:"snack",region:"both"},
+{id:532,name:"Walnuts",brand:"Generic",cal:654,p:15.2,c:13.7,f:65.2,fi:6.7,cat:"snack",region:"both"},
+{id:533,name:"Peanuts (roasted)",brand:"Generic",cal:599,p:28.0,c:17.6,f:50.4,fi:7.5,cat:"protein",region:"both"},
+{id:534,name:"Pumpkin Seeds",brand:"Generic",cal:559,p:30.2,c:10.7,f:49.1,fi:6.0,cat:"snack",region:"both"},
+{id:535,name:"Pistachios",brand:"Generic",cal:560,p:20.0,c:28.0,f:45.0,fi:10.0,cat:"snack",region:"both"},
+{id:536,name:"Flaxseeds (alsi)",brand:"Generic",cal:534,p:18.3,c:28.9,f:42.2,fi:27.3,cat:"snack",region:"both"},
+{id:537,name:"Chia Seeds",brand:"Generic",cal:486,p:16.5,c:42.1,f:30.7,fi:34.4,cat:"snack",region:"both"},
+{id:538,name:"Sunflower Seeds",brand:"Generic",cal:584,p:20.8,c:20.0,f:51.5,fi:8.6,cat:"snack",region:"both"},
+{id:539,name:"Raisins (kismis)",brand:"Generic",cal:299,p:3.1,c:79.2,f:0.5,fi:3.7,cat:"snack",region:"both"},
+{id:540,name:"Dates (khajoor, 1 pc ~8g)",brand:"Generic",cal:277,p:1.8,c:74.0,f:0.2,fi:6.7,cat:"snack",region:"both"},
+{id:541,name:"Anjeer / Figs (dried)",brand:"Generic",cal:249,p:3.3,c:63.9,f:0.9,fi:9.8,cat:"snack",region:"both"},
+{id:542,name:"Apricots (dried)",brand:"Generic",cal:241,p:3.4,c:62.6,f:0.5,fi:7.3,cat:"snack",region:"both"},
+{id:543,name:"Roasted Chana",brand:"Generic",cal:364,p:22.5,c:55.0,f:5.5,fi:12.5,cat:"protein",region:"indian"},
+{id:544,name:"Makhana / Fox Nuts (roasted)",brand:"Generic",cal:347,p:9.7,c:76.9,f:0.1,fi:14.5,cat:"snack",region:"indian"},
+{id:545,name:"Groundnut Chikki",brand:"Generic",cal:510,p:13.0,c:52.0,f:29.0,fi:5.0,cat:"snack",region:"indian"},
+
+// ────────────────────────────────────────
+// FRUITS
+// ────────────────────────────────────────
+{id:550,name:"Banana (1 medium ~120g)",brand:"Fresh",cal:89,p:1.1,c:22.8,f:0.3,fi:2.6,cat:"fruit",region:"both"},
+{id:551,name:"Apple (1 medium ~182g)",brand:"Fresh",cal:52,p:0.3,c:13.8,f:0.2,fi:2.4,cat:"fruit",region:"both"},
+{id:552,name:"Mango (Alphonso, 100g)",brand:"Fresh",cal:60,p:0.8,c:15.0,f:0.4,fi:1.6,cat:"fruit",region:"both"},
+{id:553,name:"Papaya (100g)",brand:"Fresh",cal:43,p:0.5,c:10.8,f:0.3,fi:1.7,cat:"fruit",region:"both"},
+{id:554,name:"Guava (1 medium ~55g)",brand:"Fresh",cal:68,p:2.6,c:14.3,f:1.0,fi:5.4,cat:"fruit",region:"both"},
+{id:555,name:"Pomegranate (100g)",brand:"Fresh",cal:83,p:1.7,c:18.7,f:1.2,fi:4.0,cat:"fruit",region:"both"},
+{id:556,name:"Orange (1 medium ~130g)",brand:"Fresh",cal:47,p:0.9,c:11.8,f:0.1,fi:2.4,cat:"fruit",region:"both"},
+{id:557,name:"Grapes (100g)",brand:"Fresh",cal:69,p:0.7,c:18.1,f:0.2,fi:0.9,cat:"fruit",region:"both"},
+{id:558,name:"Strawberries (100g)",brand:"Fresh",cal:32,p:0.7,c:7.7,f:0.3,fi:2.0,cat:"fruit",region:"both"},
+{id:559,name:"Watermelon (100g)",brand:"Fresh",cal:30,p:0.6,c:7.6,f:0.2,fi:0.4,cat:"fruit",region:"both"},
+{id:560,name:"Chikoo / Sapota (100g)",brand:"Fresh",cal:83,p:0.4,c:19.9,f:1.1,fi:5.3,cat:"fruit",region:"indian"},
+{id:561,name:"Jamun (100g)",brand:"Fresh",cal:62,p:0.7,c:14.0,f:0.2,fi:0.6,cat:"fruit",region:"indian"},
+{id:562,name:"Amla / Indian Gooseberry (100g)",brand:"Fresh",cal:44,p:0.9,c:10.2,f:0.6,fi:4.3,cat:"fruit",region:"indian"},
+{id:563,name:"Lychee (100g)",brand:"Fresh",cal:66,p:0.8,c:16.5,f:0.4,fi:1.3,cat:"fruit",region:"both"},
+{id:564,name:"Coconut (fresh, 100g)",brand:"Fresh",cal:354,p:3.3,c:15.2,f:33.5,fi:9.0,cat:"fruit",region:"indian"},
+{id:565,name:"Pineapple (100g)",brand:"Fresh",cal:50,p:0.5,c:13.1,f:0.1,fi:1.4,cat:"fruit",region:"both"},
+{id:566,name:"Kiwi (100g)",brand:"Fresh",cal:61,p:1.1,c:14.7,f:0.5,fi:3.0,cat:"fruit",region:"both"},
+{id:567,name:"Pear (100g)",brand:"Fresh",cal:57,p:0.4,c:15.2,f:0.1,fi:3.1,cat:"fruit",region:"both"},
+{id:568,name:"Plum (100g)",brand:"Fresh",cal:46,p:0.7,c:11.4,f:0.3,fi:1.4,cat:"fruit",region:"both"},
+{id:569,name:"Peach (100g)",brand:"Fresh",cal:39,p:0.9,c:9.5,f:0.3,fi:1.5,cat:"fruit",region:"both"},
+{id:570,name:"Tender Coconut Water (100ml)",brand:"Fresh",cal:19,p:0.7,c:3.7,f:0.2,fi:1.1,cat:"fruit",region:"indian"},
+{id:571,name:"Jackfruit (raw, 100g)",brand:"Fresh",cal:95,p:1.7,c:23.2,f:0.6,fi:1.5,cat:"fruit",region:"indian"},
+
+// ────────────────────────────────────────
+// VEGETABLES
+// ────────────────────────────────────────
+{id:580,name:"Spinach (cooked, 100g)",brand:"Fresh",cal:23,p:2.9,c:3.6,f:0.4,fi:2.4,cat:"veg",region:"both"},
+{id:581,name:"Broccoli (cooked, 100g)",brand:"Fresh",cal:35,p:2.4,c:7.2,f:0.4,fi:3.3,cat:"veg",region:"both"},
+{id:582,name:"Carrot (raw, 100g)",brand:"Fresh",cal:41,p:0.9,c:9.6,f:0.2,fi:2.8,cat:"veg",region:"both"},
+{id:583,name:"Potato (boiled, 100g)",brand:"Fresh",cal:87,p:1.9,c:20.1,f:0.1,fi:1.8,cat:"veg",region:"both"},
+{id:584,name:"Sweet Potato (100g)",brand:"Fresh",cal:86,p:1.6,c:20.1,f:0.1,fi:3.0,cat:"veg",region:"both"},
+{id:585,name:"Onion (100g)",brand:"Fresh",cal:40,p:1.1,c:9.3,f:0.1,fi:1.7,cat:"veg",region:"both"},
+{id:586,name:"Tomato (100g)",brand:"Fresh",cal:18,p:0.9,c:3.9,f:0.2,fi:1.2,cat:"veg",region:"both"},
+{id:587,name:"Cucumber (100g)",brand:"Fresh",cal:15,p:0.7,c:3.6,f:0.1,fi:0.5,cat:"veg",region:"both"},
+{id:588,name:"Cauliflower (100g)",brand:"Fresh",cal:25,p:1.9,c:5.0,f:0.3,fi:2.0,cat:"veg",region:"both"},
+{id:589,name:"Peas (green, boiled 100g)",brand:"Fresh",cal:84,p:5.4,c:15.6,f:0.4,fi:5.5,cat:"veg",region:"both"},
+{id:590,name:"Bottle Gourd / Lauki (100g)",brand:"Fresh",cal:14,p:0.6,c:3.4,f:0.02,fi:0.5,cat:"veg",region:"indian"},
+{id:591,name:"Bitter Gourd / Karela (100g)",brand:"Fresh",cal:34,p:1.0,c:7.0,f:0.2,fi:2.8,cat:"veg",region:"indian"},
+{id:592,name:"Ridge Gourd / Turai (100g)",brand:"Fresh",cal:20,p:0.5,c:4.3,f:0.1,fi:0.5,cat:"veg",region:"indian"},
+{id:593,name:"Ladies Finger / Bhindi (100g)",brand:"Fresh",cal:33,p:1.9,c:7.5,f:0.2,fi:3.2,cat:"veg",region:"indian"},
+{id:594,name:"Eggplant / Baingan (100g)",brand:"Fresh",cal:25,p:1.0,c:5.9,f:0.2,fi:3.0,cat:"veg",region:"indian"},
+{id:595,name:"Drumstick / Moringa (100g)",brand:"Fresh",cal:37,p:2.1,c:8.5,f:0.2,fi:3.2,cat:"veg",region:"indian"},
+{id:596,name:"Arbi / Colocasia (boiled)",brand:"Fresh",cal:98,p:2.5,c:22.0,f:0.5,fi:4.5,cat:"veg",region:"indian"},
+{id:597,name:"Banana Flower (100g)",brand:"Fresh",cal:51,p:1.6,c:9.9,f:0.6,fi:5.7,cat:"veg",region:"indian"},
+{id:598,name:"Raw Banana (100g)",brand:"Fresh",cal:89,p:1.3,c:23.0,f:0.1,fi:2.6,cat:"veg",region:"indian"},
+{id:599,name:"Tinda (Indian Round Gourd, 100g)",brand:"Fresh",cal:21,p:0.8,c:4.3,f:0.1,fi:1.0,cat:"veg",region:"indian"},
+{id:600,name:"Pumpkin / Kaddu (cooked)",brand:"Fresh",cal:26,p:1.0,c:6.5,f:0.1,fi:0.5,cat:"veg",region:"both"},
+{id:601,name:"Corn / Maize (boiled, 100g)",brand:"Fresh",cal:96,p:3.4,c:21.0,f:1.5,fi:2.0,cat:"veg",region:"both"},
+{id:602,name:"Capsicum / Bell Pepper (100g)",brand:"Fresh",cal:26,p:1.0,c:6.0,f:0.3,fi:2.1,cat:"veg",region:"both"},
+{id:603,name:"Mushroom (cooked, 100g)",brand:"Fresh",cal:22,p:3.1,c:3.3,f:0.3,fi:1.0,cat:"veg",region:"both"},
+{id:604,name:"Beetroot (boiled, 100g)",brand:"Fresh",cal:44,p:1.7,c:10.0,f:0.2,fi:2.0,cat:"veg",region:"both"},
+{id:605,name:"Radish / Mooli (100g)",brand:"Fresh",cal:16,p:0.7,c:3.4,f:0.1,fi:1.6,cat:"veg",region:"indian"},
+{id:606,name:"Raw Papaya (100g)",brand:"Fresh",cal:32,p:0.6,c:7.8,f:0.1,fi:1.8,cat:"veg",region:"indian"},
+{id:607,name:"Ivy Gourd / Kundru (100g)",brand:"Fresh",cal:18,p:0.7,c:3.8,f:0.1,fi:1.6,cat:"veg",region:"indian"},
+{id:608,name:"Fenugreek Leaves / Methi (100g)",brand:"Fresh",cal:49,p:4.4,c:6.0,f:0.9,fi:2.7,cat:"veg",region:"indian"},
+{id:609,name:"Curry Leaves (10g)",brand:"Fresh",cal:10,p:0.3,c:2.0,f:0.1,fi:0.7,cat:"veg",region:"indian"},
+{id:610,name:"Coriander Leaves / Dhania (100g)",brand:"Fresh",cal:23,p:2.1,c:3.7,f:0.5,fi:2.8,cat:"veg",region:"indian"},
+
+// ────────────────────────────────────────
+// DAIRY INTERNATIONAL / MISC
+// ────────────────────────────────────────
+{id:620,name:"Greek Yogurt (full fat, 100g)",brand:"Generic",cal:97,p:9.0,c:3.6,f:5.0,fi:0,cat:"dairy",region:"both"},
+{id:621,name:"Skyr / Icelandic Yogurt",brand:"Generic",cal:65,p:11.0,c:4.0,f:0.2,fi:0,cat:"dairy",region:"both"},
+{id:622,name:"Cheddar Cheese (100g)",brand:"Generic",cal:402,p:25.0,c:1.3,f:33.0,fi:0,cat:"dairy",region:"both"},
+{id:623,name:"Cottage Cheese (low fat, 100g)",brand:"Generic",cal:98,p:11.1,c:3.4,f:4.3,fi:0,cat:"dairy",region:"both"},
+{id:624,name:"Mozzarella Cheese (100g)",brand:"Generic",cal:280,p:28.0,c:2.2,f:17.0,fi:0,cat:"dairy",region:"both"},
+{id:625,name:"Butter (salted, 100g)",brand:"Generic",cal:717,p:0.9,c:0.1,f:81.0,fi:0,cat:"dairy",region:"both"},
+{id:626,name:"Cream (heavy, 100ml)",brand:"Generic",cal:340,p:2.5,c:3.0,f:35.0,fi:0,cat:"dairy",region:"both"},
+{id:627,name:"Coconut Milk (100ml)",brand:"Generic",cal:230,p:2.3,c:5.5,f:23.8,fi:2.2,cat:"dairy",region:"both"},
+{id:628,name:"Soy Milk (unsweetened, 100ml)",brand:"Generic",cal:54,p:4.5,c:4.0,f:2.0,fi:0.5,cat:"dairy",region:"both"},
+{id:629,name:"Almond Milk (unsweetened, 100ml)",brand:"Generic",cal:30,p:1.0,c:3.0,f:1.5,fi:0.5,cat:"dairy",region:"both"},
+
+// ────────────────────────────────────────
+// PROTEINS (non-supplement)
+// ────────────────────────────────────────
+{id:640,name:"Salmon (cooked, 100g)",brand:"Generic",cal:208,p:20.0,c:0,f:13.4,fi:0,cat:"protein",region:"both"},
+{id:641,name:"Rohu Fish (cooked, 100g)",brand:"Homemade",cal:97,p:16.5,c:0,f:3.5,fi:0,cat:"protein",region:"indian"},
+{id:642,name:"Pomfret (cooked, 100g)",brand:"Homemade",cal:103,p:18.0,c:0,f:3.8,fi:0,cat:"protein",region:"indian"},
+{id:643,name:"Prawns (cooked, 100g)",brand:"Homemade",cal:99,p:21.0,c:0,f:1.0,fi:0,cat:"protein",region:"both"},
+{id:644,name:"Mutton (lean, cooked, 100g)",brand:"Homemade",cal:190,p:25.0,c:0,f:10.0,fi:0,cat:"protein",region:"indian"},
+{id:645,name:"Turkey Breast (cooked, 100g)",brand:"Generic",cal:157,p:29.9,c:0,f:3.6,fi:0,cat:"protein",region:"both"},
+{id:646,name:"Tofu (firm, 100g)",brand:"Generic",cal:76,p:8.0,c:1.9,f:4.2,fi:0.3,cat:"protein",region:"both"},
+{id:647,name:"Tempeh (100g)",brand:"Generic",cal:193,p:20.3,c:9.4,f:10.8,fi:0,cat:"protein",region:"both"},
+{id:648,name:"Lentils / Masoor (cooked, 100g)",brand:"Generic",cal:116,p:9.0,c:20.1,f:0.4,fi:7.9,cat:"protein",region:"both"},
+{id:649,name:"Black Beans (cooked, 100g)",brand:"Generic",cal:132,p:8.9,c:23.7,f:0.5,fi:8.7,cat:"protein",region:"both"},
+{id:650,name:"Edamame (boiled, 100g)",brand:"Generic",cal:121,p:11.9,c:8.9,f:5.2,fi:5.2,cat:"protein",region:"both"},
+
+// ────────────────────────────────────────
+// CONDIMENTS & SAUCES
+// ────────────────────────────────────────
+{id:660,name:"Olive Oil (1 tbsp 14g)",brand:"Generic",cal:884,p:0,c:0,f:100,fi:0,cat:"grain",region:"both"},
+{id:661,name:"Coconut Oil (1 tbsp)",brand:"Generic",cal:862,p:0,c:0,f:99.1,fi:0,cat:"grain",region:"indian"},
+{id:662,name:"Mustard Oil",brand:"Generic",cal:884,p:0,c:0,f:100,fi:0,cat:"grain",region:"indian"},
+{id:663,name:"Honey (raw, 1 tbsp 21g)",brand:"Generic",cal:304,p:0.3,c:82.4,f:0,fi:0.2,cat:"snack",region:"both"},
+{id:664,name:"Ketchup (1 tbsp ~15g)",brand:"Generic",cal:101,p:1.0,c:26.0,f:0.1,fi:0.3,cat:"snack",region:"both"},
+{id:665,name:"Soy Sauce (1 tbsp)",brand:"Generic",cal:53,p:5.0,c:8.0,f:0.1,fi:0.1,cat:"snack",region:"both"},
+{id:666,name:"Mustard (1 tsp)",brand:"Generic",cal:66,p:3.6,c:5.8,f:3.6,fi:3.2,cat:"snack",region:"both"},
+{id:667,name:"Tamarind (raw, 100g)",brand:"Fresh",cal:239,p:2.8,c:62.5,f:0.6,fi:5.1,cat:"snack",region:"indian"},
+{id:668,name:"Green Chutney (per tbsp)",brand:"Homemade",cal:22,p:1.0,c:2.5,f:0.8,fi:1.2,cat:"snack",region:"indian"},
+{id:669,name:"Imli / Tamarind Chutney (tbsp)",brand:"Homemade",cal:45,p:0.3,c:11.0,f:0.1,fi:0.3,cat:"snack",region:"indian"},
+{id:670,name:"Pickle / Achar (mixed, 1 tbsp)",brand:"Homemade",cal:38,p:0.3,c:2.5,f:3.0,fi:0.5,cat:"snack",region:"indian"},
 ];
 
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════════════════════
 // STATE
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════════════════════
 const MEALS = ["Breakfast","Lunch","Dinner","Snacks"];
 let currentFilter = 'all';
 let selectedFood = null;
@@ -693,9 +1082,9 @@ function todayKey(){return new Date().toISOString().slice(0,10);}
 function getLog(){return JSON.parse(localStorage.getItem('log_'+todayKey())||'[]');}
 function saveLog(log){localStorage.setItem('log_'+todayKey(),JSON.stringify(log));}
 
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════════════════════
 // NAVIGATION
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════════════════════
 function showPage(id,btn){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
@@ -707,9 +1096,9 @@ function showPage(id,btn){
   if(id==='search') {doSearch(); document.getElementById('searchInput').focus();}
 }
 
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════════════════════
 // HOME
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════════════════════
 function renderHome(){
   const log = getLog();
   let totalCal=0,totalP=0,totalC=0,totalF=0,totalFi=0;
@@ -724,7 +1113,6 @@ function renderHome(){
   totalCal=Math.round(totalCal); totalP=Math.round(totalP);
   totalC=Math.round(totalC); totalF=Math.round(totalF); totalFi=Math.round(totalFi);
 
-  // Ring
   const pct = Math.min(totalCal/goals.cal,1);
   const circ = 465;
   document.getElementById('ringFill').style.strokeDashoffset = circ - circ*pct;
@@ -736,21 +1124,19 @@ function renderHome(){
   remEl.textContent = rem>=0 ? rem+' left' : Math.abs(rem)+' over';
   remEl.style.color = rem>=0 ? 'var(--green)' : '#ff4444';
 
-  // Macros
   document.getElementById('totalProtein').textContent = totalP+'g';
   document.getElementById('totalCarbs').textContent = totalC+'g';
   document.getElementById('totalFat').textContent = totalF+'g';
-  const setBar=(id,val,goal,lbl)=>{
+  const setBar=(id,val,goal)=>{
     const pct = Math.min(val/goal*100,100);
     document.getElementById(id).style.width = pct+'%';
     document.getElementById(id+'Val').textContent = val+'/'+goal+'g';
   };
-  setBar('barProtein',totalP,goals.p,'barProteinVal');
-  setBar('barCarbs',totalC,goals.c,'barCarbsVal');
-  setBar('barFat',totalF,goals.f,'barFatVal');
-  setBar('barFiber',totalFi,goals.fi,'barFiberVal');
+  setBar('barProtein',totalP,goals.p);
+  setBar('barCarbs',totalC,goals.c);
+  setBar('barFat',totalF,goals.f);
+  setBar('barFiber',totalFi,goals.fi);
 
-  // Meal sections
   const container = document.getElementById('mealsContainer');
   container.innerHTML='';
   MEALS.forEach(meal=>{
@@ -765,10 +1151,10 @@ function renderHome(){
       <button class="add-btn" onclick="openSearchForMeal('${meal}')">+ Add</button>
     </div>
     ${items.length===0?`<div class="empty" style="padding:14px 0 4px;"><div class="empty-txt" style="font-size:12px;">No items yet</div></div>`:''}
-    ${items.map((item,idx)=>`<div class="log-item">
+    ${items.map(item=>`<div class="log-item">
       <div>
         <div class="log-name">${item.food.name}</div>
-        <div class="log-brand">${item.food.brand} · ${item.qty}g</div>
+        <div class="log-brand">${item.food.brand} · ${item.portion||item.qty+'g'}</div>
       </div>
       <div class="log-right">
         <div class="log-cal">${Math.round(item.food.cal*item.qty/100)}</div>
@@ -794,9 +1180,9 @@ function delLog(id){
   renderHome();
 }
 
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════════════════════
 // SEARCH
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════════════════════
 function setFilter(f, el){
   currentFilter=f;
   document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
@@ -807,14 +1193,14 @@ function setFilter(f, el){
 function doSearch(){
   const q = document.getElementById('searchInput').value.toLowerCase().trim();
   let results = FOODS;
-  if(currentFilter==='indian') results = results.filter(f=>f.region==='indian');
+  if(currentFilter==='indian') results = results.filter(f=>f.region==='indian'||f.region==='both');
   else if(currentFilter==='brand') results = results.filter(f=>f.brand!=='Homemade'&&f.brand!=='Generic'&&f.brand!=='Fresh');
   else if(currentFilter!=='all') results = results.filter(f=>f.cat===currentFilter);
   if(q) results = results.filter(f=>
     f.name.toLowerCase().includes(q)||
     f.brand.toLowerCase().includes(q)
   );
-  results = results.slice(0,50);
+  results = results.slice(0,60);
   const container = document.getElementById('searchResults');
   if(results.length===0){
     container.innerHTML='<div class="empty"><div class="empty-icon">🔍</div><div class="empty-txt">No results found</div></div>';
@@ -835,20 +1221,30 @@ function doSearch(){
   `).join('');
 }
 
-// ═══════════════════════════════════════════
-// MODAL
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════════════════════
+// MODAL + PORTIONS
+// ═══════════════════════════════════════════════════
+function getPortions(food){
+  return PORTION_PRESETS[food.cat] || PORTION_PRESETS.default;
+}
+
 function openAddModal(foodId){
   selectedFood = FOODS.find(f=>f.id===foodId);
   if(!selectedFood) return;
   document.getElementById('modalFoodName').textContent = selectedFood.name;
   document.getElementById('modalFoodBrand').textContent = selectedFood.brand + ' · per 100g';
   document.getElementById('modalQty').value = 100;
+
+  // Build portion chips
+  const portions = getPortions(selectedFood);
+  const chipsEl = document.getElementById('portionChips');
+  chipsEl.innerHTML = portions.map((p,i)=>
+    `<span class="portion-chip" onclick="applyPortion(${p.g},'${p.label}',this)">${p.label} (${p.g}g)</span>`
+  ).join('');
+
   updateModalCalc();
   document.querySelectorAll('.meal-chip').forEach(c=>{
     c.classList.toggle('sel', c.dataset.meal===selectedMeal);
-  });
-  document.querySelectorAll('.meal-chip').forEach(c=>{
     c.onclick = ()=>{
       document.querySelectorAll('.meal-chip').forEach(x=>x.classList.remove('sel'));
       c.classList.add('sel');
@@ -856,6 +1252,20 @@ function openAddModal(foodId){
     };
   });
   document.getElementById('addModal').classList.add('open');
+}
+
+function applyPortion(grams, label, el){
+  document.getElementById('modalQty').value = grams;
+  document.querySelectorAll('.portion-chip').forEach(c=>c.classList.remove('sel-portion'));
+  el.classList.add('sel-portion');
+  // store label for display
+  if(selectedFood) selectedFood._portionLabel = label + ' (' + grams + 'g)';
+  updateModalCalc();
+}
+
+function clearPortionSel(){
+  document.querySelectorAll('.portion-chip').forEach(c=>c.classList.remove('sel-portion'));
+  if(selectedFood) selectedFood._portionLabel = null;
 }
 
 function updateModalCalc(){
@@ -874,7 +1284,9 @@ function updateModalCalc(){
 
 function closeModal(){
   document.getElementById('addModal').classList.remove('open');
+  if(selectedFood) selectedFood._portionLabel = null;
 }
+
 function closeModalBg(e){
   if(e.target===document.getElementById('addModal')) closeModal();
 }
@@ -882,11 +1294,13 @@ function closeModalBg(e){
 function confirmAdd(){
   if(!selectedFood) return;
   const qty = parseFloat(document.getElementById('modalQty').value)||100;
+  const portionLabel = selectedFood._portionLabel || (qty+'g');
   const log = getLog();
   log.push({
     id: Date.now().toString(),
     food: selectedFood,
     qty: qty,
+    portion: portionLabel,
     meal: selectedMeal,
     time: new Date().toISOString()
   });
@@ -895,9 +1309,9 @@ function confirmAdd(){
   showPage('home', document.querySelector('.nav-btn:nth-child(1)'));
 }
 
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════════════════════
 // GOALS
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════════════════════
 function renderGoals(){
   document.getElementById('goalCal').value = goals.cal;
   document.getElementById('goalProtein').value = goals.p;
@@ -934,8 +1348,7 @@ function saveGoals(){
   renderHome();
   const btn = document.querySelector('.save-goal-btn');
   btn.textContent = '✓ Saved!';
-  btn.style.background = 'linear-gradient(135deg,var(--green),#04a87a)';
-  setTimeout(()=>{btn.textContent='Save Goals';btn.style.background='';},2000);
+  setTimeout(()=>{btn.textContent='Save Goals';},2000);
 }
 
 function calcTDEE(){
@@ -965,9 +1378,9 @@ function setTDEEGoal(cal){
   saveGoals();
 }
 
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════════════════════
 // HISTORY
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════════════════════
 function renderHistory(){
   const days=[];
   for(let i=6;i>=0;i--){
@@ -998,14 +1411,13 @@ function renderHistory(){
   `).join('');
 }
 
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════════════════════
 // INIT
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════════════════════
 document.getElementById('todayLabel').textContent = new Date().toLocaleDateString('en-IN',{weekday:'short',day:'numeric',month:'short'});
 doSearch();
 renderHome();
 
-// Dismiss install banner after 10s
 setTimeout(()=>{
   const b=document.getElementById('installBanner');
   if(b){ b.style.transition='opacity .5s'; b.style.opacity='0'; setTimeout(()=>b.remove(),500); }
