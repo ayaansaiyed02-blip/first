@@ -267,6 +267,222 @@ select.goal-inp{font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;}
 ::-webkit-scrollbar{width:4px;height:4px;}
 ::-webkit-scrollbar-track{background:transparent;}
 ::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px;}
+
+/* ═══════════ MOBILE OPTIMIZATIONS ═══════════ */
+@media (max-width:768px){
+  body{padding-bottom:80px;}
+  .topbar{padding:10px 14px 0;}
+  .logo{font-size:24px;letter-spacing:1px;}
+  .date-pill,.streak-pill{font-size:10px;padding:3px 8px;}
+  .page{padding:0 12px;}
+  .card,.meal-card,.ring-card{padding:14px;border-radius:14px;}
+  .card{margin-top:8px;}
+  .ring-wrap{gap:12px;}
+  .ring-inner{flex-shrink:0;}
+  .ring-svg{width:110px;height:110px;}
+  .ring-num{font-size:32px;}
+  .ring-stats{gap:8px;}
+  .rstat-name{font-size:9px;}
+  .rstat-val{font-size:10px;}
+  .meal-icon{width:30px;height:30px;font-size:14px;}
+  .meal-title{font-size:13px;}
+  .meal-kcal-badge{font-size:9px;padding:2px 8px;}
+  .log-name{font-size:11px;}
+  .log-meta{font-size:9px;}
+  .log-cal{font-size:11px;}
+  .search-box{padding:10px 14px;}
+  .search-box input{font-size:14px;}
+  .chips-row{gap:5px;padding-bottom:3px;margin-bottom:10px;}
+  .chip{padding:4px 11px;font-size:10px;}
+  .food-card{padding:10px 12px;margin-bottom:6px;}
+  .food-name{font-size:12px;}
+  .food-cal-big{font-size:24px;}
+  .food-cal-unit{font-size:8px;}
+  .section-hd{font-size:18px;margin:14px 0 8px;}
+  .goal-row{gap:4px;margin-bottom:10px;}
+  .goal-lbl{font-size:10px;}
+  .goal-inp{font-size:16px;padding:9px 12px;}
+  .save-btn,.tdee-btn{padding:12px;font-size:13px;margin-top:3px;}
+  .stat-box{padding:11px;}
+  .stat-v{font-size:26px;}
+  .stat-l{font-size:9px;}
+  .quest-card{padding:12px 14px;margin-bottom:6px;}
+  .quest-icon{width:38px;height:38px;font-size:18px;}
+  .quest-title{font-size:12px;}
+  .quest-desc{font-size:10px;}
+  .quest-xp{font-size:10px;}
+  .xp-title{font-size:16px;}
+  .xp-level{font-size:11px;}
+  .achievement-grid{grid-template-columns:repeat(4,1fr);gap:6px;}
+  .ach-emoji{font-size:20px;}
+  .ach-name{font-size:8px;}
+  .portions-lbl{font-size:9px;margin-bottom:6px;}
+  .portions-grid{gap:5px;margin-bottom:12px;}
+  .portion-btn{padding:5px 10px;font-size:10px;}
+  .qty-row{gap:8px;margin-bottom:12px;}
+  .qty-btn{width:36px;height:36px;font-size:18px;}
+  .qty-input{font-size:18px;padding:7px 12px;}
+  .qty-unit{font-size:11px;}
+  .macro-preview{gap:5px;margin-bottom:14px;}
+  .mp-item{padding:7px 5px;border-radius:8px;}
+  .mp-val{font-size:12px;}
+  .mp-lbl{font-size:8px;}
+  .meal-sel-grid{grid-template-columns:repeat(4,1fr);gap:5px;margin-bottom:12px;}
+  .meal-sel-btn{padding:8px 3px;font-size:9px;}
+  .meal-sel-btn .m-icon{font-size:16px;margin-bottom:2px;}
+  .add-log-btn{padding:13px;font-size:14px;box-shadow:0 6px 20px rgba(255,95,31,.4);}
+  .nav-btn{padding:8px 4px 6px;gap:2px;font-size:8px;}
+  .nav-icon-wrap{width:32px;height:32px;font-size:16px;}
+  .modal{border-radius:20px 20px 0 0;padding:16px 14px 36px;}
+  .modal-handle{width:32px;height:2px;margin:0 auto 14px;}
+  .modal-food-emoji{width:42px;height:42px;font-size:20px;}
+  .modal-food-name{font-size:16px;}
+  .modal-food-brand{font-size:10px;}
+  .modal-cal-big{font-size:42px;}
+  .modal-cal-lbl{font-size:9px;}
+  .modal-close-btn{width:28px;height:28px;font-size:15px;}
+  .hist-day-lbl{width:60px;font-size:10px;}
+  .hist-num{font-size:10px;width:60px;}
+  .empty-state{padding:20px 12px;}
+  .empty-state .ei{font-size:32px;margin-bottom:6px;}
+  .empty-state .et{font-size:12px;}
+}
+
+/* ═══════════ SMALL PHONES (max-width: 480px) ═══════════ */
+@media (max-width:480px){
+  body{padding-bottom:72px;}
+  .topbar{padding:8px 10px 0;}
+  .logo{font-size:22px;}
+  .topbar-right{gap:6px;}
+  .page{padding:0 10px;}
+  .card,.meal-card,.ring-card{padding:12px;margin-top:6px;border-radius:12px;box-shadow:0 4px 16px rgba(0,0,0,0.4);}
+  .ring-wrap{flex-direction:column;align-items:center;gap:10px;text-align:center;}
+  .ring-inner{position:relative;}
+  .ring-svg{width:100px;height:100px;}
+  .ring-num{font-size:28px;}
+  .ring-text{position:relative;inset:auto;}
+  .ring-stats{width:100%;flex-direction:row;gap:6px;}
+  .rstat{flex:1;}
+  .rstat-name{font-size:8px;}
+  .rstat-val{font-size:10px;}
+  .meal-hd{padding:11px 12px;gap:8px;}
+  .meal-icon{width:28px;height:28px;font-size:13px;}
+  .meal-title{font-size:12px;}
+  .meal-kcal-badge{font-size:8px;padding:2px 6px;}
+  .meal-add-btn{width:26px;height:26px;font-size:16px;}
+  .log-item{padding:8px 10px;gap:8px;}
+  .log-name{font-size:10px;}
+  .log-cal{font-size:10px;}
+  .log-del{font-size:13px;padding:3px;}
+  .search-box{padding:9px 12px;margin-bottom:10px;border-radius:14px;}
+  .search-box input{font-size:13px;}
+  .chips-row{gap:4px;margin-bottom:8px;}
+  .chip{padding:3px 9px;font-size:9px;}
+  .food-card{padding:9px 10px;margin-bottom:5px;border-radius:10px;}
+  .food-name{font-size:11px;}
+  .food-brand{font-size:9px;}
+  .food-macros{font-size:8px;}
+  .food-cal-big{font-size:22px;}
+  .section-hd{font-size:16px;margin:12px 0 6px;letter-spacing:.08em;}
+  .goal-row{gap:3px;margin-bottom:8px;}
+  .goal-lbl{font-size:9px;}
+  .goal-inp{font-size:15px;padding:8px 10px;}
+  .save-btn,.tdee-btn{padding:11px;font-size:12px;margin-top:2px;border-radius:12px;}
+  .stats-grid{gap:6px;}
+  .stat-box{padding:10px;border-radius:10px;}
+  .stat-v{font-size:24px;}
+  .stat-l{font-size:8px;}
+  .quest-card{padding:10px 12px;margin-bottom:5px;border-radius:12px;}
+  .quest-icon{width:36px;height:36px;font-size:16px;border-radius:10px;}
+  .quest-title{font-size:11px;}
+  .quest-desc{font-size:9px;}
+  .quest-prog-bar{height:3px;margin-top:5px;}
+  .quest-xp{font-size:9px;}
+  .quest-status{font-size:8px;}
+  .xp-bar-card{padding:12px 14px;margin-bottom:8px;border-radius:14px;}
+  .xp-title{font-size:14px;}
+  .xp-level{font-size:10px;}
+  .xp-progress-row{gap:8px;margin-top:8px;}
+  .xp-bar-bg{height:5px;}
+  .xp-pts{font-size:10px;}
+  .achievement-grid{grid-template-columns:repeat(4,1fr);gap:5px;margin-top:8px;}
+  .ach-item{padding:8px 5px;border-radius:8px;}
+  .ach-emoji{font-size:18px;}
+  .ach-name{font-size:7px;margin-top:3px;}
+  .portions-lbl{font-size:8px;margin-bottom:5px;}
+  .portions-grid{gap:4px;margin-bottom:10px;flex-wrap:wrap;}
+  .portion-btn{padding:4px 8px;font-size:9px;border-radius:18px;}
+  .qty-row{gap:6px;margin-bottom:10px;}
+  .qty-btn{width:34px;height:34px;font-size:16px;border-radius:8px;}
+  .qty-input{font-size:16px;padding:6px 10px;border-radius:8px;}
+  .qty-unit{font-size:10px;}
+  .macro-preview{gap:4px;margin-bottom:12px;grid-template-columns:repeat(4,1fr);}
+  .mp-item{padding:6px 4px;border-radius:8px;}
+  .mp-val{font-size:11px;}
+  .mp-lbl{font-size:7px;}
+  .meal-sel-grid{grid-template-columns:repeat(4,1fr);gap:4px;margin-bottom:10px;}
+  .meal-sel-btn{padding:7px 2px;font-size:8px;border-radius:8px;}
+  .meal-sel-btn .m-icon{font-size:15px;margin-bottom:1px;}
+  .add-log-btn{padding:12px;font-size:13px;border-radius:12px;box-shadow:0 4px 16px rgba(255,95,31,.4);}
+  .nav{backdrop-filter:blur(16px);}
+  .nav-btn{padding:7px 3px 5px;font-size:7px;}
+  .nav-icon-wrap{width:30px;height:30px;font-size:15px;border-radius:10px;}
+  .modal{border-radius:18px 18px 0 0;padding:14px 12px 32px;max-height:90vh;}
+  .modal-handle{width:30px;height:2px;margin:0 auto 12px;}
+  .modal-food-header{gap:10px;margin-bottom:12px;}
+  .modal-food-emoji{width:40px;height:40px;font-size:18px;border-radius:12px;}
+  .modal-food-name{font-size:15px;}
+  .modal-food-brand{font-size:9px;}
+  .modal-cal-big{font-size:38px;}
+  .modal-close-btn{width:26px;height:26px;font-size:14px;top:14px;right:14px;}
+  .toast{border-radius:18px;padding:10px 16px;font-size:11px;gap:6px;}
+  .hist-day-lbl{width:56px;font-size:9px;}
+  .hist-bar-wrap{height:6px;}
+  .hist-num{font-size:9px;width:50px;}
+  .empty-state{padding:18px 10px;}
+  .empty-state .ei{font-size:28px;margin-bottom:5px;}
+  .empty-state .et{font-size:11px;}
+}
+
+/* ═══════════ LANDSCAPE MODE ═══════════ */
+@media (max-height:500px){
+  body{padding-bottom:56px;}
+  .topbar{padding:6px 12px 0;}
+  .nav-btn{padding:6px 3px 4px;font-size:7px;}
+  .ring-inner{flex-shrink:0;}
+  .ring-svg{width:90px;height:90px;}
+  .ring-stats{gap:6px;}
+  .page{padding:0 8px;}
+  .card,.meal-card{margin-top:4px;padding:10px;}
+}
+
+/* ═══════════ LARGE PHONES (768px - 900px) ═══════════ */
+@media (min-width:769px) and (max-width:900px){
+  .ring-wrap{gap:14px;}
+  .ring-svg{width:120px;height:120px;}
+  .meal-card{margin-top:8px;}
+}
+
+/* ═══════════ TOUCH DEVICE OPTIMIZATIONS ═══════════ */
+@media (hover:none) and (pointer:coarse){
+  /* Increase touch target sizes */
+  .meal-add-btn,.qty-btn{min-width:44px;min-height:44px;}
+  .portion-btn,.chip{padding:8px 14px;}
+  /* Remove hover animations on touch devices for better performance */
+  .card:hover,.meal-card:hover,.ring-card:hover{transform:none;}
+  .food-card:hover{transform:none;}
+  /* Keep active states but optimize */
+  .add-log-btn:hover{transform:none;}
+  /* Disable animation on long lists for mobile performance */
+  .log-item{animation:none;}
+  .food-card{animation:none;}
+  .card{animation:none;}
+}
+
+/* ═══════════ REDUCE MOTION FOR ACCESSIBILITY ═══════════ */
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;}
+}
 </style>
 </head>
 <body>
