@@ -29,6 +29,7 @@
   --muted:  rgba(238,238,248,0.38);
   --muted2: rgba(238,238,248,0.18);
   --r: 16px; --rs: 10px; --rm: 20px;
+  --disable-animations: running;
 }
 
 /* ── ANIMATIONS ── */
@@ -43,14 +44,14 @@
 @keyframes ripple{0%{width:0;height:0;opacity:1}100%{width:40px;height:40px;opacity:0}}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
 html,body{height:100%;overscroll-behavior:none;}
-body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;padding-bottom:76px;backdrop-filter:blur(0px);}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;padding-bottom:76px;-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;}
 
 /* ── NOISE TEXTURE ── */
 body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");opacity:.4;pointer-events:none;z-index:0;}
 
 /* ── TOPBAR ── */
-.topbar{position:sticky;top:0;z-index:100;padding:14px 18px 0;display:flex;align-items:center;justify-content:space-between;background:linear-gradient(to bottom,var(--bg) 60%,rgba(8,8,16,0.8));backdrop-filter:blur(12px);box-shadow:0 8px 32px rgba(0,0,0,0.5);}
-.logo{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;background:linear-gradient(120deg,var(--fire),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;animation:float 3s ease-in-out infinite;}
+.topbar{position:sticky;top:0;z-index:100;padding:14px 18px 0;display:flex;align-items:center;justify-content:space-between;background:linear-gradient(to bottom,var(--bg) 60%,rgba(8,8,16,0.8));backdrop-filter:blur(8px);box-shadow:0 8px 32px rgba(0,0,0,0.5);will-change:transform;transform:translateZ(0);}
+.logo{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;background:linear-gradient(120deg,var(--fire),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;animation:float 3s ease-in-out infinite;animation-play-state:var(--disable-animations);}
 .topbar-right{display:flex;align-items:center;gap:8px;}
 .date-pill{background:var(--bg4);border:1px solid var(--border2);border-radius:20px;padding:4px 12px;font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.04em;}
 .streak-pill{background:linear-gradient(120deg,rgba(255,95,31,.18),rgba(255,184,48,.18));backdrop-filter:blur(8px);border:1px solid rgba(255,184,48,.5);border-radius:20px;padding:4px 10px;font-size:11px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:4px;transition:.3s;}
@@ -59,13 +60,13 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 /* ── PAGES ── */
 .page{display:none;padding:0 14px;animation:pgIn .4s cubic-bezier(.34,1.56,.64,1);}
 .page.active{display:block;}
-@keyframes pgIn{from{opacity:0;transform:translateY(20px);filter:blur(10px)}to{opacity:1;transform:translateY(0);filter:blur(0px)}}
+@keyframes pgIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 
 /* ── NAV ── */
-.nav{position:fixed;bottom:0;left:0;right:0;z-index:200;background:rgba(11,11,20,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:2px solid rgba(255,255,255,0.05);display:flex;padding-bottom:env(safe-area-inset-bottom);box-shadow:0 -8px 32px rgba(0,0,0,0.6);}
+.nav{position:fixed;bottom:0;left:0;right:0;z-index:200;background:rgba(11,11,20,.98);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:2px solid rgba(255,255,255,0.05);display:flex;padding-bottom:env(safe-area-inset-bottom);box-shadow:0 -8px 32px rgba(0,0,0,0.6);will-change:transform;transform:translateZ(0);}
 .nav-btn{flex:1;padding:10px 4px 8px;display:flex;flex-direction:column;align-items:center;gap:3px;border:none;background:none;color:var(--muted);font-size:9px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;cursor:pointer;transition:.3s;text-transform:uppercase;letter-spacing:.06em;position:relative;}
 .nav-btn:hover .nav-icon-wrap{border-color:rgba(255,255,255,0.2);background:rgba(255,255,255,0.06);}
-.nav-btn.active{color:var(--fire);animation:bounce .6s ease-in-out;}
+.nav-btn.active{color:var(--fire);animation:bounce .6s ease-in-out;animation-play-state:var(--disable-animations);}
 .nav-btn.active .nav-icon-wrap{background:rgba(255,95,31,.2);backdrop-filter:blur(8px);border-color:rgba(255,95,31,.5);box-shadow:0 6px 20px rgba(255,95,31,0.3);}
 .nav-icon-wrap{width:36px;height:36px;border-radius:12px;display:flex;align-items:center;justify-content:center;border:1px solid transparent;transition:.3s;font-size:18px;}
 
@@ -468,14 +469,21 @@ select.goal-inp{font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;}
   .meal-add-btn,.qty-btn{min-width:44px;min-height:44px;}
   .portion-btn,.chip{padding:8px 14px;}
   /* Remove hover animations on touch devices for better performance */
-  .card:hover,.meal-card:hover,.ring-card:hover{transform:none;}
-  .food-card:hover{transform:none;}
+  .card:hover,.meal-card:hover,.ring-card:hover{transform:none;transition:background-color .3s;}
+  .food-card:hover{transform:none;transition:background-color .3s;}
   /* Keep active states but optimize */
   .add-log-btn:hover{transform:none;}
   /* Disable animation on long lists for mobile performance */
   .log-item{animation:none;}
   .food-card{animation:none;}
   .card{animation:none;}
+  /* Optimize logo during scroll on mobile */
+  .logo{animation:none;}
+  .nav-btn.active{animation:none;}
+  /* Reduce backdrop-filter on mobile during scroll */
+  .nav{backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);}
+  .topbar{backdrop-filter:blur(6px);}
+  .card,.meal-card,.ring-card,.food-card,.search-box{backdrop-filter:blur(8px);}
 }
 
 /* ═══════════ REDUCE MOTION FOR ACCESSIBILITY ═══════════ */
@@ -1664,6 +1672,25 @@ function renderHistory(){
       <div class="hist-num">${d.total}</div>
     </div>`).join('');
 }
+
+// ═══════════════════════════════════════════════════════
+//  SCROLL OPTIMIZATION – Disable animations during scroll
+// ═══════════════════════════════════════════════════════
+let scrollTimeout;
+let isScrolling=false;
+document.addEventListener('scroll',()=>{
+  if(!isScrolling){
+    isScrolling=true;
+    document.documentElement.style.setProperty('--disable-animations','paused');
+    document.querySelector('.logo').style.animationPlayState='paused';
+  }
+  clearTimeout(scrollTimeout);
+  scrollTimeout=setTimeout(()=>{
+    isScrolling=false;
+    document.documentElement.style.setProperty('--disable-animations','running');
+    document.querySelector('.logo').style.animationPlayState='running';
+  },150);
+},{passive:true});
 
 // ═══════════════════════════════════════════════════════
 //  INIT
