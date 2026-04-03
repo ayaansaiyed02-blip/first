@@ -32,6 +32,13 @@
   --muted2: rgba(245,243,240,0.20);
   --r: 20px; --rs: 12px; --rm: 24px;
   --disable-animations: running;
+  /* Extended palette */
+  --cyan: #00c8ff;
+  --lime: #00d084;
+  --gold: #d4af69;
+  --fire: #ff5f1f;
+  --pink: #ff5fa0;
+  --purple: #a259ff;
 }
 
 /* ── PREMIUM ANIMATIONS ── */
@@ -272,6 +279,39 @@ select.goal-inp{font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;}
 .modal-close-btn:hover{border-color:var(--primary);background:rgba(212,175,105,.2);color:var(--primary);transform:rotate(90deg);box-shadow:0 4px 12px rgba(212,175,105,0.3);}
 .modal-close-btn:active{transform:rotate(90deg) scale(0.9);}
 
+/* ── ROUTINE PAGE ── */
+.routine-card{background:linear-gradient(135deg,rgba(22,23,42,0.7),rgba(30,31,53,0.5));backdrop-filter:blur(16px);border:1px solid var(--border2);border-radius:var(--r);padding:16px;margin-bottom:10px;transition:.4s cubic-bezier(.25,.46,.45,.94);box-shadow:0 4px 16px rgba(0,0,0,0.4);animation:slideInLeft .5s ease-out;position:relative;overflow:hidden;}
+.routine-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;border-radius:3px 0 0 3px;}
+.routine-card.active-slot{border-color:rgba(212,175,105,0.4);background:linear-gradient(135deg,rgba(22,23,42,0.9),rgba(30,31,53,0.7));box-shadow:0 8px 32px rgba(212,175,105,0.15);}
+.routine-card.active-slot::before{background:linear-gradient(to bottom,var(--primary),transparent);}
+.rt-time{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:.1em;color:var(--primary);margin-bottom:2px;}
+.rt-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:800;margin-bottom:4px;color:var(--text);}
+.rt-desc{font-size:12px;color:var(--text-secondary);line-height:1.5;margin-bottom:8px;}
+.rt-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px;}
+.rt-tag{background:rgba(212,175,105,0.06);border:1px solid var(--border2);border-radius:20px;padding:3px 10px;font-size:10px;font-weight:700;color:var(--text-secondary);letter-spacing:.03em;}
+.rt-tag.gold{color:var(--primary);border-color:rgba(212,175,105,0.3);background:rgba(212,175,105,0.08);}
+.rt-tag.cyan{color:var(--cyan);border-color:rgba(0,200,255,0.3);background:rgba(0,200,255,0.08);}
+.rt-tag.lime{color:var(--lime);border-color:rgba(0,208,132,0.3);background:rgba(0,208,132,0.08);}
+.rt-tag.pink{color:var(--pink);border-color:rgba(255,90,160,0.3);background:rgba(255,90,160,0.08);}
+.rt-tag.fire{color:var(--fire);border-color:rgba(255,95,31,0.3);background:rgba(255,95,31,0.08);}
+.rt-edit-btn{background:rgba(212,175,105,0.06);border:1px solid var(--border2);border-radius:20px;padding:4px 12px;font-size:10px;font-weight:700;color:var(--muted);cursor:pointer;transition:.3s;text-transform:uppercase;letter-spacing:.05em;}
+.rt-edit-btn:hover{border-color:var(--primary);color:var(--primary);}
+.rt-progress{height:4px;background:rgba(212,175,105,0.08);border-radius:10px;overflow:hidden;margin-top:8px;}
+.rt-progress-fill{height:100%;border-radius:10px;background:linear-gradient(90deg,var(--primary),var(--secondary));transition:width .4s ease;}
+/* Water tracker */
+.water-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px;}
+.w-glass{font-size:22px;cursor:pointer;transition:.2s;opacity:.25;filter:grayscale(1);}
+.w-glass.filled{opacity:1;filter:none;animation:luxeBounce .4s ease-out;}
+.water-total{font-family:'DM Mono',monospace;font-size:13px;font-weight:600;color:var(--accent);}
+/* Mood */
+.mood-row{display:flex;gap:12px;margin-top:6px;flex-wrap:wrap;}
+.mood-btn{font-size:26px;cursor:pointer;filter:grayscale(1) brightness(0.5);transition:.25s;opacity:.5;}
+.mood-btn.on{filter:none;opacity:1;transform:scale(1.2);}
+/* Routine edit modal */
+.rt-edit-panel{background:linear-gradient(135deg,rgba(14,14,26,0.98),rgba(22,23,42,0.98));backdrop-filter:blur(24px);border-radius:28px 28px 0 0;padding:20px 18px 40px;width:100%;max-height:88vh;overflow-y:auto;animation:slideUp .4s cubic-bezier(.25,.46,.45,.94);border-top:1.5px solid var(--border2);}
+.rt-inp{background:rgba(212,175,105,0.05);border:1.5px solid var(--border2);border-radius:10px;color:var(--text);font-size:13px;font-family:'Plus Jakarta Sans',sans-serif;padding:9px 13px;outline:none;width:100%;margin-top:5px;transition:.3s;}
+.rt-inp:focus{border-color:var(--primary);background:rgba(212,175,105,0.1);}
+
 /* scrollbar */
 ::-webkit-scrollbar{width:4px;height:4px;}
 ::-webkit-scrollbar-track{background:transparent;}
@@ -502,6 +542,248 @@ select.goal-inp{font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;}
 </head>
 <body>
 
+<!-- ═══════════ SPLASH SCREEN ═══════════ -->
+<div id="splash">
+  <canvas id="splashCanvas"></canvas>
+  <div class="spl-center">
+    <div class="spl-emblem">
+      <svg class="spl-hex-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="hg" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#f0d898"/>
+            <stop offset="50%" stop-color="#d4af69"/>
+            <stop offset="100%" stop-color="#a8883e"/>
+          </linearGradient>
+          <linearGradient id="hg2" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#d4af69" stop-opacity="0.15"/>
+            <stop offset="100%" stop-color="#d4af69" stop-opacity="0.03"/>
+          </linearGradient>
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="3" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <!-- Outer hex -->
+        <polygon class="spl-hex-outer" points="100,8 182,54 182,146 100,192 18,146 18,54" fill="url(#hg2)" stroke="url(#hg)" stroke-width="1.2"/>
+        <!-- Mid hex -->
+        <polygon class="spl-hex-mid" points="100,22 168,62 168,138 100,178 32,138 32,62" fill="none" stroke="url(#hg)" stroke-width="0.6" opacity="0.4"/>
+        <!-- Tick marks -->
+        <line class="spl-tick" x1="100" y1="8" x2="100" y2="18" stroke="#d4af69" stroke-width="2" opacity="0.8"/>
+        <line class="spl-tick" x1="182" y1="54" x2="174" y2="58" stroke="#d4af69" stroke-width="2" opacity="0.8"/>
+        <line class="spl-tick" x1="182" y1="146" x2="174" y2="142" stroke="#d4af69" stroke-width="2" opacity="0.8"/>
+        <line class="spl-tick" x1="100" y1="192" x2="100" y2="182" stroke="#d4af69" stroke-width="2" opacity="0.8"/>
+        <line class="spl-tick" x1="18" y1="146" x2="26" y2="142" stroke="#d4af69" stroke-width="2" opacity="0.8"/>
+        <line class="spl-tick" x1="18" y1="54" x2="26" y2="58" stroke="#d4af69" stroke-width="2" opacity="0.8"/>
+        <!-- Orbit ring -->
+        <circle class="spl-orbit" cx="100" cy="100" r="58" fill="none" stroke="url(#hg)" stroke-width="0.8" stroke-dasharray="4 8" opacity="0.5"/>
+        <!-- Orbit dot -->
+        <circle class="spl-orbit-dot" cx="158" cy="100" r="3.5" fill="#d4af69" filter="url(#glow)"/>
+        <!-- Inner circle -->
+        <circle cx="100" cy="100" r="38" fill="rgba(212,175,105,0.06)" stroke="url(#hg)" stroke-width="1"/>
+        <!-- Fire icon center -->
+        <text x="100" y="114" text-anchor="middle" font-size="44" class="spl-fire-txt">🔥</text>
+      </svg>
+    </div>
+
+    <div class="spl-brand">
+      <div class="spl-word" id="splWord">
+        <span class="spl-letter" style="--i:0">C</span><span class="spl-letter" style="--i:1">A</span><span class="spl-letter" style="--i:2">L</span><span class="spl-divider">·</span><span class="spl-letter" style="--i:3">S</span><span class="spl-letter" style="--i:4">N</span><span class="spl-letter" style="--i:5">A</span><span class="spl-letter" style="--i:6">P</span>
+      </div>
+      <div class="spl-tagline" id="splTagline">
+        <span class="spl-tword" style="--j:0">TRACK</span>
+        <span class="spl-tdot">◆</span>
+        <span class="spl-tword" style="--j:1">EAT</span>
+        <span class="spl-tdot">◆</span>
+        <span class="spl-tword" style="--j:2">THRIVE</span>
+      </div>
+    </div>
+
+    <div class="spl-progress-area" id="splProgressArea">
+      <div class="spl-prog-track">
+        <div class="spl-prog-fill" id="splFill"></div>
+        <div class="spl-prog-glow" id="splGlow"></div>
+      </div>
+      <div class="spl-status" id="splStatus">Waking up…</div>
+    </div>
+  </div>
+
+  <div class="spl-corner spl-tl">◢</div>
+  <div class="spl-corner spl-tr">◣</div>
+  <div class="spl-corner spl-bl">◥</div>
+  <div class="spl-corner spl-br">◤</div>
+  <div class="spl-version">CALSNAP · GOLD · v2</div>
+</div>
+
+<style>
+/* ══════════════════════════════════════════
+   CINEMATIC SPLASH
+══════════════════════════════════════════ */
+#splash{
+  position:fixed;inset:0;z-index:9999;
+  background:#05050a;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+}
+#splash.spl-out{
+  animation:splExit .7s cubic-bezier(.7,0,1,1) forwards;
+}
+@keyframes splExit{
+  0%{opacity:1;clip-path:inset(0 0 0 0);}
+  100%{opacity:0;clip-path:inset(0 0 100% 0);pointer-events:none;}
+}
+
+/* Canvas bg */
+#splashCanvas{position:absolute;inset:0;width:100%;height:100%;}
+
+/* Center container */
+.spl-center{
+  position:relative;z-index:2;
+  display:flex;flex-direction:column;align-items:center;
+  gap:0;
+}
+
+/* Emblem */
+.spl-emblem{
+  width:170px;height:170px;position:relative;
+  margin-bottom:28px;
+  opacity:0;animation:splEmblemIn .9s cubic-bezier(.34,1.56,.64,1) .15s forwards;
+}
+@keyframes splEmblemIn{
+  from{opacity:0;transform:scale(.5) rotate(-30deg);}
+  to{opacity:1;transform:scale(1) rotate(0deg);}
+}
+.spl-hex-svg{width:100%;height:100%;overflow:visible;}
+.spl-hex-outer{
+  animation:splHexPulse 3s ease-in-out infinite;
+}
+@keyframes splHexPulse{
+  0%,100%{opacity:.7;filter:drop-shadow(0 0 8px rgba(212,175,105,.3));}
+  50%{opacity:1;filter:drop-shadow(0 0 22px rgba(212,175,105,.7)) drop-shadow(0 0 40px rgba(212,175,105,.3));}
+}
+.spl-hex-mid{animation:splHexSpin 12s linear infinite;}
+@keyframes splHexSpin{from{transform-origin:100px 100px;transform:rotate(0)}to{transform-origin:100px 100px;transform:rotate(360deg)}}
+.spl-orbit{animation:splOrbitSpin 4s linear infinite;}
+@keyframes splOrbitSpin{from{transform-origin:100px 100px;transform:rotate(0)}to{transform-origin:100px 100px;transform:rotate(360deg)}}
+.spl-orbit-dot{animation:splOrbitSpin 4s linear infinite;}
+.spl-fire-txt{
+  animation:splFireBob 1.8s ease-in-out infinite;
+  filter:drop-shadow(0 0 10px rgba(255,95,31,.8));
+}
+@keyframes splFireBob{
+  0%,100%{transform:translateY(0) scale(1);}
+  50%{transform:translateY(-4px) scale(1.07);}
+}
+
+/* Brand text */
+.spl-brand{display:flex;flex-direction:column;align-items:center;gap:10px;}
+.spl-word{
+  display:flex;align-items:center;gap:1px;
+  font-family:'Bebas Neue',sans-serif;font-size:62px;line-height:1;
+}
+.spl-letter{
+  display:inline-block;
+  background:linear-gradient(180deg,#f7e8b0 0%,#d4af69 45%,#a8883e 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  opacity:0;
+  animation:splLetterIn .5s cubic-bezier(.34,1.56,.64,1) calc(.65s + var(--i)*.07s) forwards;
+}
+@keyframes splLetterIn{
+  from{opacity:0;transform:translateY(-28px) scale(.7);}
+  to{opacity:1;transform:translateY(0) scale(1);}
+}
+.spl-divider{
+  font-family:'Bebas Neue',sans-serif;font-size:28px;
+  color:rgba(212,175,105,.3);
+  margin:0 4px;line-height:1;
+  opacity:0;animation:splLetterIn .4s ease .95s forwards;
+}
+
+/* Tagline */
+.spl-tagline{
+  display:flex;align-items:center;gap:9px;
+  margin-top:2px;
+}
+.spl-tword{
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:9px;font-weight:900;letter-spacing:.35em;
+  color:rgba(212,175,105,.5);
+  opacity:0;
+  animation:splTagIn .5s ease calc(1.15s + var(--j)*.12s) forwards;
+}
+.spl-tdot{
+  font-size:4px;color:rgba(212,175,105,.25);
+  opacity:0;animation:splTagIn .3s ease 1.3s forwards;
+}
+@keyframes splTagIn{
+  from{opacity:0;transform:translateY(8px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+/* Progress */
+.spl-progress-area{
+  display:flex;flex-direction:column;align-items:center;gap:9px;
+  margin-top:38px;width:220px;
+  opacity:0;animation:splTagIn .5s ease 1.5s forwards;
+}
+.spl-prog-track{
+  width:100%;height:2px;
+  background:rgba(212,175,105,.1);
+  border-radius:2px;position:relative;overflow:visible;
+}
+.spl-prog-fill{
+  position:absolute;left:0;top:0;height:100%;
+  background:linear-gradient(90deg,#a8883e,#f0d898,#d4af69);
+  border-radius:2px;width:0%;
+  transition:width .45s cubic-bezier(.25,.46,.45,.94);
+}
+.spl-prog-glow{
+  position:absolute;top:50%;left:0%;
+  transform:translate(-50%,-50%);
+  width:16px;height:16px;border-radius:50%;
+  background:radial-gradient(circle,rgba(212,175,105,.8),transparent);
+  transition:left .45s cubic-bezier(.25,.46,.45,.94);
+  pointer-events:none;
+}
+.spl-status{
+  font-family:'DM Mono',monospace;font-size:9.5px;font-weight:500;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(212,175,105,.35);
+  transition:opacity .2s;
+}
+
+/* Corner accents */
+.spl-corner{
+  position:absolute;font-size:14px;
+  color:rgba(212,175,105,.18);
+  line-height:1;
+}
+.spl-tl{top:20px;left:20px;}
+.spl-tr{top:20px;right:20px;}
+.spl-bl{bottom:44px;left:20px;}
+.spl-br{bottom:44px;right:20px;}
+
+/* Version */
+.spl-version{
+  position:absolute;bottom:18px;left:50%;transform:translateX(-50%);
+  font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.22em;
+  color:rgba(212,175,105,.14);white-space:nowrap;
+}
+
+/* Horizontal gold scan line */
+#splash::after{
+  content:'';position:absolute;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(212,175,105,.35),transparent);
+  animation:splScan 2.2s ease-in-out infinite;
+  pointer-events:none;z-index:3;
+}
+@keyframes splScan{
+  0%{top:-2px;opacity:0;}
+  10%{opacity:1;}
+  90%{opacity:.6;}
+  100%{top:100%;opacity:0;}
+}
+</style>
+
 <!-- TOPBAR -->
 <div class="topbar">
   <div class="logo">🔥 CalSnap</div>
@@ -565,6 +847,13 @@ select.goal-inp{font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;}
           </div>
           <div class="rstat-bar"><div class="rstat-fill" id="bFiber" style="background:var(--lime);width:0%"></div></div>
         </div>
+        <div class="rstat">
+          <div class="rstat-top">
+            <span class="rstat-name" style="color:var(--purple);">Sugar</span>
+            <span class="rstat-val" style="color:var(--purple);" id="rSugar">0g</span>
+          </div>
+          <div class="rstat-bar"><div class="rstat-fill" id="bSugar" style="background:var(--purple);width:0%"></div></div>
+        </div>
       </div>
     </div>
   </div>
@@ -593,8 +882,97 @@ select.goal-inp{font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;}
       <div class="chip" onclick="setFilter('fruit',this)">🍎 Fruits</div>
       <div class="chip" onclick="setFilter('veg',this)">🥦 Vegs</div>
       <div class="chip" onclick="setFilter('fastfood',this)">🍔 Fast Food</div>
+      <div class="chip" onclick="setFilter('sweet',this)">🍬 Sweets</div>
+      <div class="chip" onclick="setFilter('drink',this)">🥤 Drinks</div>
     </div>
     <div id="searchResults"></div>
+  </div>
+</div>
+
+<!-- ═══════════ PAGE: ROUTINE ═══════════ -->
+<div class="page" id="page-routine">
+  <div style="padding-top:4px;">
+
+    <!-- Water Tracker -->
+    <div class="section-hd">💧 Hydration</div>
+    <div class="ring-card" style="padding:18px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+        <div>
+          <div style="font-size:14px;font-weight:800;color:var(--text);">Daily Water Goal</div>
+          <div style="font-size:11px;color:var(--text-secondary);margin-top:2px;">Target: <span id="waterGoalLbl">8</span> glasses · 2000ml</div>
+        </div>
+        <div style="text-align:right;">
+          <div class="water-total" id="waterTotal">0 / 8</div>
+          <div style="font-size:10px;color:var(--text-secondary);" id="waterMl">0 / 2000ml</div>
+        </div>
+      </div>
+      <div class="water-row" id="waterGlasses"></div>
+      <div class="rt-progress" style="margin-top:10px;"><div class="rt-progress-fill" id="waterBar" style="width:0%"></div></div>
+      <div style="display:flex;gap:8px;margin-top:12px;">
+        <button onclick="addWater()" style="flex:1;background:linear-gradient(135deg,rgba(74,158,255,0.15),rgba(74,158,255,0.08));border:1.5px solid rgba(74,158,255,0.3);color:var(--accent);border-radius:20px;padding:10px;font-size:12px;font-weight:800;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;letter-spacing:.04em;text-transform:uppercase;transition:.3s;">+ Glass (250ml)</button>
+        <button onclick="resetWater()" style="background:rgba(212,175,105,0.06);border:1.5px solid var(--border2);color:var(--muted);border-radius:20px;padding:10px 16px;font-size:11px;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:.3s;">Reset</button>
+      </div>
+    </div>
+
+    <!-- Mood & Energy -->
+    <div class="section-hd">😴 Mood & Energy</div>
+    <div class="ring-card" style="padding:18px;">
+      <div style="font-size:13px;font-weight:800;color:var(--text);margin-bottom:8px;">How do you feel today?</div>
+      <div class="mood-row" id="moodRow">
+        <span class="mood-btn" onclick="setMood('😴','Tired')" data-mood="😴">😴</span>
+        <span class="mood-btn" onclick="setMood('😔','Low')" data-mood="😔">😔</span>
+        <span class="mood-btn" onclick="setMood('😐','Neutral')" data-mood="😐">😐</span>
+        <span class="mood-btn" onclick="setMood('😊','Good')" data-mood="😊">😊</span>
+        <span class="mood-btn" onclick="setMood('😁','Great')" data-mood="😁">😁</span>
+        <span class="mood-btn" onclick="setMood('🤩','Amazing')" data-mood="🤩">🤩</span>
+      </div>
+      <div id="moodNote" style="font-size:12px;color:var(--primary);margin-top:6px;font-weight:700;"></div>
+      <div style="margin-top:12px;">
+        <div style="font-size:11px;font-weight:900;color:var(--primary);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;">⚡ Energy Level</div>
+        <input type="range" id="energySlider" min="1" max="10" value="5" oninput="updateEnergy()" style="width:100%;accent-color:var(--primary);">
+        <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--text-secondary);margin-top:3px;"><span>Low</span><span id="energyVal" style="color:var(--primary);font-weight:800;">5/10</span><span>High</span></div>
+      </div>
+      <textarea class="rt-inp" id="moodText" rows="2" placeholder="Notes about how you feel…" oninput="saveMoodNote()" style="margin-top:10px;resize:none;"></textarea>
+    </div>
+
+    <!-- Daily Schedule -->
+    <div style="display:flex;align-items:center;justify-content:space-between;margin:20px 0 11px;">
+      <div class="section-hd" style="margin:0;">📅 Daily Schedule</div>
+      <button onclick="openAddSlot()" style="background:linear-gradient(135deg,rgba(212,175,105,0.15),rgba(212,175,105,0.08));border:1.5px solid var(--border2);color:var(--primary);border-radius:20px;padding:6px 14px;font-size:10px;font-weight:900;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;letter-spacing:.06em;text-transform:uppercase;transition:.3s;">+ Add Slot</button>
+    </div>
+    <div id="routineSlots"></div>
+
+    <!-- Quick Stats -->
+    <div class="section-hd">📊 Today's Summary</div>
+    <div class="stats-grid" id="routineStats"></div>
+
+    <div style="height:8px;"></div>
+  </div>
+</div>
+
+<!-- ROUTINE EDIT MODAL -->
+<div class="modal-bg" id="routineModal" onclick="closeRoutineModalBg(event)">
+  <div class="rt-edit-panel" style="position:relative;">
+    <button class="modal-close-btn" onclick="closeRoutineModal()">✕</button>
+    <div class="modal-handle"></div>
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.1em;color:var(--text);margin-bottom:14px;" id="rtModalTitle">Edit Slot</div>
+    <div class="goal-row"><div class="goal-lbl">⏰ Time</div><input class="rt-inp" type="text" id="rtTime" placeholder="e.g. 7:00–8:00 AM"></div>
+    <div class="goal-row" style="margin-top:10px;"><div class="goal-lbl">📌 Title</div><input class="rt-inp" type="text" id="rtTitle" placeholder="e.g. Morning Workout"></div>
+    <div class="goal-row" style="margin-top:10px;"><div class="goal-lbl">📝 Description</div><textarea class="rt-inp" id="rtDesc" rows="3" placeholder="What do you do during this time?" style="resize:none;"></textarea></div>
+    <div class="goal-row" style="margin-top:10px;"><div class="goal-lbl">🏷️ Tags (comma-separated)</div><input class="rt-inp" type="text" id="rtTags" placeholder="e.g. 🏃 Exercise, 💪 Strength"></div>
+    <div class="goal-row" style="margin-top:10px;"><div class="goal-lbl">🎨 Color</div>
+      <div style="display:flex;gap:8px;margin-top:6px;flex-wrap:wrap;" id="rtColorPicker">
+        <div class="rt-color-opt gold" data-col="gold" onclick="pickColor('gold',this)" style="width:28px;height:28px;border-radius:50%;background:var(--primary);cursor:pointer;border:2px solid transparent;transition:.2s;"></div>
+        <div class="rt-color-opt cyan" data-col="cyan" onclick="pickColor('cyan',this)" style="width:28px;height:28px;border-radius:50%;background:var(--cyan);cursor:pointer;border:2px solid transparent;transition:.2s;"></div>
+        <div class="rt-color-opt lime" data-col="lime" onclick="pickColor('lime',this)" style="width:28px;height:28px;border-radius:50%;background:var(--lime);cursor:pointer;border:2px solid transparent;transition:.2s;"></div>
+        <div class="rt-color-opt pink" data-col="pink" onclick="pickColor('pink',this)" style="width:28px;height:28px;border-radius:50%;background:var(--pink);cursor:pointer;border:2px solid transparent;transition:.2s;"></div>
+        <div class="rt-color-opt fire" data-col="fire" onclick="pickColor('fire',this)" style="width:28px;height:28px;border-radius:50%;background:var(--fire);cursor:pointer;border:2px solid transparent;transition:.2s;"></div>
+      </div>
+    </div>
+    <div style="display:flex;gap:9px;margin-top:18px;">
+      <button onclick="saveRoutineSlot()" style="flex:1;background:linear-gradient(135deg,var(--primary),var(--secondary));border:none;color:#000;font-size:14px;font-weight:900;font-family:'Plus Jakarta Sans',sans-serif;padding:14px;border-radius:var(--r);cursor:pointer;letter-spacing:.05em;text-transform:uppercase;">Save Slot</button>
+      <button id="rtDeleteBtn" onclick="deleteRoutineSlot()" style="background:rgba(255,59,92,0.12);border:1.5px solid rgba(255,59,92,0.3);color:var(--danger);border-radius:var(--r);padding:14px 18px;font-size:14px;cursor:pointer;display:none;">🗑️</button>
+    </div>
   </div>
 </div>
 
@@ -637,12 +1015,13 @@ select.goal-inp{font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;}
 <!-- ═══════════ PAGE: GOALS ═══════════ -->
 <div class="page" id="page-goals">
   <div class="section-hd">Daily Goals</div>
-  <div class="card">x
+  <div class="card">
     <div class="goal-row"><div class="goal-lbl">🔥 Calories (kcal)</div><input class="goal-inp" type="number" id="goalCal" placeholder="2000"></div>
     <div class="goal-row"><div class="goal-lbl">💪 Protein (g)</div><input class="goal-inp" type="number" id="goalProtein" placeholder="150"></div>
     <div class="goal-row"><div class="goal-lbl">🌾 Carbs (g)</div><input class="goal-inp" type="number" id="goalCarbs" placeholder="250"></div>
     <div class="goal-row"><div class="goal-lbl">🥑 Fat (g)</div><input class="goal-inp" type="number" id="goalFat" placeholder="65"></div>
     <div class="goal-row"><div class="goal-lbl">🌿 Fiber (g)</div><input class="goal-inp" type="number" id="goalFiber" placeholder="30"></div>
+    <div class="goal-row"><div class="goal-lbl">🍬 Sugar (g)</div><input class="goal-inp" type="number" id="goalSugar" placeholder="50"></div>
     <button class="save-btn" onclick="saveGoals()">Save Goals</button>
   </div>
 
@@ -686,6 +1065,9 @@ select.goal-inp{font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;}
   </button>
   <button class="nav-btn" onclick="showPage('search',this)">
     <div class="nav-icon-wrap">🔍</div>Search
+  </button>
+  <button class="nav-btn" onclick="showPage('routine',this)">
+    <div class="nav-icon-wrap">📋</div>Routine
   </button>
   <button class="nav-btn" onclick="showPage('quests',this)">
     <div class="nav-icon-wrap">⚡</div>Quests
@@ -1288,11 +1670,35 @@ let selectedMeal = 'Breakfast';
 let selectedPortionLabel = null;
 
 let goals = JSON.parse(localStorage.getItem('cs_goals')||'{}');
-if(!goals.cal) goals = {cal:2000,p:150,c:250,f:65,fi:30};
+if(!goals.cal) goals = {cal:2000,p:150,c:250,f:65,fi:30,s:50};
+
+// Water & Mood state
+let waterCount = 0;
+const WATER_GOAL = 8;
+let moodData = JSON.parse(localStorage.getItem('mood_'+new Date().toISOString().slice(0,10))||'{}');
+
+// Routine state – default slots, customizable
+const DEFAULT_ROUTINE = [
+  {time:"6:00–7:00 AM",title:"Wake Up & Morning Ritual",desc:"Start with a glass of warm water with lemon. Light stretching or yoga for 10–15 min. Brush, freshen up.",tags:["💧 Hydrate","🧘 Stretch","☀️ Morning"],color:"gold"},
+  {time:"7:00–8:00 AM",title:"Morning Workout / Walk",desc:"Best time for strength training, cardio, or a brisk 30–45 min walk. Fasted cardio burns more fat.",tags:["🏃 Exercise","🔥 Fat Burn","💪 Strength"],color:"fire"},
+  {time:"8:00–9:00 AM",title:"Breakfast",desc:"Eat within 30–60 min of waking for best metabolism. Include protein + complex carbs. Avoid skipping.",tags:["🌅 Breakfast","🥗 Protein","⚡ Energy"],color:"cyan"},
+  {time:"10:30–11:00 AM",title:"Mid-Morning Snack",desc:"Light snack to keep metabolism going. Good options: fruits, nuts, channa, buttermilk, or a protein bar.",tags:["🍎 Snack","📉 No Hunger","💡 Focus"],color:"lime"},
+  {time:"1:00–2:00 PM",title:"Lunch",desc:"Your largest meal of the day. Include dal, sabzi, roti/rice, curd, and salad. Aim for balanced macros.",tags:["☀️ Lunch","🌾 Carbs","💪 Protein"],color:"gold"},
+  {time:"3:30–4:00 PM",title:"Afternoon Energy Dip",desc:"Natural energy dip occurs. Have green tea or black coffee. Avoid heavy foods. Walk 10 min if possible.",tags:["☕ Tea/Coffee","🚶 Walk","🧠 Focus"],color:"pink"},
+  {time:"4:00–5:00 PM",title:"Evening Snack",desc:"Pre-workout or evening snack. Fruits, roasted channa, peanut butter on toast, or a protein shake.",tags:["🍎 Snack","💪 Pre-Workout","⚡ Energy"],color:"cyan"},
+  {time:"5:30–7:00 PM",title:"Evening Workout (Optional)",desc:"If not done in morning. Avoid very heavy lifting this late. Light cardio, yoga, or strength training.",tags:["🏋️ Workout","🧘 Yoga","🏃 Cardio"],color:"fire"},
+  {time:"7:30–8:30 PM",title:"Dinner",desc:"Lighter meal than lunch. High protein, moderate carbs, lots of veggies. Avoid heavy fried food at night.",tags:["🌙 Dinner","🥦 Light","🛌 Recovery"],color:"lime"},
+  {time:"9:00–10:00 PM",title:"Evening Wind Down",desc:"No screen time 30 min before sleep. Light stretching, journaling, or reading. Avoid eating after 9 PM.",tags:["📵 No Screens","📖 Relax","🌙 Calm"],color:"pink"},
+  {time:"10:00–10:30 PM",title:"Sleep",desc:"Aim for 7–9 hours of quality sleep. Sleep is when muscles recover and hormones reset. Non-negotiable for fat loss and muscle gain.",tags:["😴 Sleep","💪 Recovery","🧬 Hormones"],color:"gold"},
+];
+let routineSlots = JSON.parse(localStorage.getItem('cs_routine')||'null') || DEFAULT_ROUTINE.map((s,i)=>({...s,id:i}));
+let editingSlotId = null;
+let selectedColor = 'gold';
 
 function todayKey(){return new Date().toISOString().slice(0,10);}
 function getLog(){return JSON.parse(localStorage.getItem('log_'+todayKey())||'[]');}
 function saveLog(log){localStorage.setItem('log_'+todayKey(),JSON.stringify(log));}
+function saveRoutine(){localStorage.setItem('cs_routine',JSON.stringify(routineSlots));}
 
 function getStats(){
   let s = JSON.parse(localStorage.getItem('cs_stats')||'{}');
@@ -1311,6 +1717,7 @@ function showPage(id,btn){
   btn.classList.add('active');
   if(id==='home') renderHome();
   if(id==='quests') renderQuests();
+  if(id==='routine') renderRoutine();
   if(id==='goals') {renderGoals();renderHistory();}
   if(id==='search'){doSearch();setTimeout(()=>document.getElementById('searchInput').focus(),100);}
 }
@@ -1320,9 +1727,9 @@ function showPage(id,btn){
 // ═══════════════════════════════════════════════════════
 function renderHome(){
   const log = getLog();
-  let cal=0,pro=0,carb=0,fat=0,fib=0;
-  log.forEach(i=>{const r=i.qty/100;cal+=i.food.cal*r;pro+=i.food.p*r;carb+=i.food.c*r;fat+=i.food.f*r;fib+=i.food.fi*r;});
-  cal=Math.round(cal);pro=Math.round(pro);carb=Math.round(carb);fat=Math.round(fat);fib=Math.round(fib);
+  let cal=0,pro=0,carb=0,fat=0,fib=0,sug=0;
+  log.forEach(i=>{const r=i.qty/100;cal+=i.food.cal*r;pro+=i.food.p*r;carb+=i.food.c*r;fat+=i.food.f*r;fib+=i.food.fi*r;sug+=(i.food.s||0)*r;});
+  cal=Math.round(cal);pro=Math.round(pro);carb=Math.round(carb);fat=Math.round(fat);fib=Math.round(fib);sug=Math.round(sug);
 
   const circ=377, pct=Math.min(cal/goals.cal,1);
   document.getElementById('ringFill').style.strokeDashoffset = circ-circ*pct;
@@ -1341,7 +1748,8 @@ function renderHome(){
   setBar('rProtein','bProtein',pro,goals.p);
   setBar('rCarbs','bCarbs',carb,goals.c);
   setBar('rFat','bFat',fat,goals.f);
-  setBar('rFiber','bFiber',fib,goals.fi);
+  setBar('rFiber','bFiber',fib,goals.fi||30);
+  setBar('rSugar','bSugar',sug,goals.s||50);
 
   const micons={Breakfast:'🌅',Lunch:'☀️',Dinner:'🌙',Snacks:'🍎'};
   const mcolors={Breakfast:'var(--gold)',Lunch:'var(--cyan)',Dinner:'var(--purple)',Snacks:'var(--lime)'};
@@ -1625,19 +2033,22 @@ function renderGoals(){
   document.getElementById('goalCarbs').value=goals.c;
   document.getElementById('goalFat').value=goals.f;
   document.getElementById('goalFiber').value=goals.fi;
+  document.getElementById('goalSugar').value=goals.s||50;
   const log=getLog();
-  let cal=0,pro=0,carb=0,fat=0;
-  log.forEach(i=>{const r=i.qty/100;cal+=i.food.cal*r;pro+=i.food.p*r;carb+=i.food.c*r;fat+=i.food.f*r;});
+  let cal=0,pro=0,carb=0,fat=0,sug=0;
+  log.forEach(i=>{const r=i.qty/100;cal+=i.food.cal*r;pro+=i.food.p*r;carb+=i.food.c*r;fat+=i.food.f*r;sug+=(i.food.s||0)*r;});
   document.getElementById('statsGrid').innerHTML=`
     <div class="stat-box"><div class="stat-v" style="color:var(--fire)">${Math.round(cal)}</div><div class="stat-l">Consumed</div></div>
     <div class="stat-box"><div class="stat-v" style="color:var(--lime)">${Math.round(goals.cal-cal)}</div><div class="stat-l">Remaining</div></div>
     <div class="stat-box"><div class="stat-v" style="color:var(--cyan)">${Math.round(pro)}g</div><div class="stat-l">Protein</div></div>
-    <div class="stat-box"><div class="stat-v" style="color:var(--gold)">${Math.round(carb)}g</div><div class="stat-l">Carbs</div></div>`;
+    <div class="stat-box"><div class="stat-v" style="color:var(--gold)">${Math.round(carb)}g</div><div class="stat-l">Carbs</div></div>
+    <div class="stat-box"><div class="stat-v" style="color:var(--pink)">${Math.round(fat)}g</div><div class="stat-l">Fat</div></div>
+    <div class="stat-box"><div class="stat-v" style="color:var(--purple)">${Math.round(sug)}g</div><div class="stat-l">Sugar</div></div>`;
 }
 function saveGoals(){
   goals={cal:parseInt(document.getElementById('goalCal').value)||2000,p:parseInt(document.getElementById('goalProtein').value)||150,
     c:parseInt(document.getElementById('goalCarbs').value)||250,f:parseInt(document.getElementById('goalFat').value)||65,
-    fi:parseInt(document.getElementById('goalFiber').value)||30};
+    fi:parseInt(document.getElementById('goalFiber').value)||30,s:parseInt(document.getElementById('goalSugar').value)||50};
   localStorage.setItem('cs_goals',JSON.stringify(goals)); renderHome();
   const btn=document.querySelector('.save-btn'); btn.textContent='✓ Saved!';
   setTimeout(()=>btn.textContent='Save Goals',2000);
@@ -1682,6 +2093,173 @@ function renderHistory(){
 }
 
 // ═══════════════════════════════════════════════════════
+//  ROUTINE PAGE
+// ═══════════════════════════════════════════════════════
+const COLOR_MAP = {
+  gold:'var(--primary)',cyan:'var(--cyan)',lime:'var(--lime)',
+  pink:'var(--pink)',fire:'var(--fire)'
+};
+
+function renderRoutine(){
+  renderWater();
+  renderMood();
+  renderRoutineSlots();
+  // quick stats
+  const log=getLog();
+  let cal=0,pro=0,fib=0;
+  log.forEach(i=>{const r=i.qty/100;cal+=i.food.cal*r;pro+=i.food.p*r;fib+=i.food.fi*r;});
+  document.getElementById('routineStats').innerHTML=`
+    <div class="stat-box"><div class="stat-v" style="color:var(--fire)">${Math.round(cal)}</div><div class="stat-l">Calories Today</div></div>
+    <div class="stat-box"><div class="stat-v" style="color:var(--cyan)">${Math.round(pro)}g</div><div class="stat-l">Protein Today</div></div>
+    <div class="stat-box"><div class="stat-v" style="color:var(--accent)">${waterCount*250}ml</div><div class="stat-l">Water Today</div></div>
+    <div class="stat-box"><div class="stat-v" style="color:var(--lime)">${Math.max(0,goals.cal-Math.round(cal))}</div><div class="stat-l">Cal Remaining</div></div>`;
+}
+
+function renderRoutineSlots(){
+  const now=new Date(); const hour=now.getHours();
+  const sc=document.getElementById('routineSlots');
+  if(!routineSlots.length){
+    sc.innerHTML='<div class="empty-state"><div class="ei">📋</div><div class="et">No slots yet — add one above!</div></div>';return;
+  }
+  sc.innerHTML=routineSlots.map((slot,idx)=>{
+    const slotHour=parseInt(slot.time.split(':')[0])+(slot.time.toLowerCase().includes('pm')&&parseInt(slot.time.split(':')[0])!==12?12:0);
+    const isActive=Math.abs(slotHour-hour)<=1;
+    const col=COLOR_MAP[slot.color||'gold']||'var(--primary)';
+    return `<div class="routine-card ${isActive?'active-slot':''}" style="border-left:3px solid ${col}22;">
+      <div style="position:absolute;left:0;top:0;bottom:0;width:3px;background:${col};border-radius:3px 0 0 3px;"></div>
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;">
+        <div style="flex:1;min-width:0;">
+          <div class="rt-time" style="color:${col};">${slot.time}</div>
+          <div class="rt-title">${slot.title}</div>
+          <div class="rt-desc">${slot.desc}</div>
+          <div class="rt-tags">${(slot.tags||[]).map(t=>`<span class="rt-tag ${slot.color||'gold'}">${t}</span>`).join('')}</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:5px;flex-shrink:0;">
+          <button class="rt-edit-btn" onclick="openEditSlot(${idx})">✏️ Edit</button>
+          <button class="rt-edit-btn" onclick="deleteSlot(${idx})" style="color:var(--danger);border-color:rgba(255,59,92,0.25);">🗑️</button>
+        </div>
+      </div>
+      ${isActive?`<div class="rt-progress"><div class="rt-progress-fill" style="background:${col};width:60%"></div></div>`:''}
+    </div>`;
+  }).join('');
+}
+
+// ── Water ──
+function renderWater(){
+  waterCount=parseInt(localStorage.getItem('water_'+todayKey())||'0');
+  const gl=document.getElementById('waterGlasses');
+  if(!gl)return;
+  gl.innerHTML=Array.from({length:WATER_GOAL},(_,i)=>
+    `<span class="w-glass ${i<waterCount?'filled':''}" onclick="setWater(${i+1})">💧</span>`
+  ).join('');
+  const wt=document.getElementById('waterTotal');
+  const wm=document.getElementById('waterMl');
+  const wb=document.getElementById('waterBar');
+  if(wt) wt.textContent=waterCount+' / '+WATER_GOAL+' glasses';
+  if(wm) wm.textContent=(waterCount*250)+' / '+(WATER_GOAL*250)+'ml';
+  if(wb) wb.style.width=Math.min(waterCount/WATER_GOAL*100,100)+'%';
+}
+function addWater(){
+  if(waterCount<WATER_GOAL+4){
+    waterCount++;
+    localStorage.setItem('water_'+todayKey(),waterCount);
+    renderWater();
+    if(waterCount>=WATER_GOAL) showToast('Hydration goal reached! 💧🎉');
+    else showToast('Water logged: '+(waterCount*250)+'ml 💧');
+  }
+}
+function resetWater(){waterCount=0;localStorage.setItem('water_'+todayKey(),'0');renderWater();}
+function setWater(n){waterCount=n;localStorage.setItem('water_'+todayKey(),n);renderWater();}
+
+// ── Mood ──
+function renderMood(){
+  if(moodData.mood){
+    document.querySelectorAll('.mood-btn').forEach(b=>b.classList.toggle('on',b.dataset.mood===moodData.mood));
+    const mn=document.getElementById('moodNote');
+    if(mn) mn.textContent='Feeling: '+moodData.label;
+  }
+  const mt=document.getElementById('moodText');
+  const es=document.getElementById('energySlider');
+  const ev=document.getElementById('energyVal');
+  if(mt&&moodData.text) mt.value=moodData.text;
+  if(es&&moodData.energy) es.value=moodData.energy;
+  if(ev) ev.textContent=(moodData.energy||5)+'/10';
+}
+function setMood(emoji,label){
+  moodData.mood=emoji;moodData.label=label;saveMoodData();
+  document.querySelectorAll('.mood-btn').forEach(b=>b.classList.toggle('on',b.dataset.mood===emoji));
+  const mn=document.getElementById('moodNote');
+  if(mn) mn.textContent='Feeling: '+label;
+  showToast('Mood logged: '+emoji);
+}
+function updateEnergy(){
+  const v=document.getElementById('energySlider').value;
+  document.getElementById('energyVal').textContent=v+'/10';
+  moodData.energy=parseInt(v);saveMoodData();
+}
+function saveMoodNote(){moodData.text=document.getElementById('moodText').value;saveMoodData();}
+function saveMoodData(){localStorage.setItem('mood_'+todayKey(),JSON.stringify(moodData));}
+
+// ── Routine slot CRUD ──
+function openAddSlot(){
+  editingSlotId=null;
+  document.getElementById('rtModalTitle').textContent='Add New Slot';
+  document.getElementById('rtTime').value='';
+  document.getElementById('rtTitle').value='';
+  document.getElementById('rtDesc').value='';
+  document.getElementById('rtTags').value='';
+  document.getElementById('rtDeleteBtn').style.display='none';
+  selectedColor='gold';
+  updateColorPicker();
+  document.getElementById('routineModal').classList.add('open');
+}
+function openEditSlot(idx){
+  editingSlotId=idx;
+  const s=routineSlots[idx];
+  document.getElementById('rtModalTitle').textContent='Edit Slot';
+  document.getElementById('rtTime').value=s.time;
+  document.getElementById('rtTitle').value=s.title;
+  document.getElementById('rtDesc').value=s.desc;
+  document.getElementById('rtTags').value=(s.tags||[]).join(', ');
+  document.getElementById('rtDeleteBtn').style.display='block';
+  selectedColor=s.color||'gold';
+  updateColorPicker();
+  document.getElementById('routineModal').classList.add('open');
+}
+function deleteSlot(idx){
+  routineSlots.splice(idx,1);saveRoutine();renderRoutineSlots();showToast('Slot deleted');
+}
+function deleteRoutineSlot(){
+  if(editingSlotId!==null){
+    routineSlots.splice(editingSlotId,1);saveRoutine();closeRoutineModal();renderRoutineSlots();showToast('Slot deleted');
+  }
+}
+function saveRoutineSlot(){
+  const time=document.getElementById('rtTime').value.trim();
+  const title=document.getElementById('rtTitle').value.trim();
+  const desc=document.getElementById('rtDesc').value.trim();
+  const tagsRaw=document.getElementById('rtTags').value.trim();
+  if(!time||!title){showToast('Time and title are required');return;}
+  const tags=tagsRaw?tagsRaw.split(',').map(t=>t.trim()).filter(Boolean):[];
+  const slot={time,title,desc,tags,color:selectedColor,id:editingSlotId!==null?routineSlots[editingSlotId].id:Date.now()};
+  if(editingSlotId!==null) routineSlots[editingSlotId]=slot;
+  else routineSlots.push(slot);
+  saveRoutine();closeRoutineModal();renderRoutineSlots();
+  showToast(editingSlotId!==null?'Slot updated ✓':'Slot added ✓');
+}
+function closeRoutineModal(){document.getElementById('routineModal').classList.remove('open');}
+function closeRoutineModalBg(e){if(e.target===document.getElementById('routineModal'))closeRoutineModal();}
+function pickColor(col,el){
+  selectedColor=col;updateColorPicker();
+}
+function updateColorPicker(){
+  document.querySelectorAll('.rt-color-opt').forEach(el=>{
+    el.style.border=el.dataset.col===selectedColor?'2.5px solid #fff':'2px solid transparent';
+    el.style.transform=el.dataset.col===selectedColor?'scale(1.2)':'scale(1)';
+  });
+}
+
+// ═══════════════════════════════════════════════════════
 //  SCROLL OPTIMIZATION – Disable animations during scroll
 // ═══════════════════════════════════════════════════════
 let scrollTimeout;
@@ -1707,6 +2285,193 @@ document.getElementById('todayLabel').textContent=new Date().toLocaleDateString(
 updateStreak();
 doSearch();
 renderHome();
+waterCount=parseInt(localStorage.getItem('water_'+todayKey())||'0');
+
+// ═══════════════════════════════════════════════════════
+//  CINEMATIC SPLASH
+// ═══════════════════════════════════════════════════════
+(function(){
+  const splash   = document.getElementById('splash');
+  const canvas   = document.getElementById('splashCanvas');
+  const ctx      = canvas.getContext('2d');
+  const fill     = document.getElementById('splFill');
+  const glowDot  = document.getElementById('splGlow');
+  const status   = document.getElementById('splStatus');
+
+  let W, H, raf, startT = performance.now();
+  const gold = '212,175,105';
+
+  function resize(){
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  // Particles
+  const PARTICLES = [];
+  function spawnParticle(){
+    const ang = Math.random()*Math.PI*2;
+    const spd = .18+Math.random()*.32;
+    const life = 180+Math.random()*220;
+    PARTICLES.push({
+      x:W/2+(Math.random()-.5)*W*.7, y:H/2+(Math.random()-.5)*H*.7,
+      vx:Math.cos(ang)*spd, vy:Math.sin(ang)*spd-.28,
+      r:.8+Math.random()*2.2,
+      alpha:0, maxAlpha:.25+Math.random()*.5,
+      life, age:0,
+      type:Math.random()>.5?'dot':'streak',
+      strkLen:6+Math.random()*16,
+    });
+  }
+  for(let i=0;i<60;i++){
+    PARTICLES.push({
+      x:Math.random()*W, y:Math.random()*H,
+      vx:(Math.random()-.5)*.15, vy:-(0.1+Math.random()*.25),
+      r:.5+Math.random()*1.5,
+      alpha:Math.random()*.3, maxAlpha:.3+Math.random()*.4,
+      life:999, age:Math.random()*300, type:'dot', strkLen:0,
+    });
+  }
+
+  // Streaks
+  const STREAKS=[];
+  function spawnStreak(){
+    STREAKS.push({
+      x:Math.random()*W, y:Math.random()*H,
+      len:40+Math.random()*120,
+      ang:-Math.PI/2+(Math.random()-.5)*.4,
+      spd:1.8+Math.random()*3,
+      alpha:0, life:60+Math.random()*80, age:0,
+      w:.4+Math.random()*.8,
+    });
+  }
+  for(let i=0;i<6;i++) spawnStreak();
+
+  // Aura pulses
+  const AURAS=[];
+  function spawnAura(){
+    AURAS.push({r:0,maxR:140+Math.random()*80,alpha:.18,life:90,age:0});
+  }
+
+  function draw(now){
+    raf=requestAnimationFrame(draw);
+    const t=(now-startT)*.001;
+    ctx.clearRect(0,0,W,H);
+
+    // Vignette
+    const vg=ctx.createRadialGradient(W/2,H/2,0,W/2,H/2,Math.max(W,H)*.75);
+    vg.addColorStop(0,'rgba(10,8,18,0)'); vg.addColorStop(1,'rgba(3,3,8,.93)');
+    ctx.fillStyle=vg; ctx.fillRect(0,0,W,H);
+
+    // Bloom
+    const bl=ctx.createRadialGradient(W/2,H/2,0,W/2,H/2,200);
+    bl.addColorStop(0,`rgba(${gold},.06)`); bl.addColorStop(.6,`rgba(${gold},.012)`); bl.addColorStop(1,'transparent');
+    ctx.fillStyle=bl; ctx.fillRect(0,0,W,H);
+
+    // Auras
+    for(let i=AURAS.length-1;i>=0;i--){
+      const a=AURAS[i]; a.age++;
+      const pr=a.age/a.life, r=a.maxR*pr, al=a.alpha*(1-pr)*(1-pr);
+      ctx.beginPath(); ctx.arc(W/2,H/2,r,0,Math.PI*2);
+      ctx.strokeStyle=`rgba(${gold},${al})`; ctx.lineWidth=1.5; ctx.stroke();
+      if(a.age>=a.life) AURAS.splice(i,1);
+    }
+    if(Math.random()<.025) spawnAura();
+
+    // Streaks
+    for(let i=STREAKS.length-1;i>=0;i--){
+      const s=STREAKS[i]; s.age++;
+      s.x+=Math.cos(s.ang)*s.spd; s.y+=Math.sin(s.ang)*s.spd;
+      const pr=s.age/s.life;
+      const al=pr<.15?pr/.15:pr>.75?(1-pr)/.25:1;
+      const g2=ctx.createLinearGradient(s.x,s.y,s.x-Math.cos(s.ang)*s.len,s.y-Math.sin(s.ang)*s.len);
+      g2.addColorStop(0,`rgba(${gold},${al*.45})`); g2.addColorStop(1,'transparent');
+      ctx.beginPath(); ctx.moveTo(s.x,s.y);
+      ctx.lineTo(s.x-Math.cos(s.ang)*s.len,s.y-Math.sin(s.ang)*s.len);
+      ctx.strokeStyle=g2; ctx.lineWidth=s.w; ctx.stroke();
+      if(s.age>=s.life){STREAKS.splice(i,1);spawnStreak();}
+    }
+
+    // Particles
+    if(Math.random()<.25) spawnParticle();
+    for(let i=PARTICLES.length-1;i>=0;i--){
+      const p=PARTICLES[i]; p.age++;
+      p.x+=p.vx; p.y+=p.vy;
+      const pr=p.age/p.life;
+      p.alpha=pr<.15?p.maxAlpha*pr/.15:pr>.7?p.maxAlpha*(1-pr)/.3:p.maxAlpha;
+      if(p.type==='streak'){
+        const sg=ctx.createLinearGradient(p.x,p.y,p.x-p.vx*p.strkLen,p.y-p.vy*p.strkLen);
+        sg.addColorStop(0,`rgba(${gold},${p.alpha})`); sg.addColorStop(1,'transparent');
+        ctx.beginPath(); ctx.moveTo(p.x,p.y); ctx.lineTo(p.x-p.vx*p.strkLen,p.y-p.vy*p.strkLen);
+        ctx.strokeStyle=sg; ctx.lineWidth=p.r; ctx.stroke();
+      } else {
+        ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fillStyle=`rgba(${gold},${p.alpha})`; ctx.fill();
+      }
+      if(p.type!=='dot'&&p.age>=p.life) PARTICLES.splice(i,1);
+      if(p.type==='dot'){
+        if(p.x<0||p.x>W) p.vx*=-1;
+        if(p.y<0){p.y=H;p.x=Math.random()*W;}
+        if(p.y>H) p.y=0;
+      }
+    }
+
+    // Hex grid
+    const hexA=.018+Math.sin(t*.55)*.007;
+    const hSize=42;
+    const cols=Math.ceil(W/hSize/1.732)+2, rows=Math.ceil(H/hSize)+2;
+    for(let row=0;row<rows;row++){
+      for(let col=0;col<cols;col++){
+        const hx=col*hSize*1.732+(row%2)*hSize*0.866;
+        const hy=row*hSize*1.5;
+        const dist=Math.hypot(hx-W/2,hy-H/2);
+        const pulse=Math.sin(t*.4-dist*.018)*.5+.5;
+        const a=hexA*pulse*(1-Math.min(dist/(Math.max(W,H)*.65),1));
+        if(a<.003) continue;
+        ctx.beginPath();
+        for(let k=0;k<6;k++){
+          const ang2=Math.PI/180*(60*k-30);
+          const px=hx+hSize*.52*Math.cos(ang2), py=hy+hSize*.52*Math.sin(ang2);
+          k===0?ctx.moveTo(px,py):ctx.lineTo(px,py);
+        }
+        ctx.closePath();
+        ctx.strokeStyle=`rgba(${gold},${a})`; ctx.lineWidth=.5; ctx.stroke();
+      }
+    }
+  }
+
+  raf=requestAnimationFrame(draw);
+
+  // Progress steps
+  const steps=[
+    {pct:10,  msg:'Waking up…'},
+    {pct:26,  msg:'Loading food database…'},
+    {pct:44,  msg:'Reading your goals…'},
+    {pct:62,  msg:'Syncing daily log…'},
+    {pct:78,  msg:'Building your routine…'},
+    {pct:92,  msg:'Polishing the gold…'},
+    {pct:100, msg:'Ready ✦'},
+  ];
+  let si=0;
+  function nextStep(){
+    if(si>=steps.length){setTimeout(dismiss,400);return;}
+    const s=steps[si++];
+    fill.style.width=s.pct+'%';
+    glowDot.style.left=s.pct+'%';
+    status.style.opacity='0';
+    setTimeout(()=>{status.textContent=s.msg;status.style.opacity='1';},200);
+    setTimeout(nextStep,si===steps.length?540:260+Math.random()*200);
+  }
+
+  function dismiss(){
+    cancelAnimationFrame(raf);
+    splash.classList.add('spl-out');
+    setTimeout(()=>{splash.style.display='none';},800);
+  }
+
+  setTimeout(nextStep,640);
+})();
 </script>
 </body>
 </html>
