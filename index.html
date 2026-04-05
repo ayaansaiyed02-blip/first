@@ -1054,13 +1054,25 @@ async function analyzeSnap(){
   document.getElementById('snapLoading').classList.add('visible');
   document.getElementById('snapResults').classList.remove('visible');
 
-  const qtyMap={small:'approximately 100g (small portion)',medium:'approximately 200g (medium serving)',large:'approximately 350g (large serving)',full_plate:'approximately 500g (full plate)',half_plate:'approximately 250g (half plate)',two_pieces:'2 pieces (~160g total)'};
-  const qtyContext = qtyMap[snapQtyLabel]||'approximately 200g';
+  const qtyMap={
+    small:'approximately 100g (small portion)',
+    medium:'approximately 200g (medium serving)',
+    large:'approximately 350g (large serving)',
+    full_plate:'approximately 500g (full plate)',
+    half_plate:'approximately 250g (half plate)',
+    two_pieces:'2 pieces (~160g total)'
+  };
+  const qtyContext=qtyMap[snapQtyLabel]||'approximately 200g';
+
+  const prompt=`You are a nutrition expert specialising in Indian and global cuisines. Analyse this food photo.\n\nThe user estimates the portion size is: ${qtyContext}\n\nIdentify all visible food items. Return ONLY a valid JSON array, no markdown fences, no preamble, no explanation:\n[\n  {\n    "name": "Food name (include local/regional Indian name if applicable)",\n    "region": "south or north or west or east or international",\n    "quantity_g": 200,\n    "calories": 300,\n    "protein_g": 10,\n    "carbs_g": 40,\n    "fat_g": 8,\n    "fiber_g": 3,\n    "confidence": "high",\n    "notes": "brief estimation note"\n  }\n]\nRules: Include regional aliases in names. Base macros on standard Indian recipes. confidence=high if clearly identifiable.`;
 
   try{
     const res=await fetch('https://api.anthropic.com/v1/messages',{
       method:'POST',
-      headers:{'Content-Type':'application/json'},
+      headers:{
+        'Content-Type':'application/json',
+        'anthropic-dangerous-direct-browser-access':'true'
+      },
       body:JSON.stringify({
         model:'claude-sonnet-4-20250514',
         max_tokens:1000,
@@ -1068,46 +1080,31 @@ async function analyzeSnap(){
           role:'user',
           content:[
             {type:'image',source:{type:'base64',media_type:snapMimeType,data:snapImageBase64}},
-            {type:'text',text:`You are a nutrition expert specialising in Indian and global cuisines. Analyse this food photo.
-
-The user estimates the portion size is: ${qtyContext}
-
-Identify all visible food items. Return ONLY a JSON array, no markdown, no preamble:
-[
-  {
-    "name": "Food name (include local/regional Indian name if applicable, e.g. 'Dal Tadka (Pappu)')",
-    "region": "south|north|west|east|international|",
-    "quantity_g": <estimated grams as number>,
-    "calories": <integer>,
-    "protein_g": <number>,
-    "carbs_g": <number>,
-    "fat_g": <number>,
-    "fiber_g": <number>,
-    "confidence": "high|medium|low",
-    "notes": "brief note about estimation or dish variant"
-  }
-]
-
-Important:
-- Include regional aliases in the name where relevant (e.g. Lau/Bottle Gourd, Jhinge/Ridge Gourd)
-- For mixed dishes estimate each component
-- Base macros on standard Indian recipes
-- Confidence = high if dish is clearly identifiable, medium if partially visible, low if uncertain`}
+            {type:'text',text:prompt}
           ]
         }]
       })
     });
+
+    if(!res.ok){
+      const errData=await res.json().catch(()=>({}));
+      throw new Error(errData?.error?.message||('HTTP '+res.status));
+    }
+
     const data=await res.json();
-    const text=data.content?.map(b=>b.text||'').join('');
-    const clean=text.replace(/```json|```/g,'').trim();
-    const items=JSON.parse(clean);
+    const text=(data.content||[]).map(function(b){return b.text||'';}).join('');
+    const match=text.match(/\[[\s\S]*?\]/);
+    if(!match) throw new Error('Could not parse food data');
+    const items=JSON.parse(match[0]);
+    if(!items||!items.length) throw new Error('No foods detected');
     renderSnapResults(items);
   }catch(err){
+    console.error('Snap error:',err);
     document.getElementById('snapLoading').classList.remove('visible');
     document.getElementById('snapBtns').style.display='grid';
     document.getElementById('snapAnalyzeBtn').classList.add('visible');
     document.getElementById('snapQuantitySection').style.display='block';
-    showToast('⚠️ Could not analyse photo. Try again.');
+    showToast('Error: '+err.message);
   }
 }
 
