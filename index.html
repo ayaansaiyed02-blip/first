@@ -571,10 +571,14 @@ select.goal-inp{font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;}
       </div>
     </div>
 
-    <!-- Snap buttons -->
+    <!-- File inputs FIRST so labels can reference them -->
+    <input type="file" id="cameraInput" accept="image/*" capture="environment" style="display:none;position:absolute;width:0;height:0;opacity:0;" onchange="handlePhoto(this)">
+    <input type="file" id="galleryInput" accept="image/*" style="display:none;position:absolute;width:0;height:0;opacity:0;" onchange="handlePhoto(this)">
+
+    <!-- Snap buttons — labels directly tied to inputs, no JS .click() needed -->
     <div class="snap-btns" id="snapBtns">
-      <button class="snap-btn" onclick="triggerCamera()">📷 Camera</button>
-      <button class="snap-btn" onclick="triggerGallery()">🖼️ Gallery</button>
+      <label for="cameraInput" class="snap-btn" style="cursor:pointer;">📷 Camera</label>
+      <label for="galleryInput" class="snap-btn" style="cursor:pointer;">🖼️ Gallery</label>
     </div>
 
     <button id="snapAnalyzeBtn" onclick="analyzeSnap()">🔍 Identify & Count Calories</button>
@@ -593,10 +597,6 @@ select.goal-inp{font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;}
       <div class="snap-portion-note" id="snapPortionNote"></div>
       <button class="snap-retry-btn" onclick="resetSnap()" style="margin-top:8px;">🔄 Try Another Photo</button>
     </div>
-
-    <!-- Hidden file inputs -->
-    <input type="file" id="cameraInput" accept="image/*" capture="environment" style="display:none" onchange="handlePhoto(this)">
-    <input type="file" id="galleryInput" accept="image/*" style="display:none" onchange="handlePhoto(this)">
   </div>
 </div>
 
@@ -1024,13 +1024,18 @@ function selectQty(el){
   snapQtyLabel = el.dataset.qty;
 }
 
+let snapMimeType='image/jpeg';
+
 function handlePhoto(input){
   const file=input.files[0]; if(!file)return;
+  snapMimeType=file.type||'image/jpeg';
+  if(snapMimeType==='image/heic'||snapMimeType==='image/heif')snapMimeType='image/jpeg';
   const reader=new FileReader();
   reader.onload=e=>{
-    snapImageBase64=e.target.result.split(',')[1];
+    const dataUrl=e.target.result;
+    snapImageBase64=dataUrl.split(',')[1];
     const img=document.getElementById('snapPreviewImg');
-    img.src=e.target.result;
+    img.src=dataUrl;
     img.style.display='block';
     document.getElementById('snapPlaceholder').style.display='none';
     document.getElementById('snapPreviewArea').classList.add('has-image');
@@ -1062,7 +1067,7 @@ async function analyzeSnap(){
         messages:[{
           role:'user',
           content:[
-            {type:'image',source:{type:'base64',media_type:'image/jpeg',data:snapImageBase64}},
+            {type:'image',source:{type:'base64',media_type:snapMimeType,data:snapImageBase64}},
             {type:'text',text:`You are a nutrition expert specialising in Indian and global cuisines. Analyse this food photo.
 
 The user estimates the portion size is: ${qtyContext}
